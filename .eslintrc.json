@@ -12,6 +12,11 @@
     "plugin:jsx-a11y/recommended",
     "plugin:prettier/recommended"
   ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -68,7 +73,7 @@
     "block-spacing": ["error", "always"],
     "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
     "camelcase": ["error", { "properties": "never" }],
-    "comma-dangle": ["error", "always-multiline"],
+    // "comma-dangle": ["error", "always-multiline"],
     "comma-spacing": ["error", { "before": false, "after": true }],
     "comma-style": ["error", "last"],
     "eol-last": ["error", "always"],
@@ -80,7 +85,7 @@
     "no-multiple-empty-lines": ["error", { "max": 1 }],
     "object-curly-spacing": ["error", "always"],
     "quotes": ["error", "single"],
-    "semi": ["error", "always"],
+    // "semi": ["error", "always"],
     "space-before-blocks": ["error", "always"],
     "space-before-function-paren": ["error", "never"],
     "space-in-parens": ["error", "never"],
