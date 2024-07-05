@@ -1,9 +1,120 @@
 {
-  "extends": "next/core-web-vitals",
-  "plugins": ["@typescript-eslint"],
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "react-hooks",
+    "@typescript-eslint",
+    "jsx-a11y",
+    "prettier"
+  ],
   "rules": {
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": "error",
-    "no-console": ["error", { "allow": ["warn", "error"] }]
+    // Possible Errors
+    "no-console": "warn",
+    "no-debugger": "warn",
+    "no-dupe-args": "error",
+    "no-dupe-keys": "error",
+    "no-duplicate-case": "error",
+    "no-empty": ["error", { "allowEmptyCatch": true }],
+    "no-ex-assign": "error",
+    "no-extra-boolean-cast": "error",
+    "no-func-assign": "error",
+    "no-invalid-regexp": "error",
+    "no-irregular-whitespace": "error",
+    "no-unsafe-negation": "error",
+    "valid-typeof": ["error", { "requireStringLiterals": true }],
+
+    // Best Practices
+    "curly": "error",
+    "eqeqeq": ["error", "always"],
+    "no-eval": "error",
+    "no-implied-eval": "error",
+    "no-return-assign": ["error", "except-parens"],
+    "no-unused-expressions": ["error", { "allowShortCircuit": true }],
+    "no-with": "error",
+    "prefer-promise-reject-errors": "error",
+
+    // Variables
+    "no-delete-var": "error",
+    "no-shadow": "error",
+    "no-undef": "error",
+    "no-unused-vars": ["error", { "args": "none", "caughtErrors": "none" }],
+    "no-use-before-define": [
+      "error",
+      { "functions": false, "classes": false, "variables": false }
+    ],
+
+    // Stylistic Issues
+    "array-bracket-spacing": ["error", "never"],
+    "block-spacing": ["error", "always"],
+    "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
+    "camelcase": ["error", { "properties": "never" }],
+    "comma-dangle": ["error", "always-multiline"],
+    "comma-spacing": ["error", { "before": false, "after": true }],
+    "comma-style": ["error", "last"],
+    "eol-last": ["error", "always"],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
+    "linebreak-style": ["error", "unix"],
+    "max-len": ["error", { "code": 100, "ignoreUrls": true }],
+    "no-mixed-spaces-and-tabs": "error",
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
+    "object-curly-spacing": ["error", "always"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "space-before-blocks": ["error", "always"],
+    "space-before-function-paren": ["error", "never"],
+    "space-in-parens": ["error", "never"],
+    "space-infix-ops": "error",
+    "spaced-comment": ["error", "always", { "exceptions": ["-", "+"] }],
+
+    // ECMAScript 6
+    "arrow-body-style": ["error", "as-needed"],
+    "arrow-spacing": ["error", { "before": true, "after": true }],
+    "no-confusing-arrow": ["error", { "allowParens": true }],
+    "no-duplicate-imports": "error",
+    "no-var": "error",
+    "prefer-const": "error",
+    "prefer-template": "error",
+
+    // React and JSX
+    "react/jsx-uses-react": "off", // Not needed with React 17+
+    "react/react-in-jsx-scope": "off", // Not needed with React 17+
+    "react/prop-types": "off", // Not needed with TypeScript
+    "react/jsx-filename-extension": [
+      "warn",
+      { "extensions": [".jsx", ".tsx"] }
+    ],
+    "react/jsx-props-no-spreading": "off",
+
+    // React Hooks
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+
+    // Accessibility
+    "jsx-a11y/anchor-is-valid": "off", // Next.js specific rule
+    "jsx-a11y/no-autofocus": "warn",
+
+    // Prettier
+    "prettier/prettier": ["error"]
   }
 }
