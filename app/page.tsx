@@ -2,11 +2,13 @@ import React from 'react'
 import { Button } from '@/components/ui/button'
 // import DarkModeButton from '@/components/darkmode/DarkModeToggle'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const imgLanding =
   'https://ik.imagekit.io/melancong/melancong/landing/bg-landing.webp?updatedAt=1720282428544'
 const page = () => (
   <>
+    {/* <Icons.hamMenuIcon color='#fff' size={'1rem'} title='ham menu' /> */}
     <div className='h-screen max-h-screen'>
       <section>
         <div className='absolute size-full bg-blend-darken'>
@@ -39,7 +41,7 @@ const page = () => (
             </Button>
 
             <span className='text-center text-sm text-white'>
-              Don&apos;t have an account? <a href='/login'>Login</a>
+              Don&apos;t have an account? <Link href='/login'>Login</Link>
             </span>
           </div>
         </div>
