@@ -60,7 +60,7 @@
 
     // Variables
     "no-delete-var": "error",
-    "no-shadow": "error",
+    "no-shadow": "warn",
     "no-undef": "error",
     "no-unused-vars": ["error", { "args": "none", "caughtErrors": "none" }],
     "no-use-before-define": [
