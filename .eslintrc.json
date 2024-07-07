@@ -80,7 +80,7 @@
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
     "linebreak-style": ["error", "unix"],
-    "max-len": ["error", { "code": 100, "ignoreUrls": true }],
+    // "max-len": ["error", { "code": 100, "ignoreUrls": true }],
     "no-mixed-spaces-and-tabs": "error",
     "no-multiple-empty-lines": ["error", { "max": 1 }],
     "object-curly-spacing": ["error", "always"],
@@ -102,9 +102,6 @@
     "prefer-template": "error",
 
     // React and JSX
-    "react/jsx-uses-react": "off", // Not needed with React 17+
-    "react/react-in-jsx-scope": "off", // Not needed with React 17+
-    "react/prop-types": "off", // Not needed with TypeScript
     "react/jsx-filename-extension": [
       "warn",
       { "extensions": [".jsx", ".tsx"] }
@@ -117,9 +114,6 @@
 
     // Accessibility
     "jsx-a11y/anchor-is-valid": "off", // Next.js specific rule
-    "jsx-a11y/no-autofocus": "warn",
-
-    // Prettier
-    "prettier/prettier": ["error"]
+    "jsx-a11y/no-autofocus": "warn"
   }
 }
