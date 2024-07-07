@@ -3,8 +3,13 @@ import { Button } from '@/components/ui/button'
 // import DarkModeButton from '@/components/darkmode/DarkModeToggle'
 import Image from 'next/image'
 
-const imgLanding =
-  'https://ik.imagekit.io/melancong/melancong/landing/bg-landing.webp?updatedAt=1720282428544'
+const imageKit = {
+  url: 'https://ik.imagekit.io/melancong',
+  pathMediaName: 'melancong'
+}
+
+const imgLanding = `${imageKit.url}/${imageKit.pathMediaName}/landing/bg-landing.webp`
+
 const page = () => (
   <>
     <div className='h-screen max-h-screen'>
