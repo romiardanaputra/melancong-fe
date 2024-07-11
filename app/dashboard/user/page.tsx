@@ -1,6 +1,6 @@
 'use client'
 /* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable no-unused-vars */
+
 import React, { useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import Autoplay from 'embla-carousel-autoplay'
@@ -25,8 +25,6 @@ const imageKit = {
 }
 
 const imgSlide = `${imageKit.url}/${imageKit.pathMediaName}/${imageKit.folder[0]}/${imageKit.imgName.landing}`
-const carousel1 = `${imageKit.url}/${imageKit.pathMediaName}/${imageKit.folder[1]}/${imageKit.imgName.carousel1}`
-const carousel2 = `${imageKit.url}/${imageKit.pathMediaName}/${imageKit.folder[1]}/${imageKit.imgName.carousel2}`
 
 const Page = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
