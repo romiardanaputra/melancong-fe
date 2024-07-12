@@ -11,6 +11,11 @@ const imageKit = {
 
 const imgLanding = `${imageKit.url}/${imageKit.pathMediaName}/landing/bg-landing.webp`
 
+const imageKit = {
+  url: 'https://ik.imagekit.io/melancong',
+  pathMediaName: 'melancong'
+}
+const imgLanding = `${imageKit.url}/${imageKit.pathMediaName}/landing/bg-landing.webp`
 const page = () => (
   <>
     {/* <Icons.hamMenuIcon color='#fff' size={'1rem'} title='ham menu' /> */}
