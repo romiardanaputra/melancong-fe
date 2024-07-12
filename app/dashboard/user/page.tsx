@@ -1,7 +1,7 @@
-'use client'
 /* eslint-disable react-hooks/rules-of-hooks */
-
+'use client'
 import React, { useState } from 'react'
+import Image from 'next/image'
 import { Card, CardContent } from '@/components/ui/card'
 import Autoplay from 'embla-carousel-autoplay'
 import {
@@ -11,7 +11,6 @@ import {
   CarouselNext,
   CarouselPrevious
 } from '@/components/ui/carousel'
-import Image from 'next/image'
 
 const imageKit = {
   url: 'https://ik.imagekit.io/melancong',
@@ -36,7 +35,6 @@ const Page = () => {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen)
   }
-
   return (
     <>
       <Carousel
