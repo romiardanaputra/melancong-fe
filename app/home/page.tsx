@@ -225,7 +225,8 @@ const SaveButton = styled.button<{ saved: boolean }>`
   right: 10px;
   padding: 5px;
   font-size: 20px;
-  background-color: ${({ saved }) => (saved ? 'yellow' : 'rgba(255, 255, 255, 0.8)')};
+  background-color: ${({ saved }) =>
+    saved ? 'yellow' : 'rgba(255, 255, 255, 0.8)'};
   border: none;
   border-radius: 50%;
   cursor: pointer;

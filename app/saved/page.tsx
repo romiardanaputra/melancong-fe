@@ -23,7 +23,6 @@ interface ErrorResponse {
 
 const Saved: React.FC = () => {
   const [destinations, setDestinations] = useState<Destination[]>([])
-  const [savedDestinations, setSavedDestinations] = useState<string[]>([])
   const [error, setError] = useState<string>('')
   const [searchQuery, setSearchQuery] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
@@ -62,10 +61,12 @@ const Saved: React.FC = () => {
     fetchDestinations(searchQuery)
   }
 
-  const handleSave = async (id: string) => {
+  const handleDelete = async (id: string) => {
     try {
-      await api.post('/destinations/add', { id })
-      setSavedDestinations(prevSaved => [...prevSaved, id])
+      await api.delete('/destinations/delete', { data: { id } })
+      setDestinations(prevDestinations =>
+        prevDestinations.filter(dest => dest.id !== id)
+      )
     } catch (err) {
       setError('An unexpected error occurred')
     }
@@ -120,14 +121,12 @@ const Saved: React.FC = () => {
               type='button'
               onClick={e => {
                 e.stopPropagation()
-                handleSave(destination.id)
+                handleDelete(destination.id)
               }}
-              saved={savedDestinations.includes(destination.id)}
             >
               &#9733;
             </SaveButton>
             <img
-              // src={destination.imageLink}
               src='https://firebasestorage.googleapis.com/v0/b/melanc0ng.appspot.com/o/image%2F3.jpg?alt=media&token=4b1bc0e1-5261-4c7d-a8a3-22a509fa5e09'
               alt={destination.name}
               width={150}
@@ -219,13 +218,13 @@ const Card = styled.div`
   }
 `
 
-const SaveButton = styled.button<{ saved: boolean }>`
+const SaveButton = styled.button`
   position: absolute;
   top: 10px;
   right: 10px;
   padding: 5px;
   font-size: 20px;
-  background-color: ${({ saved }) => (saved ? 'yellow' : 'rgba(255, 255, 255, 0.8)')};
+  background-color: rgba(255, 255, 255, 0.8);
   border: none;
   border-radius: 50%;
   cursor: pointer;
