@@ -53,8 +53,25 @@ const Home: React.FC = () => {
     }
   }
 
+  const fetchSavedDestinations = async () => {
+    try {
+      const response = await api.get('/destinations/saved')
+      setSavedDestinations(
+        response.data.data.map((dest: Destination) => dest.id)
+      )
+    } catch (err) {
+      const errorRes = err as ErrorResponse
+      if (errorRes.response.status === 401) {
+        router.push('/login')
+      } else {
+        setError('An unexpected error occurred')
+      }
+    }
+  }
+
   useEffect(() => {
     fetchDestinations()
+    fetchSavedDestinations()
   }, [])
 
   const handleSearch = (event: FormEvent) => {
