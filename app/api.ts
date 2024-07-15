@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'https://melancong-be.vercel.app'
+  baseURL: 'https://melacong-api-bij5xtwena-et.a.run.app'
 })
 
 api.interceptors.request.use(
