@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
 // eslint-disable-next-line camelcase
-import { Plus_Jakarta_Sans } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
 import React from 'react'
 import { cn } from '@/lib/utils'
 import { ThemeProvider } from '@/components/theme-provider'
+import { NextUIProvider } from '@nextui-org/system'
 
-const fontSans = Plus_Jakarta_Sans({
+const fontSans = Inter({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700', '800'],
   variable: '--font-sans'
@@ -26,16 +27,15 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={cn(
-          'min-h-screen bg-dark-300 font-sans antialiased',
-          fontSans.variable
-        )}
+        className={cn('min-h-screen font-sans antialiased', fontSans.variable)}
       >
-        <ThemeProvider attribute='class' defaultTheme='dark'>
-          {/* <header></header> */}
-          <main>{children}</main>
-          {/* <footer></footer> */}
-        </ThemeProvider>
+        <NextUIProvider>
+          <ThemeProvider attribute='class' defaultTheme='light'>
+            {/* <header></header> */}
+            <main>{children}</main>
+            {/* <footer></footer> */}
+          </ThemeProvider>
+        </NextUIProvider>
       </body>
     </html>
   )

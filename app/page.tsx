@@ -1,18 +1,13 @@
-import React from 'react'
 import { Button } from '@/components/ui/button'
 // import DarkModeButton from '@/components/darkmode/DarkModeToggle'
 import Image from 'next/image'
+import Link from 'next/link'
 
-const imageKit = {
-  url: 'https://ik.imagekit.io/melancong',
-  pathMediaName: 'melancong'
-}
-
-const imgLanding = `${imageKit.url}/${imageKit.pathMediaName}/landing/bg-landing.webp`
-
+const imgLanding = `${process.env.NEXT_PUBLIC_IMAGEKIT_URL}/landing/bg-landing.webp?updatedAt=1720282428544`
 const page = () => (
   <>
-    <div className='h-screen max-h-screen'>
+    {/* <Icons.hamMenuIcon color='#fff' size={'1rem'} title='ham menu' /> */}
+    <div className='h-screen max-h-screen bg-dark-300'>
       <section>
         <div className='absolute size-full bg-blend-darken'>
           <Image
@@ -20,8 +15,6 @@ const page = () => (
             alt='melancong-landing'
             width={1920}
             height={400}
-            objectFit='cover'
-            objectPosition='center'
             className='size-full object-cover object-center opacity-80'
             priority
           />
@@ -44,7 +37,7 @@ const page = () => (
             </Button>
 
             <span className='text-center text-sm text-white'>
-              Don&apos;t have an account? <a href='/login'>Login</a>
+              Don&apos;t have an account? <Link href='/signup'>Login</Link>
             </span>
           </div>
         </div>
