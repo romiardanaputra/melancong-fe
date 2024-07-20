@@ -37,7 +37,7 @@ const page = () => (
             </Button>
 
             <span className='text-center text-sm text-white'>
-              Don&apos;t have an account? <Link href='/signup'>Login</Link>
+              Have an account? <Link href='/auth/signIn'>Login</Link>
             </span>
           </div>
         </div>

@@ -39,7 +39,6 @@ type RenderFieldProps = {
 }
 
 function RenderField({ field, props, className }: RenderFieldProps) {
-  console.log(props)
   const [isVisible, setIsVisible] = React.useState(false)
   const toggleVisibility = () => {
     setIsVisible(!isVisible)

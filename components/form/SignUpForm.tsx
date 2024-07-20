@@ -16,7 +16,8 @@ import SubmitButton from '../SubmitButton'
 import Link from 'next/link'
 import { UserFormValidation } from '@/lib/validation'
 import { useRouter } from 'next/navigation'
-import { createUser } from '@/lib/actions/user.actions'
+import api from '@/app/api'
+import ModalUi from '../ui/modal/ModalUi'
 
 // create enum
 export enum FormFieldType {
@@ -34,7 +35,7 @@ export default function SignUpForm(): React.ReactNode {
   const form = useForm<z.infer<typeof UserFormValidation>>({
     resolver: zodResolver(UserFormValidation),
     defaultValues: {
-      fullName: '',
+      name: '',
       email: '',
       password: '',
       confirmPassword: ''
@@ -46,13 +47,18 @@ export default function SignUpForm(): React.ReactNode {
     setIsLoading(true)
     try {
       const userRegisterData = {
-        fullName: values.fullName,
+        name: values.name,
         email: values.email,
         password: values.password
       }
-      const user = await createUser(userRegisterData)
-      if (user) {
-        router.push('/user/auth/signIn')
+      const response = await api.post('/auth/register', userRegisterData)
+
+      const data = response.data
+
+      if (response.status === 201) {
+        router.push('/auth/signIn')
+      } else {
+        console.log(data.message)
       }
     } catch (error) {
       console.log(error)
@@ -66,7 +72,7 @@ export default function SignUpForm(): React.ReactNode {
         <CustomField
           control={form.control}
           fieldType={FormFieldType.INPUT}
-          name='fullName'
+          name='name'
           label='Full Name'
         />
 
@@ -102,12 +108,7 @@ export default function SignUpForm(): React.ReactNode {
             Privacy Policy
           </Link>
         </p>
-        {/* <CustomField
-          control={form.control}
-          fieldType={FormFieldType.PHONE_INPUT}
-          name='phone'
-          label='Phone Number'
-        /> */}
+        <ModalUi />
         <div className='absolute bottom-0 left-0 flex w-full flex-col gap-4 p-8 text-center'>
           <SubmitButton isLoading={isLoading} className='mt-4 w-full font-bold'>
             Sign Up
