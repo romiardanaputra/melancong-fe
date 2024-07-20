@@ -88,6 +88,25 @@ const Home: React.FC = () => {
     }
   }
 
+  const handleDelete = async (id: string) => {
+    try {
+      await api.delete('/destinations/delete', { data: { id } })
+      setSavedDestinations(prevSaved =>
+        prevSaved.filter(savedId => savedId !== id)
+      )
+    } catch (err) {
+      setError('An unexpected error occurred')
+    }
+  }
+
+  const handleToggleSave = (id: string) => {
+    if (savedDestinations.includes(id)) {
+      handleDelete(id)
+    } else {
+      handleSave(id)
+    }
+  }
+
   const handleCardClick = (id: string) => {
     router.push(`/destinations/${id}`)
   }
@@ -137,7 +156,7 @@ const Home: React.FC = () => {
               type='button'
               onClick={e => {
                 e.stopPropagation()
-                handleSave(destination.id)
+                handleToggleSave(destination.id)
               }}
               saved={savedDestinations.includes(destination.id)}
             >

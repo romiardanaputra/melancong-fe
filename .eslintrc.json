@@ -83,14 +83,12 @@
     "object-curly-spacing": ["error", "always"],
     "quotes": ["error", "single"],
     "space-before-blocks": ["error", "always"],
-    // "space-before-function-paren": ["error", "never"],
     "space-in-parens": ["error", "never"],
     "space-infix-ops": "error",
     "spaced-comment": ["error", "always", { "exceptions": ["-", "+"] }],
 
     // ECMAScript 6
     "arrow-spacing": ["error", { "before": true, "after": true }],
-    // "no-confusing-arrow": ["error", { "allowParens": true }],
     "no-duplicate-imports": "error",
     "no-var": "error",
     "prefer-const": "error",
