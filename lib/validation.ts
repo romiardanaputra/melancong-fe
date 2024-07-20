@@ -3,7 +3,7 @@ import * as z from 'zod'
 // create form schema
 export const UserFormValidation = z
   .object({
-    fullName: z
+    name: z
       .string()
       .min(2, { message: 'Name must be at least 2 characters' })
       .max(50, { message: 'Name must be less than 50 characters' }),

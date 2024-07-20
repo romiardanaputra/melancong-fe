@@ -8,10 +8,12 @@ export default function Page(): React.ReactNode {
       <div className='flex w-full justify-center pt-[4.7rem]'>
         <Logo width={175} height={115} className='w-24' />
       </div>
-      <div className='space-y-1 py-8'>
-        <p className='text-sm font-medium text-slate-600'>Start For Free</p>
+      <div className='space-y-1 py-8 text-center'>
         <p className='text-2xl font-black uppercase text-slate-800'>
-          Create New Account
+          welcome new user
+        </p>
+        <p className='text-sm font-medium text-slate-600'>
+          Let&apos;s create your account
         </p>
       </div>
       <SignUpForm />
