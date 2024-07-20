@@ -72,7 +72,10 @@ export default function LoginForm(): React.ReactNode {
           >
             sign in
           </SubmitButton>
-          <Link href='#' className='text-sm font-medium text-blue-800'>
+          <Link
+            href='/auth/register'
+            className='text-sm font-medium text-blue-800'
+          >
             Don&apos;t have an account? register
           </Link>
         </div>
