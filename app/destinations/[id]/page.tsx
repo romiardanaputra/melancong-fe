@@ -1,10 +1,11 @@
 'use client'
+/* eslint-disable react-hooks/exhaustive-deps */
 
 import React, { useEffect, useState } from 'react'
-import styled, { keyframes } from 'styled-components'
 import { useRouter } from 'next/navigation'
 import api from '../../api'
 import withAuth from '../../withAuth'
+import { FaLocationDot, FaStar, FaArrowLeft } from 'react-icons/fa6'
 
 interface DestinationDetail {
   id: string
@@ -60,160 +61,66 @@ const DestinationDetailPage: React.FC<{ params: { id: string } }> = ({
 
   if (loading) {
     return (
-      <Container>
-        <SpinnerContainer>
-          <Spinner />
-        </SpinnerContainer>
-      </Container>
+      <div className='flex h-screen items-center justify-center'>
+        <div className='h-10 w-10 animate-spin rounded-full border-4 border-t-4 border-gray-200 border-t-blue-500'></div>
+      </div>
     )
   }
 
   if (error) {
-    return <Container>{error}</Container>
+    return (
+      <div className='mx-auto max-w-md overflow-hidden rounded-lg bg-white p-5 shadow-md'>
+        {error}
+      </div>
+    )
   }
 
   return (
-    <Container>
-      <ImageContainer>
-        <BackButton onClick={() => window.history.back()}>&larr;</BackButton>
-        {/* <img src={destination?.imageLink} alt={destination?.name} /> */}
+    <div className='mx-auto max-w-md p-5 md:max-w-4xl'>
+      <div className='relative overflow-hidden rounded-lg bg-white shadow-md'>
         <img
-          src='https://firebasestorage.googleapis.com/v0/b/melanc0ng.appspot.com/o/image%2F3.jpg?alt=media&token=4b1bc0e1-5261-4c7d-a8a3-22a509fa5e09'
+          src={
+            destination?.imageLink ||
+            'https://firebasestorage.googleapis.com/v0/b/melanc0ng.appspot.com/o/image%2F3.jpg?alt=media&token=4b1bc0e1-5261-4c7d-a8a3-22a509fa5e09'
+          }
           alt={destination?.name}
+          className='h-64 w-full rounded-t-lg object-cover md:h-96'
         />
-      </ImageContainer>
-      <Content>
-        <Title>{destination?.name}</Title>
-        <Rating>
-          <span>&#9733;</span>
-          {destination?.rating}
-        </Rating>
-        <Location>
-          <a
-            href={destination?.location}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Google Maps
-          </a>
-        </Location>
-        <EntryFee>
-          <p>{destination?.regency}, Bali</p>
-          <p>
-            {destination?.childEntry} - {destination?.adultsEntry}
-          </p>
-        </EntryFee>
-        <Information
-          dangerouslySetInnerHTML={{ __html: destination?.information || '' }}
-        />
-      </Content>
-    </Container>
+        <button
+          onClick={() => window.history.back()}
+          className='absolute left-2 top-2 rounded-full bg-white bg-opacity-70 p-2'
+        >
+          <FaArrowLeft />
+        </button>
+        <div className='p-5'>
+          <div className='mb-4 flex items-center justify-between'>
+            <h1 className='text-2xl font-bold'>{destination?.name}</h1>
+            <span className='flex items-center rounded-full bg-green-100 px-2 py-1 text-sm text-green-800'>
+              <FaStar className='mr-1' /> {destination?.rating}
+            </span>
+          </div>
+          <div className='mb-4 flex items-center text-gray-600'>
+            <FaLocationDot /> {destination?.regency}, Bali
+          </div>
+          <div className='mb-4 flex items-center'>
+            <span className='mr-2 rounded-full bg-blue-100 px-2 py-1 text-blue-800'>
+              {destination?.childEntry}
+            </span>
+            <span className='rounded-full bg-blue-100 px-2 py-1 text-blue-800'>
+              {destination?.adultsEntry}
+            </span>
+          </div>
+          <div className='mb-4 text-justify text-gray-700'>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: destination?.information || ''
+              }}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
-
-const Container = styled.div`
-  max-width: 600px;
-  color: black;
-  margin: auto;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-`
-
-const ImageContainer = styled.div`
-  position: relative;
-  img {
-    width: 100%;
-    height: auto;
-  }
-`
-
-const BackButton = styled.button`
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: rgba(255, 255, 255, 0.7);
-  border: none;
-  border-radius: 50%;
-  padding: 10px;
-  cursor: pointer;
-`
-
-const Content = styled.div`
-  padding: 20px;
-`
-
-const Title = styled.h1`
-  font-size: 24px;
-  margin: 0;
-  font-weight: bold;
-`
-
-const Rating = styled.div`
-  display: flex;
-  align-items: center;
-  span {
-    font-size: 20px;
-    margin-right: 5px;
-  }
-`
-
-const Location = styled.div`
-  display: flex;
-  align-items: center;
-  a {
-    padding: 5px 10px;
-    background-color: grey;
-    color: black;
-    text-decoration: none;
-    margin-right: 10px;
-  }
-  p {
-    margin: 0;
-    font-size: 14px;
-    color: #757575;
-  }
-`
-
-const EntryFee = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 10px 0;
-  li {
-    font-size: 14px;
-    color: #757575;
-  }
-`
-
-const Information = styled.div`
-  margin-top: 20px;
-  font-size: 14px;
-  color: #424242;
-  text-align: justify;
-`
-
-const SpinnerContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%; /* Set height to fill the container */
-`
-
-const Spinner = styled.div`
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-top: 4px solid blue;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: ${keyframes`
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  `} 1s linear infinite;
-`
 
 export default withAuth(DestinationDetailPage)
