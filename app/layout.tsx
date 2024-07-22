@@ -1,15 +1,15 @@
 import type { Metadata } from 'next'
 // eslint-disable-next-line camelcase
-import { Inter } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 import './globals.css'
 import React from 'react'
 import { cn } from '@/lib/utils'
 import { ThemeProvider } from '@/components/theme-provider'
 import { NextUIProvider } from '@nextui-org/system'
 
-const fontSans = Inter({
+const poppins = Poppins({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
   variable: '--font-sans'
 })
 
@@ -26,9 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body
-        className={cn('min-h-screen font-sans antialiased', fontSans.variable)}
-      >
+      <body className={cn('min-h-dvh font-sans antialiased', poppins.variable)}>
         <NextUIProvider>
           <ThemeProvider attribute='class' defaultTheme='light'>
             {/* <header></header> */}
