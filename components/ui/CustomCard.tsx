@@ -10,7 +10,7 @@ interface ImageCardProps {
   location: string
 }
 
-const CardComponent: NextPage<ImageCardProps> = ({
+const CustomCard: NextPage<ImageCardProps> = ({
   title,
   img,
   rating,
@@ -55,4 +55,4 @@ const CardComponent: NextPage<ImageCardProps> = ({
   )
 }
 
-export default CardComponent
+export default CustomCard

@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import Image from 'next/image'
 import balineseDance from '@/public/assets/images/balinese-dance.webp'
-import Button from '@/components/ui/Button'
+import CustomButton from '@/components/ui/CustomButton'
 
 interface Props {}
 
@@ -27,7 +27,7 @@ const LandingPage: NextPage<Props> = () => {
             </span>
           </h1>
           <h2 className='text-8xl font-black'>BALI</h2>
-          <Button btnText='Explore More With Us' pathTo='/landing' />
+          <CustomButton btnText='Explore More With Us' pathTo='/landing' />
         </div>
       </div>
     </>
