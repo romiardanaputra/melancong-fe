@@ -1,0 +1,43 @@
+'use client'
+import { NextPage } from 'next'
+import { ImagesSlider } from '@/components/ui/ImageSlider'
+import { motion } from 'framer-motion'
+import { FlipWords } from '@/components/ui/FlipWord'
+import { images, words } from '@/data/index'
+interface Props {}
+
+const HeroBanner: NextPage<Props> = () => {
+  return (
+    <>
+      <ImagesSlider className='h-[40rem]' images={images}>
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: -80
+          }}
+          animate={{
+            opacity: 1,
+            y: 0
+          }}
+          transition={{
+            duration: 1
+          }}
+          className='z-50 flex flex-col items-start justify-start'
+        >
+          <motion.p className='text-left text-lg font-medium text-neutral-400'>
+            Welcome to Melancong
+          </motion.p>
+          <motion.div className='bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text py-4 text-left text-xl font-bold text-transparent md:text-5xl'>
+            Let&apos;s <FlipWords words={words} /> <br /> Great Destination With
+            Us
+          </motion.div>
+          <button className='mt-4 transform rounded-lg border border-neutral-200 bg-transparent px-6 py-2 font-bold text-neutral-200 transition duration-400 hover:-translate-y-1 dark:border-white dark:text-white'>
+            What we offer?
+          </button>
+        </motion.div>
+      </ImagesSlider>
+    </>
+  )
+}
+
+export default HeroBanner
