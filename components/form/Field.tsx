@@ -11,8 +11,8 @@ interface Props {
   labelFor: string
   fieldMessage: string
   labelText: string
-  value: string
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  value?: string
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const FieldComponent: NextPage<Props> = ({

@@ -80,10 +80,17 @@ const LoginPage: NextPage<Props> = () => {
               value={password}
               onChange={e => setPassword(e.target.value)}
             />
-
             {error && <p className='text-red-500'>{error}</p>}
-            <SubmitButton btnText='Login Now' />
+            <div>
+              <div className='flex justify-end py-4 text-sm font-medium text-cyan-500'>
+                <Link href='/forgot-password/email-verification'>
+                  Forget Password
+                </Link>
+              </div>
+              <SubmitButton btnText='Login Now' />
+            </div>
           </form>
+
           <div className='flex justify-center py-2 lg:py-4'>
             <span className='text-sm'>Don&apos;t have account?</span>
             <Link
