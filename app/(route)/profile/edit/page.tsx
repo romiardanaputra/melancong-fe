@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
 import React, { useEffect, useState, ChangeEvent, useRef } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { useRouter } from 'next/navigation'
-import api from '../../api'
-import withAuth from '../../withAuth'
+import api from '../../../api'
+import withAuth from '../../../withAuth'
 
 interface UserProfile {
   name: string

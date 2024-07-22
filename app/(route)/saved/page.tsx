@@ -4,8 +4,8 @@
 import React, { useEffect, useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import { FiSearch, FiFilter } from 'react-icons/fi'
-import api from '../api'
-import withAuth from '../withAuth'
+import api from '@/app/api'
+import withAuth from '@/app/withAuth'
 import { FaStar } from 'react-icons/fa6'
 
 interface Destination {
@@ -109,7 +109,7 @@ const Saved: React.FC = () => {
       <h1 className='text-xl font-bold'>Saved Places</h1>
       {loading && (
         <div className='flex h-screen items-center justify-center'>
-          <div className='h-10 w-10 animate-spin rounded-full border-4 border-t-4 border-blue-500 border-gray-200'></div>
+          <div className='h-10 w-10 animate-spin rounded-full border-4 border-t-4 border-gray-200'></div>
         </div>
       )}
       {error && <p className='text-red-500'>{error}</p>}

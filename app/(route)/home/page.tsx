@@ -4,8 +4,8 @@
 import React, { useEffect, useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import { FiSearch, FiFilter } from 'react-icons/fi'
-import api from '../api'
-import withAuth from '../withAuth'
+import api from '@/app/api'
+import withAuth from '@/app/withAuth'
 import { FaStar, FaArrowLeft } from 'react-icons/fa6'
 
 interface Destination {
