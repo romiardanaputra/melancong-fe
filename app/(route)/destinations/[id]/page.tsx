@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import api from '@/app/api'
+import api from '../../../api/axios'
 import withAuth from '@/app/withAuth'
 import { FaLocationDot, FaStar, FaArrowLeft } from 'react-icons/fa6'
 

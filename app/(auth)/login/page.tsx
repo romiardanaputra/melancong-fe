@@ -1,11 +1,50 @@
+'use client'
+
 import SubmitButton from '@/components/button/SubmitButton'
 import FieldComponent from '@/components/form/Field'
 import { NextPage } from 'next'
 import Link from 'next/link'
+import api from '../../api/axios'
+import { useState, FormEvent } from 'react'
+import { useRouter } from 'next/navigation'
+import { ErrorResponse } from '../../api/error'
 
 interface Props {}
 
 const LoginPage: NextPage<Props> = () => {
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [error, setError] = useState<string>('')
+  const router = useRouter()
+
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault()
+    setError('')
+
+    try {
+      const response = await api.post('/auth/login', {
+        email,
+        password
+      })
+
+      const data = response.data
+
+      if (response.status === 200) {
+        localStorage.setItem('token', data.data.token)
+        router.push('/home')
+      } else {
+        setError(data.message)
+      }
+    } catch (err) {
+      const errorResponse = err as ErrorResponse
+      if (errorResponse.response?.data?.message) {
+        setError(errorResponse.response.data.message)
+      } else {
+        setError('An unexpected error occurred')
+      }
+    }
+  }
+
   return (
     <>
       <div className=''>
@@ -15,7 +54,7 @@ const LoginPage: NextPage<Props> = () => {
           <p className='font-medium'>Login Into Your Account</p>
         </div>
         <div>
-          <form action='' className='space-y-6'>
+          <form onSubmit={handleSubmit} className='space-y-6'>
             <FieldComponent
               fieldType='email'
               fieldName='email'
@@ -25,6 +64,8 @@ const LoginPage: NextPage<Props> = () => {
               fieldMessage='example correct email: johndoe@example.com'
               fieldPlaceholder=' '
               labelText='Email Address'
+              value={email}
+              onChange={e => setEmail(e.target.value)}
             />
 
             <FieldComponent
@@ -36,8 +77,11 @@ const LoginPage: NextPage<Props> = () => {
               fieldMessage='we recommend you to use 1 capital letter, 1 number and 1 special character'
               fieldPlaceholder=' '
               labelText='Password'
+              value={password}
+              onChange={e => setPassword(e.target.value)}
             />
 
+            {error && <p className='text-red-500'>{error}</p>}
             <SubmitButton btnText='Login Now' />
           </form>
           <div className='flex justify-center py-2 lg:py-4'>

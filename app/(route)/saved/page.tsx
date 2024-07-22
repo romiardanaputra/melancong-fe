@@ -4,7 +4,7 @@
 import React, { useEffect, useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import { FiSearch, FiFilter } from 'react-icons/fi'
-import api from '@/app/api'
+import api from '../../api/axios'
 import withAuth from '@/app/withAuth'
 import { FaStar } from 'react-icons/fa6'
 
