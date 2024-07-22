@@ -13,7 +13,7 @@ const AboutList: NextPage<Props> = ({ icon, title, description }) => {
       <div className='flex items-center justify-center gap-4 pt-4 md:flex-col md:items-start lg:flex-row lg:items-center'>
         {/* icon */}
         <div className='relative ml-3 flex items-center justify-center pr-6 md:pb-4 lg:pb-0'>
-          <div className='absolute -z-10 size-14 rounded-full bg-neutral-900 p-3 md:-left-4 md:-top-4'></div>
+          <div className='absolute -z-10 size-12 rounded-full bg-neutral-900 p-3 md:-left-4 md:-top-4'></div>
           {icon}
         </div>
 
