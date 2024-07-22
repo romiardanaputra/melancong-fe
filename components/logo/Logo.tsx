@@ -19,7 +19,7 @@ export default function Logo({
         alt='melancong logo'
         width={width}
         height={height}
-        className={className ?? 'size-auto'}
+        className={className ?? 'aspect-square'}
         priority
       />
     </div>
