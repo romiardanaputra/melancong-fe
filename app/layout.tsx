@@ -26,9 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body
-        className={cn('min-h-screen font-sans antialiased', poppins.variable)}
-      >
+      <body className={cn('min-h-dvh font-sans antialiased', poppins.variable)}>
         <NextUIProvider>
           <ThemeProvider attribute='class' defaultTheme='light'>
             {/* <header></header> */}
