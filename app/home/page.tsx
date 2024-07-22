@@ -29,13 +29,31 @@ const Home: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false)
+  const [locationFilter, setLocationFilter] = useState<string>('')
+  const [destinationTypeFilter, setDestinationTypeFilter] = useState<string>('')
   const router = useRouter()
 
-  const fetchDestinations = async (query: string = '') => {
+  const fetchDestinations = async (
+    searchQuery: string = '',
+    location: string = '',
+    destinationType: string = ''
+  ) => {
     setLoading(true)
     let apiUrl = '/destinations'
-    if (query) {
-      apiUrl += `?d=${query}`
+    const params = new URLSearchParams()
+
+    if (searchQuery) {
+      params.append('d', searchQuery)
+    }
+    if (location) {
+      params.append('r', location)
+    }
+    if (destinationType) {
+      params.append('c', destinationType)
+    }
+
+    if (params.toString()) {
+      apiUrl += `?${params.toString()}`
     }
 
     try {
@@ -45,7 +63,6 @@ const Home: React.FC = () => {
     } catch (err) {
       const errorRes = err as ErrorResponse
       if (errorRes.response.status === 401) {
-        // Unauthorized access, redirect to login
         router.push('/login')
       } else {
         setError('An unexpected error occurred')
@@ -78,7 +95,7 @@ const Home: React.FC = () => {
 
   const handleSearch = (event: FormEvent) => {
     event.preventDefault()
-    fetchDestinations(searchQuery)
+    fetchDestinations(searchQuery, locationFilter, destinationTypeFilter)
   }
 
   const handleSave = async (id: string) => {
@@ -122,6 +139,18 @@ const Home: React.FC = () => {
     }
   }
 
+  const handleFilterSubmit = () => {
+    fetchDestinations(searchQuery, locationFilter, destinationTypeFilter)
+    setIsSidebarOpen(false)
+  }
+
+  const handleFilterReset = () => {
+    setLocationFilter('')
+    setDestinationTypeFilter('')
+    fetchDestinations(searchQuery)
+    setIsSidebarOpen(false)
+  }
+
   return (
     <div className='bg-gray-200 p-5'>
       <form
@@ -141,7 +170,7 @@ const Home: React.FC = () => {
         <button
           className='ml-2 cursor-pointer rounded-full bg-gray-100 p-2 transition duration-300 ease-in-out hover:bg-blue-100 active:bg-blue-200'
           onClick={() => setIsSidebarOpen(true)}
-          aria-label='Open Sidebar' // Tambahkan deskripsi untuk aksesibilitas
+          aria-label='Open Sidebar'
         >
           <FiFilter />
         </button>
@@ -149,10 +178,13 @@ const Home: React.FC = () => {
       <h1 className='text-lg font-bold'>Recommendation</h1>
       {loading && (
         <div className='flex h-screen items-center justify-center'>
-          <div className='h-10 w-10 animate-spin rounded-full border-4 border-t-4 border-gray-200'></div>
+          <div className='h-10 w-10 animate-spin rounded-full border-4 border-t-4 border-gray-200 border-t-blue-500'></div>
         </div>
       )}
       {error && <p className='text-red-500'>{error}</p>}
+      {!loading && destinations.length === 0 && (
+        <p className='text-center text-gray-500'>No destinations found</p>
+      )}
       <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-8 xl:grid-cols-4'>
         {destinations.map(destination => (
           <div
@@ -224,7 +256,8 @@ const Home: React.FC = () => {
               ].map(location => (
                 <button
                   key={location}
-                  className='rounded-full bg-gray-200 px-3 py-1'
+                  onClick={() => setLocationFilter(location)}
+                  className={`rounded-full px-3 py-1 ${locationFilter === location ? 'bg-blue-200' : 'bg-gray-200'}`}
                 >
                   {location}
                 </button>
@@ -257,7 +290,8 @@ const Home: React.FC = () => {
               ].map(destination => (
                 <button
                   key={destination}
-                  className='rounded-full bg-gray-200 px-3 py-1'
+                  onClick={() => setDestinationTypeFilter(destination)}
+                  className={`rounded-full px-3 py-1 ${destinationTypeFilter === destination ? 'bg-blue-200' : 'bg-gray-200'}`}
                 >
                   {destination}
                 </button>
@@ -271,10 +305,16 @@ const Home: React.FC = () => {
           </div>
 
           <div className='mt-6 flex justify-between'>
-            <button className='rounded-full bg-black px-4 py-2 text-white'>
+            <button
+              className='rounded-full bg-black px-4 py-2 text-white'
+              onClick={handleFilterSubmit}
+            >
               Submit
             </button>
-            <button className='rounded-full border border-black px-4 py-2'>
+            <button
+              className='rounded-full border border-black px-4 py-2'
+              onClick={handleFilterReset}
+            >
               Reset
             </button>
           </div>
