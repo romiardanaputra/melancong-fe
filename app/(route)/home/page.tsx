@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 'use client'
 /* eslint-disable react-hooks/exhaustive-deps */
 

@@ -13,29 +13,29 @@ export const AboutLists = [
     title: 'Safe Traveling',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, quidem!',
-    icon: <FaShieldHalved className='size-6 text-neutral-100' />
+    icon: <FaShieldHalved className='size-8 text-neutral-100' />
   },
   {
     id: '2',
     title: 'Avodrable Price',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, quidem!',
-    icon: <FaMoneyCheckDollar className='size-6 text-neutral-100' />
+    icon: <FaMoneyCheckDollar className='size-8 text-neutral-100' />
   },
   {
     id: '3',
     title: 'Trusted Review',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, quidem!',
-    icon: <FaPlaneUp className='size-6 text-neutral-100' />
+    icon: <FaPlaneUp className='size-8 text-neutral-100' />
   }
 ]
 
 export const navigations = [
   { name: 'Home', link: '/', icon: <FaHome /> },
-  { name: 'Recommendation', link: '#recommendation', icons: <FaHeadset /> },
+  { name: 'Recommendation', link: '#recommendation', icon: <FaHeadset /> },
   { name: 'About', link: '#about', icon: <FaUsers /> },
-  { name: 'Services', link: '#services', icons: <FaHeadset /> }
+  { name: 'Services', link: '#services', icon: <FaHeadset /> }
 ]
 
 export const imageCards = [
