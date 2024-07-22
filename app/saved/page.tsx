@@ -1,11 +1,12 @@
 'use client'
+/* eslint-disable react-hooks/exhaustive-deps */
 
 import React, { useEffect, useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
-import styled, { keyframes } from 'styled-components'
 import { FiSearch, FiFilter } from 'react-icons/fi'
 import api from '../api'
 import withAuth from '../withAuth'
+import { FaStar } from 'react-icons/fa6'
 
 interface Destination {
   id: string
@@ -86,186 +87,67 @@ const Saved: React.FC = () => {
   }
 
   return (
-    <Container>
-      <SearchContainer onSubmit={handleSearch}>
-        <SearchBar>
-          <FiSearch />
-          <SearchInput
+    <div className='bg-gray-200 p-5 font-sans text-black md:p-10'>
+      <form
+        onSubmit={handleSearch}
+        className='mb-5 flex items-center justify-between'
+      >
+        <div className='flex flex-1 items-center rounded-full bg-gray-100 p-2 text-black'>
+          <FiSearch className='mr-2' />
+          <input
             type='text'
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
             placeholder='Search'
+            className='flex-1 border-none bg-transparent text-lg outline-none'
           />
-        </SearchBar>
-        <FilterIcon>
+        </div>
+        <div className='ml-2 cursor-pointer rounded-full bg-gray-200 p-2'>
           <FiFilter />
-        </FilterIcon>
-      </SearchContainer>
-      <h1>Saved Places</h1>
+        </div>
+      </form>
+      <h1 className='text-xl font-bold'>Saved Places</h1>
       {loading && (
-        <SpinnerContainer>
-          <Spinner />
-        </SpinnerContainer>
+        <div className='flex h-screen items-center justify-center'>
+          <div className='h-10 w-10 animate-spin rounded-full border-4 border-t-4 border-blue-500 border-gray-200'></div>
+        </div>
       )}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <CardContainer>
+      {error && <p className='text-red-500'>{error}</p>}
+      <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-8 xl:grid-cols-4'>
         {destinations.map(destination => (
-          <Card
+          <div
             key={destination.id}
             onClick={() => handleCardClick(destination.id)}
             onKeyPress={event => handleKeyPress(event, destination.id)}
             role='button'
             tabIndex={0}
+            className='relative cursor-pointer rounded-lg bg-white shadow-lg transition-transform duration-200 hover:scale-105 focus:scale-105 focus:outline-none'
           >
-            <SaveButton
+            <button
               type='button'
               onClick={e => {
                 e.stopPropagation()
                 handleDelete(destination.id)
               }}
+              className='absolute right-2 top-2 z-10 cursor-pointer rounded-full border-none bg-white bg-opacity-80 p-2 text-xl'
             >
-              &#9733;
-            </SaveButton>
+              <FaStar />
+            </button>
             <img
               src='https://firebasestorage.googleapis.com/v0/b/melanc0ng.appspot.com/o/image%2F3.jpg?alt=media&token=4b1bc0e1-5261-4c7d-a8a3-22a509fa5e09'
               alt={destination.name}
-              width={150}
+              className='w-full rounded-t-lg'
             />
-            <CardContent>
-              <h2>{destination.name}</h2>
+            <div className='p-5 text-left text-black'>
+              <h2 className='text-xl font-bold'>{destination.name}</h2>
               <p>&#9733;{destination.rating}</p>
               <p>Bali, {destination.regency}</p>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         ))}
-      </CardContainer>
-    </Container>
+      </div>
+    </div>
   )
 }
-
-const Container = styled.div`
-  padding: 20px 50px;
-  font-family: var(--font-sans);
-  color: black;
-  background-color: #ededed;
-  h1 {
-    margin: 0;
-    font-size: 18px;
-    font-weight: bold;
-  }
-`
-
-const SearchContainer = styled.form`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-`
-
-const SearchBar = styled.div`
-  display: flex;
-  align-items: center;
-  background-color: #f2f4f5;
-  color: black;
-  padding: 10px;
-  border-radius: 18px;
-  flex: 1;
-  svg {
-    margin-right: 10px;
-  }
-`
-
-const SearchInput = styled.input`
-  flex: 1;
-  border: none;
-  background: none;
-  outline: none;
-  font-size: 16px;
-`
-
-const FilterIcon = styled.div`
-  background-color: #f1f1f1;
-  padding: 10px;
-  border-radius: 8px;
-  margin-left: 10px;
-  cursor: pointer;
-`
-
-const CardContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-`
-
-const Card = styled.div`
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: transform 0.2s;
-  position: relative;
-  &:hover {
-    transform: scale(1.05);
-  }
-  &:focus {
-    outline: none;
-    transform: scale(1.05);
-  }
-  img {
-    width: 100%;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-  }
-`
-
-const SaveButton = styled.button`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 5px;
-  font-size: 20px;
-  background-color: rgba(255, 255, 255, 0.8);
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 10;
-`
-
-const CardContent = styled.div`
-  padding: 20px;
-  text-align: left;
-  color: black;
-  h2 {
-    margin: 0;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  p {
-    margin: 5px 0;
-  }
-`
-
-const SpinnerContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; // Adjust as needed
-`
-
-const Spinner = styled.div`
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-top: 4px solid blue;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: ${keyframes`
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  `} 1s linear infinite;
-`
 
 export default withAuth(Saved)
