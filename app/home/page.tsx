@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { FiSearch, FiFilter } from 'react-icons/fi'
 import api from '../api'
 import withAuth from '../withAuth'
-import { FaStar } from 'react-icons/fa6'
+import { FaStar, FaArrowLeft } from 'react-icons/fa6'
 
 interface Destination {
   id: string
@@ -28,6 +28,7 @@ const Home: React.FC = () => {
   const [error, setError] = useState<string>('')
   const [searchQuery, setSearchQuery] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false)
   const router = useRouter()
 
   const fetchDestinations = async (query: string = '') => {
@@ -137,11 +138,15 @@ const Home: React.FC = () => {
             className='flex-1 bg-transparent outline-none'
           />
         </div>
-        <div className='ml-2 cursor-pointer rounded-full bg-gray-100 p-2'>
+        <button
+          className='ml-2 cursor-pointer rounded-full bg-gray-100 p-2 transition duration-300 ease-in-out hover:bg-blue-100 active:bg-blue-200'
+          onClick={() => setIsSidebarOpen(true)}
+          aria-label='Open Sidebar' // Tambahkan deskripsi untuk aksesibilitas
+        >
           <FiFilter />
-        </div>
+        </button>
       </form>
-      <h1 className='text-lg font-bold'>Recomendation</h1>
+      <h1 className='text-lg font-bold'>Recommendation</h1>
       {loading && (
         <div className='flex h-screen items-center justify-center'>
           <div className='h-10 w-10 animate-spin rounded-full border-4 border-t-4 border-gray-200'></div>
@@ -181,6 +186,111 @@ const Home: React.FC = () => {
           </div>
         ))}
       </div>
+
+      {/* Sidebar */}
+      <div
+        className={`fixed inset-y-0 right-0 z-50 w-80 transform bg-white shadow-xl transition-transform duration-300 ease-in-out ${
+          isSidebarOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+        role='dialog'
+        aria-labelledby='sidebar-title'
+        aria-modal='true'
+      >
+        <div className='p-5'>
+          <div className='flex items-center space-x-2'>
+            <button
+              className='flex items-center text-gray-500 hover:text-gray-700'
+              onClick={() => setIsSidebarOpen(false)}
+              aria-label='Close Sidebar'
+            >
+              <FaArrowLeft className='text-xl' />
+            </button>
+            <h2 className='text-xl font-bold'>Filter</h2>
+          </div>
+
+          <div className='pt-5'>
+            <h3 className='mb-2 text-lg font-semibold'>Locations</h3>
+            <div className='flex flex-wrap gap-2'>
+              {[
+                'Tabanan',
+                'Badung',
+                'Gianyar',
+                'Denpasar',
+                'Karangasem',
+                'Buleleng',
+                'Klungkung',
+                'Bangli',
+                'Jembrana'
+              ].map(location => (
+                <button
+                  key={location}
+                  className='rounded-full bg-gray-200 px-3 py-1'
+                >
+                  {location}
+                </button>
+              ))}
+            </div>
+          </div>
+          <br />
+          <div className='w-full'>
+            <hr className='rounded-sm border-t-4 border-gray-500' />
+          </div>
+
+          <div className='mt-4'>
+            <h3 className='mb-2 text-lg font-semibold'>Destinations</h3>
+            <div className='flex flex-wrap gap-2'>
+              {[
+                'Historical Landmark',
+                'Beach',
+                'Temple',
+                'Wildlife',
+                'Museum',
+                'Garden',
+                'Lake',
+                'Waterfall',
+                'Mountain',
+                'Hot Spring',
+                'Rice Field',
+                'Culture',
+                'Hill',
+                'Countryside'
+              ].map(destination => (
+                <button
+                  key={destination}
+                  className='rounded-full bg-gray-200 px-3 py-1'
+                >
+                  {destination}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <br />
+          <div className='w-full'>
+            <hr className='rounded-sm border-t-4 border-gray-500' />
+          </div>
+
+          <div className='mt-6 flex justify-between'>
+            <button className='rounded-full bg-black px-4 py-2 text-white'>
+              Submit
+            </button>
+            <button className='rounded-full border border-black px-4 py-2'>
+              Reset
+            </button>
+          </div>
+          <div className='mt-6 flex justify-center'>
+            <img src='/logo.png' alt='Melancong' className='w-32' />
+          </div>
+        </div>
+      </div>
+      {/* Overlay */}
+      {isSidebarOpen && (
+        <button
+          className='fixed inset-0 z-40 bg-black bg-opacity-50'
+          onClick={() => setIsSidebarOpen(false)}
+          aria-label='Close Sidebar'
+        ></button>
+      )}
     </div>
   )
 }
