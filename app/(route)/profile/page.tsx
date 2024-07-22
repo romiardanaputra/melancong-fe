@@ -4,8 +4,8 @@
 import React, { useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { useRouter } from 'next/navigation'
-import api from '../../api/axios'
-import withAuth from '../../withAuth'
+import api from '@/app/api/axios'
+import withAuth from '@/app/withAuth'
 
 interface UserProfile {
   name: string

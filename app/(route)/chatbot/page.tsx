@@ -3,8 +3,8 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import styled, { keyframes } from 'styled-components'
-import api from '../../api/axios'
-import withAuth from '../../withAuth'
+import api from '@/app/api/axios'
+import withAuth from '@/app/withAuth'
 
 interface ErrorResponse {
   response: {
