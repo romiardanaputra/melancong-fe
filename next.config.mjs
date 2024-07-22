@@ -1,14 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'ik.imagekit.io',
-        port: '',
-        pathname: '/melancong/**'
-      }
-    ]
+    domains: ['ik.imagekit.io', 'images.unsplash.com']
   }
 }
 
