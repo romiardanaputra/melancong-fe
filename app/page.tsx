@@ -1,49 +1,37 @@
-import { Button } from '@/components/ui/button'
-// import DarkModeButton from '@/components/darkmode/DarkModeToggle'
+import { NextPage } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
+import balineseDance from '@/public/assets/images/balinese-dance.webp'
+import Button from '@/components/ui/Button'
 
-const imgLanding = `${process.env.NEXT_PUBLIC_IMAGEKIT_URL}/landing/bg-landing.webp?updatedAt=1720282428544`
-const page = () => (
-  <>
-    {/* <Icons.hamMenuIcon color='#fff' size={'1rem'} title='ham menu' /> */}
-    <div className='h-screen max-h-screen bg-dark-300'>
-      <section>
-        <div className='absolute size-full bg-blend-darken'>
+interface Props {}
+
+const LandingPage: NextPage<Props> = () => {
+  return (
+    <>
+      <div className='relative size-full'>
+        <div className='absolute -z-10 size-full min-h-dvh'>
           <Image
-            src={imgLanding}
-            alt='melancong-landing'
+            src={balineseDance}
+            alt='balinese dance'
+            className='aspect-auto h-full object-cover object-center'
+            priority={true}
             width={1920}
-            height={400}
-            className='size-full object-cover object-center opacity-80'
-            priority
+            height={1080}
           />
         </div>
-        <div className='heading absolute flex size-full flex-col justify-between px-6 py-12 text-7xl font-black text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]'>
-          <div>
-            <span>World Of</span>
+        <div className='flex min-h-dvh flex-col items-center justify-center text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]'>
+          <h1 className='text-8xl font-black'>
+            WORLD OF{' '}
             <span className='font-outline-2 block text-transparent'>
-              Paradise,
+              PARADISE,
             </span>
-            Bali
-          </div>
-
-          <div className='grid grid-cols-1 gap-4'>
-            <Button
-              className='bg-dark-300 p-6 py-8 font-black text-white'
-              variant='secondary'
-            >
-              EXPLORE MORE
-            </Button>
-
-            <span className='text-center text-sm text-white'>
-              Have an account? <Link href='/auth/signIn'>Login</Link>
-            </span>
-          </div>
+          </h1>
+          <h2 className='text-8xl font-black'>BALI</h2>
+          <Button btnText='Explore More With Us' pathTo='/landing' />
         </div>
-      </section>
-    </div>
-  </>
-)
+      </div>
+    </>
+  )
+}
 
-export default page
+export default LandingPage
