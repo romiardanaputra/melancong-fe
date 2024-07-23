@@ -2,7 +2,7 @@
 import { NextPage } from 'next'
 import Image from 'next/image'
 import BalineseDance from '@/public/assets/images/balinese-dance.webp'
-import Logo from '@/components/logo/Logo'
+import Logo from '@/components/ui/logo/Logo'
 
 interface Props {
   children: React.ReactNode

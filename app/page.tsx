@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import Image from 'next/image'
 import balineseDance from '@/public/assets/images/balinese-dance.webp'
-import CustomButton from '@/components/ui/CustomButton'
+import CustomButton from '@/components/ui/button/CustomButton'
 
 interface Props {}
 
