@@ -1,6 +1,9 @@
+/* eslint-disable quotes */
 import { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import React from 'react'
+import { FaStar } from 'react-icons/fa'
 
 interface ImageCardProps {
   title: string
@@ -8,6 +11,11 @@ interface ImageCardProps {
   rating: string
   description: string
   location: string
+  clickToDetail?: () => void
+  onKeyPress?: (event: React.KeyboardEvent<HTMLDivElement>) => void
+  isSaveAvailable: boolean
+  handleToggleSave?: () => void
+  isSaved?: boolean
 }
 
 const CustomCard: NextPage<ImageCardProps> = ({
@@ -15,12 +23,23 @@ const CustomCard: NextPage<ImageCardProps> = ({
   img,
   rating,
   description,
-  location
+  location,
+  clickToDetail,
+  onKeyPress,
+  isSaveAvailable,
+  handleToggleSave,
+  isSaved
 }) => {
   return (
     <>
-      <div className='max-w-sm transform rounded-[22px] bg-white shadow-xl transition duration-400 hover:-translate-y-2 dark:bg-zinc-900'>
-        <div className='h-[200px] overflow-hidden rounded-lg p-0'>
+      <div
+        className='max-w-sm transform rounded-[22px] bg-white shadow-xl transition duration-400 hover:-translate-y-2 dark:bg-zinc-900'
+        role='button'
+        tabIndex={0}
+        onClick={clickToDetail}
+        onKeyPress={onKeyPress}
+      >
+        <div className='relative h-[200px] overflow-hidden rounded-lg p-0'>
           <Image
             src={img}
             alt={title}
@@ -29,6 +48,20 @@ const CustomCard: NextPage<ImageCardProps> = ({
             className='object-cover object-center'
             loading='lazy'
           />
+          {isSaveAvailable && (
+            <button
+              type='button'
+              onClick={e => {
+                e.stopPropagation()
+                if (handleToggleSave) {
+                  handleToggleSave()
+                }
+              }}
+              className={`absolute right-0 top-0 p-4 ${isSaved ? 'bg-cyan-500' : 'bg-white/80'}`}
+            >
+              <FaStar className='text-neutral-900' />
+            </button>
+          )}
         </div>
         <div className='p-5'>
           <p className='mb-2 mt-4 text-base font-bold text-neutral-900 dark:text-neutral-200 sm:text-xl'>

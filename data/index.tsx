@@ -153,3 +153,32 @@ export const services = [
     link: 'https://microsoft.com'
   }
 ]
+
+export const destinationLocations = [
+  'Tabanan',
+  'Badung',
+  'Gianyar',
+  'Denpasar',
+  'Karangasem',
+  'Buleleng',
+  'Klungkung',
+  'Bangli',
+  'Jembrana'
+]
+
+export const destinationTypes = [
+  'Historical Landmark',
+  'Beach',
+  'Temple',
+  'Wildlife',
+  'Museum',
+  'Garden',
+  'Lake',
+  'Waterfall',
+  'Mountain',
+  'Hot Spring',
+  'Rice Field',
+  'Culture',
+  'Hill',
+  'Countryside'
+]

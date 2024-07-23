@@ -1,8 +1,8 @@
 'use client'
 import { NextPage } from 'next'
-import { ImagesSlider } from '@/components/ui/ImageSlider'
+import { ImagesSlider } from '@/components/ui/hero/ImageSlider'
 import { motion } from 'framer-motion'
-import { FlipWords } from '@/components/ui/FlipWord'
+import { FlipWords } from '@/components/ui/text/FlipWord'
 import { images, words } from '@/data/index'
 interface Props {}
 

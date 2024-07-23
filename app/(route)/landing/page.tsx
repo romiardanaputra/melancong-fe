@@ -1,11 +1,11 @@
-import { FloatingNav } from '@/components/navbar/FloatingNav'
+import { FloatingNav } from '@/components/ui/navigation/FloatingNav'
 import { NextPage } from 'next'
 import { navigations } from '@/data/index'
 import About from '@/app/(route)/about/page'
 import HeroBanner from '@/app/(route)/landing/_partials/hero-banner/page'
 import RecommendationSection from '@/app/(route)/landing/_partials/recomendation/page'
 import OurService from '@/app/(route)/landing/_partials/our-services/page'
-import Footer from '@/components/footer/Footer'
+import Footer from '@/components/ui/footer/Footer'
 
 interface Props {}
 

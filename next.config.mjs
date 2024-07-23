@@ -7,6 +7,12 @@ const nextConfig = {
         hostname: 'ik.imagekit.io',
         port: '',
         pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com',
+        port: '',
+        pathname: '/**'
       }
     ]
   }

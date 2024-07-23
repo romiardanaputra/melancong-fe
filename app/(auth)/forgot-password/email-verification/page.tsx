@@ -3,8 +3,8 @@
 import { useState, FormEvent } from 'react'
 import { NextPage } from 'next'
 import Link from 'next/link'
-import SubmitButton from '@/components/button/SubmitButton'
-import FieldComponent from '@/components/form/Field'
+import SubmitButton from '@/components/ui/button/SubmitButton'
+import FieldComponent from '@/components/ui/form/Field'
 import api from '@/app/api/axios'
 import ErrorResponse from '@/app/api/error'
 
