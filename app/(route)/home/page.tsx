@@ -89,7 +89,7 @@ const Home: NextPage<Props> = () => {
           </div>
         )}
         {error && <p className='text-red-500'>{error}</p>}
-        {!loading && destinations.length === 0 && (
+        {destinations.length === 0 && (
           <p className='text-center text-gray-500'>No destinations found</p>
         )}
         <div className='grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
@@ -97,9 +97,7 @@ const Home: NextPage<Props> = () => {
             <CustomCard
               key={destination.id}
               title={destination.name}
-              img={
-                'https://firebasestorage.googleapis.com/v0/b/melanc0ng.appspot.com/o/image%2F3.jpg?alt=media&token=4b1bc0e1-5261-4c7d-a8a3-22a509fa5e09'
-              }
+              img={destination.imageLink}
               rating={destination.rating}
               location={destination.regency}
               description={
