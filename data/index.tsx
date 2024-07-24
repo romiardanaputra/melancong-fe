@@ -1,5 +1,11 @@
 import { FaHome, FaHeadset, FaUsers } from 'react-icons/fa'
 import { FaShieldHalved, FaMoneyCheckDollar, FaPlaneUp } from 'react-icons/fa6'
+import {
+  IconArrowLeft,
+  IconBrandTabler,
+  IconSettings,
+  IconUserBolt
+} from '@tabler/icons-react'
 
 export const images = [
   'https://ik.imagekit.io/rom/melancong/landscape/image-2-landscape.webp?updatedAt=1721609667633',
@@ -181,4 +187,35 @@ export const destinationTypes = [
   'Culture',
   'Hill',
   'Countryside'
+]
+
+export const links = [
+  {
+    label: 'Dashboard',
+    href: '#',
+    icon: (
+      <IconBrandTabler className='h-5 w-5 flex-shrink-0 text-neutral-700 dark:text-neutral-200' />
+    )
+  },
+  {
+    label: 'Profile',
+    href: '#',
+    icon: (
+      <IconUserBolt className='h-5 w-5 flex-shrink-0 text-neutral-700 dark:text-neutral-200' />
+    )
+  },
+  {
+    label: 'Settings',
+    href: '#',
+    icon: (
+      <IconSettings className='h-5 w-5 flex-shrink-0 text-neutral-700 dark:text-neutral-200' />
+    )
+  },
+  {
+    label: 'Logout',
+    href: '#',
+    icon: (
+      <IconArrowLeft className='h-5 w-5 flex-shrink-0 text-neutral-700 dark:text-neutral-200' />
+    )
+  }
 ]
