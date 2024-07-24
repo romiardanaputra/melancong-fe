@@ -6,7 +6,7 @@ interface Props {
   pathTo: string
 }
 
-const Button: NextPage<Props> = ({ pathTo, btnText }) => {
+const CustomButton: NextPage<Props> = ({ pathTo, btnText }) => {
   return (
     <>
       <Link href={pathTo}>
@@ -21,4 +21,4 @@ const Button: NextPage<Props> = ({ pathTo, btnText }) => {
   )
 }
 
-export default Button
+export default CustomButton

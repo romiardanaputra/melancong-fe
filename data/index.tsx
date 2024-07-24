@@ -1,5 +1,11 @@
 import { FaHome, FaHeadset, FaUsers } from 'react-icons/fa'
 import { FaShieldHalved, FaMoneyCheckDollar, FaPlaneUp } from 'react-icons/fa6'
+import {
+  IconArrowLeft,
+  IconBrandTabler,
+  IconSettings,
+  IconUserBolt
+} from '@tabler/icons-react'
 
 export const images = [
   'https://ik.imagekit.io/rom/melancong/landscape/image-2-landscape.webp?updatedAt=1721609667633',
@@ -13,29 +19,29 @@ export const AboutLists = [
     title: 'Safe Traveling',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, quidem!',
-    icon: <FaShieldHalved className='size-6 text-neutral-100' />
+    icon: <FaShieldHalved className='size-8 text-neutral-100' />
   },
   {
     id: '2',
     title: 'Avodrable Price',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, quidem!',
-    icon: <FaMoneyCheckDollar className='size-6 text-neutral-100' />
+    icon: <FaMoneyCheckDollar className='size-8 text-neutral-100' />
   },
   {
     id: '3',
     title: 'Trusted Review',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, quidem!',
-    icon: <FaPlaneUp className='size-6 text-neutral-100' />
+    icon: <FaPlaneUp className='size-8 text-neutral-100' />
   }
 ]
 
 export const navigations = [
   { name: 'Home', link: '/', icon: <FaHome /> },
-  { name: 'Recommendation', link: '#recommendation', icons: <FaHeadset /> },
+  { name: 'Recommendation', link: '#recommendation', icon: <FaHeadset /> },
   { name: 'About', link: '#about', icon: <FaUsers /> },
-  { name: 'Services', link: '#services', icons: <FaHeadset /> }
+  { name: 'Services', link: '#services', icon: <FaHeadset /> }
 ]
 
 export const imageCards = [
@@ -151,5 +157,65 @@ export const services = [
     description:
       'Find the best places to stay, from luxury resorts to budget-friendly accommodations, all with detailed reviews and ratings.',
     link: 'https://microsoft.com'
+  }
+]
+
+export const destinationLocations = [
+  'Tabanan',
+  'Badung',
+  'Gianyar',
+  'Denpasar',
+  'Karangasem',
+  'Buleleng',
+  'Klungkung',
+  'Bangli',
+  'Jembrana'
+]
+
+export const destinationTypes = [
+  'Historical Landmark',
+  'Beach',
+  'Temple',
+  'Wildlife',
+  'Museum',
+  'Garden',
+  'Lake',
+  'Waterfall',
+  'Mountain',
+  'Hot Spring',
+  'Rice Field',
+  'Culture',
+  'Hill',
+  'Countryside'
+]
+
+export const links = [
+  {
+    label: 'Dashboard',
+    href: '#',
+    icon: (
+      <IconBrandTabler className='h-5 w-5 flex-shrink-0 text-neutral-700 dark:text-neutral-200' />
+    )
+  },
+  {
+    label: 'Profile',
+    href: '#',
+    icon: (
+      <IconUserBolt className='h-5 w-5 flex-shrink-0 text-neutral-700 dark:text-neutral-200' />
+    )
+  },
+  {
+    label: 'Settings',
+    href: '#',
+    icon: (
+      <IconSettings className='h-5 w-5 flex-shrink-0 text-neutral-700 dark:text-neutral-200' />
+    )
+  },
+  {
+    label: 'Logout',
+    href: '#',
+    icon: (
+      <IconArrowLeft className='h-5 w-5 flex-shrink-0 text-neutral-700 dark:text-neutral-200' />
+    )
   }
 ]

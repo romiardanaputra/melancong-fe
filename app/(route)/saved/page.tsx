@@ -4,7 +4,7 @@
 import React, { useEffect, useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import { FiSearch, FiFilter } from 'react-icons/fi'
-import api from '@/app/api'
+import api from '@/app/api/axios'
 import withAuth from '@/app/withAuth'
 import { FaStar } from 'react-icons/fa6'
 
@@ -109,10 +109,13 @@ const Saved: React.FC = () => {
       <h1 className='text-xl font-bold'>Saved Places</h1>
       {loading && (
         <div className='flex h-screen items-center justify-center'>
-          <div className='h-10 w-10 animate-spin rounded-full border-4 border-t-4 border-gray-200'></div>
+          <div className='h-10 w-10 animate-spin rounded-full border-4 border-t-4 border-gray-200 border-t-blue-500'></div>
         </div>
       )}
       {error && <p className='text-red-500'>{error}</p>}
+      {destinations.length === 0 && (
+        <p className='text-center text-gray-500'>No destinations found</p>
+      )}
       <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-8 xl:grid-cols-4'>
         {destinations.map(destination => (
           <div
@@ -134,7 +137,7 @@ const Saved: React.FC = () => {
               <FaStar />
             </button>
             <img
-              src='https://firebasestorage.googleapis.com/v0/b/melanc0ng.appspot.com/o/image%2F3.jpg?alt=media&token=4b1bc0e1-5261-4c7d-a8a3-22a509fa5e09'
+              src={destination.imageLink}
               alt={destination.name}
               className='w-full rounded-t-lg'
             />

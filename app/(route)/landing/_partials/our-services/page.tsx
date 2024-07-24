@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import { HoverEffect } from '@/components/ui/CardHoverEffect'
+import { HoverEffect } from '@/components/ui/card/CardHoverEffect'
 import { services } from '@/data/index'
 
 interface Props {}

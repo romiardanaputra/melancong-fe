@@ -1,8 +1,7 @@
 'use client'
 
-import { NextPage } from 'next'
 import { useState, FormEvent } from 'react'
-import { useRouter } from 'next/navigation'
+import { NextPage } from 'next'
 import Link from 'next/link'
 import SubmitButton from '@/components/ui/button/SubmitButton'
 import FieldComponent from '@/components/ui/form/Field'
@@ -11,29 +10,23 @@ import ErrorResponse from '@/app/api/error'
 
 interface Props {}
 
-const LoginPage: NextPage<Props> = () => {
+const EmailConfirmation: NextPage<Props> = () => {
   const [email, setEmail] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
   const [error, setError] = useState<string>('')
-  const router = useRouter()
+  const [success, setSuccess] = useState<string>('')
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
     setError('')
+    setSuccess('')
 
     try {
-      const response = await api.post('/auth/login', {
-        email,
-        password
-      })
-
-      const data = response.data
+      const response = await api.post('/auth/forgot-password', { email })
 
       if (response.status === 200) {
-        localStorage.setItem('token', data.data.token)
-        router.push('/home')
+        setSuccess('A password reset link has been sent to your email address.')
       } else {
-        setError(data.message)
+        setError('Failed to send verification email.')
       }
     } catch (err) {
       const errorResponse = err as ErrorResponse
@@ -47,11 +40,13 @@ const LoginPage: NextPage<Props> = () => {
 
   return (
     <>
-      <div className=''>
+      <div>
         <div className='space-y-2 py-12'>
-          <span className='text-sm font-medium text-gray-400'>-login page</span>
-          <h1 className='text-3xl font-bold'>Welcome Back User</h1>
-          <p className='font-medium'>Login Into Your Account</p>
+          <span className='text-sm font-medium text-gray-400'>
+            -Forgot Password Page
+          </span>
+          <h1 className='text-3xl font-bold'>Forgot Your Password?</h1>
+          <p className='font-medium'>Please Confirm Your Email First</p>
         </div>
         <div>
           <form onSubmit={handleSubmit} className='space-y-6'>
@@ -67,28 +62,9 @@ const LoginPage: NextPage<Props> = () => {
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
-
-            <FieldComponent
-              fieldType='password'
-              fieldName='password'
-              fieldId='password'
-              fieldRequired={true}
-              labelFor='password'
-              fieldMessage='we recommend you to use 1 capital letter, 1 number and 1 special character'
-              fieldPlaceholder=' '
-              labelText='Password'
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-            />
             {error && <p className='text-red-500'>{error}</p>}
-            <div>
-              <div className='flex justify-end py-4 text-sm font-medium text-cyan-500'>
-                <Link href='/forgot-password/email-verification'>
-                  Forget Password
-                </Link>
-              </div>
-              <SubmitButton btnText='Login Now' />
-            </div>
+            {success && <p className='text-green-500'>{success}</p>}
+            <SubmitButton btnText='Submit' />
           </form>
 
           <div className='flex justify-center py-2 lg:py-4'>
@@ -106,4 +82,4 @@ const LoginPage: NextPage<Props> = () => {
   )
 }
 
-export default LoginPage
+export default EmailConfirmation

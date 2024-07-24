@@ -1,7 +1,26 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['ik.imagekit.io', 'images.unsplash.com']
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'ik.imagekit.io',
+        port: '',
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com',
+        port: '',
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'assets.aceternity.com',
+        port: '',
+        pathname: '/**'
+      }
+    ]
   }
 }
 
