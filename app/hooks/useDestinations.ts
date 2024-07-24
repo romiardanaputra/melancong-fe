@@ -9,6 +9,7 @@ interface Destination {
   rating: string
   regency: string
   imageLink: string
+  information: string
 }
 
 interface ErrorResponse {
@@ -50,6 +51,7 @@ const useDestinations = () => {
     try {
       const response = await api.get(apiUrl)
       setDestinations(response.data.data)
+      setLoading(false)
       setError('')
     } catch (err) {
       const errorRes = err as ErrorResponse
@@ -58,8 +60,6 @@ const useDestinations = () => {
       } else {
         setError('An unexpected error occurred')
       }
-    } finally {
-      setLoading(false)
     }
   }
 

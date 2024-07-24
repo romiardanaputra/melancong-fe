@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
-import { FiSearch, FiFilter } from 'react-icons/fi'
+import { FiSearch } from 'react-icons/fi'
 import api from '@/app/api/axios'
 import withAuth from '@/app/withAuth'
 import { FaStar } from 'react-icons/fa6'
@@ -14,6 +14,7 @@ interface Destination {
   rating: string
   regency: string
   imageLink: string
+  information: string
 }
 
 interface ErrorResponse {
@@ -39,6 +40,7 @@ const Saved: React.FC = () => {
     try {
       const response = await api.get(apiUrl)
       setDestinations(response.data.data)
+      setLoading(false)
       setError('')
     } catch (err) {
       const errorRes = err as ErrorResponse
@@ -48,8 +50,6 @@ const Saved: React.FC = () => {
       } else {
         setError('An unexpected error occurred')
       }
-    } finally {
-      setLoading(false)
     }
   }
 
@@ -102,9 +102,7 @@ const Saved: React.FC = () => {
             className='flex-1 border-none bg-transparent text-lg outline-none'
           />
         </div>
-        <div className='ml-2 cursor-pointer rounded-full bg-gray-200 p-2'>
-          <FiFilter />
-        </div>
+        <div className='ml-2 cursor-pointer rounded-full bg-gray-200 p-2'></div>
       </form>
       <h1 className='text-xl font-bold'>Saved Places</h1>
       {loading && (
@@ -145,6 +143,7 @@ const Saved: React.FC = () => {
               <h2 className='text-xl font-bold'>{destination.name}</h2>
               <p>&#9733;{destination.rating}</p>
               <p>Bali, {destination.regency}</p>
+              <p>{destination.information.slice(0, 70)}...</p>
             </div>
           </div>
         ))}

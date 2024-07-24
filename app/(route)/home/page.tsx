@@ -27,7 +27,8 @@ const Home: NextPage<Props> = () => {
   const { fetchDestinations } = useDestinations()
 
   const handleFilterSubmit = () => {
-    alert(destinationTypeFilter)
+    // TODO: Delete after debugging
+    alert(`${locationFilter}, ${destinationTypeFilter}`)
     fetchDestinations(searchQuery, locationFilter, destinationTypeFilter)
   }
 

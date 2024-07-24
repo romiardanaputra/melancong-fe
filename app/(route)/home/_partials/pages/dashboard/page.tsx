@@ -18,6 +18,7 @@ const DashboardUser: NextPage<Props> = () => {
     handleToggleSave,
     fetchDestinations
   } = useDestinations()
+  console.log({ destinations })
   const router = useRouter()
 
   const handleCardClick = (id: string) => {
@@ -69,14 +70,10 @@ const DashboardUser: NextPage<Props> = () => {
               <CustomCard
                 key={destination.id}
                 title={destination.name}
-                img={
-                  'https://firebasestorage.googleapis.com/v0/b/melanc0ng.appspot.com/o/image%2F3.jpg?alt=media&token=4b1bc0e1-5261-4c7d-a8a3-22a509fa5e09'
-                }
+                img={destination.imageLink}
                 rating={destination.rating}
                 location={destination.regency}
-                description={
-                  'lorem ipsum dolor sit amet concepture alet con dolor'
-                }
+                description={destination.information.slice(0, 70) + '...'}
                 clickToDetail={() => handleCardClick(destination.id)}
                 onKeyPress={e => handleKeyPress(e, destination.id)}
                 isSaveAvailable={true}
