@@ -1,11 +1,10 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
 import React, { useEffect, useState, ChangeEvent, useRef } from 'react'
-import styled, { keyframes } from 'styled-components'
 import { useRouter } from 'next/navigation'
 import api from '@/app/api/axios'
 import withAuth from '@/app/withAuth'
+import { FaPen } from 'react-icons/fa'
 
 interface UserProfile {
   name: string
@@ -59,7 +58,7 @@ const EditProfilePage: React.FC = () => {
     }
 
     fetchUserProfile()
-  }, [])
+  }, [router])
 
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -117,196 +116,154 @@ const EditProfilePage: React.FC = () => {
 
   if (loading) {
     return (
-      <Container>
-        <SpinnerContainer>
-          <Spinner />
-        </SpinnerContainer>
-      </Container>
+      <div className='mx-auto max-w-md rounded-lg bg-white p-5 shadow-md'>
+        <div className='flex h-full items-center justify-center'>
+          <div className='h-10 w-10 animate-spin rounded-full border-5 border-gray-200 border-t-blue-500'></div>
+        </div>
+      </div>
     )
   }
 
   if (error) {
-    return <Container>{error}</Container>
+    return (
+      <div className='mx-auto max-w-md rounded-lg bg-white p-5 shadow-md'>
+        {error}
+      </div>
+    )
   }
 
   return (
-    <Container>
-      <Header>Edit Profile</Header>
-      <ProfilePictureContainer>
-        <ProfilePicture
-          src={imagePreview || profile?.imageLink}
-          alt='Profile Picture'
-        />
-        <ChangePictureLabel htmlFor='profileImage'>
+    <div className='mx-auto mt-20 max-w-lg rounded-lg bg-white p-5 shadow-md sm:border sm:border-gray-300 md:max-w-2xl lg:max-w-4xl'>
+      <h1 className='mb-5 text-center text-2xl font-bold'>Edit Profile</h1>
+      <div className='mb-5 flex flex-col items-center'>
+        <div className='relative mb-3 flex h-24 w-24 items-center justify-center rounded-full bg-gray-200'>
+          {imagePreview || profile?.imageLink ? (
+            <img
+              src={imagePreview || profile?.imageLink}
+              alt=''
+              className='h-full w-full rounded-full object-cover'
+            />
+          ) : (
+            <span className='text-center text-gray-500'>Profile Picture</span>
+          )}
+        </div>
+        <label htmlFor='profileImage' className='cursor-pointer text-blue-500'>
           Change Picture
-        </ChangePictureLabel>
+        </label>
         <input
           id='profileImage'
           type='file'
           accept='image/*'
-          style={{ display: 'none' }}
+          className='hidden'
           onChange={handleImageChange}
         />
-      </ProfilePictureContainer>
-      <ProfileForm>
-        <FormField>
-          <Label>Email</Label>
-          <Input
+      </div>
+      <div className='mb-8 space-y-6'>
+        <div className='flex flex-col items-center md:flex-row'>
+          <label
+            htmlFor='email'
+            className='mb-2 w-full font-medium text-gray-700 md:mb-0 md:w-1/4 md:pr-4 md:text-right'
+          >
+            Email
+          </label>
+          <input
+            id='email'
             type='text'
             name='email'
             defaultValue={profile?.email}
             readOnly
+            className='w-full rounded-lg border border-gray-300 bg-gray-300 p-3 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 md:w-3/4'
           />
-        </FormField>
-        <FormField>
-          <Label>Name</Label>
-          <Input
-            type='text'
-            name='name'
-            defaultValue={profile?.name}
-            readOnly={!isEditing.name}
-            onChange={handleInputChange}
-            ref={nameRef}
-          />
-          <EditButton onClick={() => toggleEdit('name')}>Edit</EditButton>
-        </FormField>
-        <FormField>
-          <Label>Phone Number</Label>
-          <Input
-            type='text'
-            name='phone'
-            defaultValue={profile?.phone}
-            readOnly={!isEditing.phone}
-            onChange={handleInputChange}
-            ref={phoneRef}
-          />
-          <EditButton onClick={() => toggleEdit('phone')}>Edit</EditButton>
-        </FormField>
-        <FormField>
-          <Label>Gender</Label>
-          <Select
-            name='gender'
-            defaultValue={profile?.gender}
-            disabled={!isEditing.gender}
-            onChange={handleInputChange}
-            ref={genderRef}
+        </div>
+        <div className='flex flex-col items-center md:flex-row'>
+          <label
+            htmlFor='name'
+            className='mb-2 w-full font-medium text-gray-700 md:mb-0 md:w-1/4 md:pr-4 md:text-right'
           >
-            <option value='Male'>Male (He/Him)</option>
-            <option value='Female'>Female (She/Her)</option>
-          </Select>
-          <EditButton onClick={() => toggleEdit('gender')}>Edit</EditButton>
-        </FormField>
-      </ProfileForm>
-      <SaveButton onClick={handleSave}>Save</SaveButton>
-    </Container>
+            Name
+          </label>
+          <div className='flex w-full items-center md:w-3/4'>
+            <input
+              id='name'
+              type='text'
+              name='name'
+              defaultValue={profile?.name}
+              readOnly={!isEditing.name}
+              onChange={handleInputChange}
+              ref={nameRef}
+              className={`w-full rounded-lg border p-3 ${!isEditing.name ? 'bg-gray-300' : 'bg-white'} transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+            />
+            <button
+              onClick={() => toggleEdit('name')}
+              className='ml-4 flex transform items-center justify-center rounded-lg bg-blue-500 px-4 py-2 text-white shadow-md transition-transform hover:scale-105 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400'
+            >
+              <FaPen className='h-6 w-6' />
+            </button>
+          </div>
+        </div>
+        <div className='flex flex-col items-center md:flex-row'>
+          <label
+            htmlFor='phone'
+            className='mb-2 w-full font-medium text-gray-700 md:mb-0 md:w-1/4 md:pr-4 md:text-right'
+          >
+            Phone Number
+          </label>
+          <div className='flex w-full items-center md:w-3/4'>
+            <input
+              id='phone'
+              type='text'
+              name='phone'
+              defaultValue={profile?.phone}
+              readOnly={!isEditing.phone}
+              onChange={handleInputChange}
+              ref={phoneRef}
+              className={`w-full rounded-lg border p-3 ${!isEditing.phone ? 'bg-gray-300' : 'bg-white'} transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+            />
+            <button
+              onClick={() => toggleEdit('phone')}
+              className='ml-4 transform rounded-lg bg-blue-500 px-4 py-2 text-white shadow-md transition-transform hover:scale-105 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400'
+            >
+              <FaPen className='h-6 w-6' />
+            </button>
+          </div>
+        </div>
+        <div className='flex flex-col items-center md:flex-row'>
+          <label
+            htmlFor='gender'
+            className='mb-2 w-full font-medium text-gray-700 md:mb-0 md:w-1/4 md:pr-4 md:text-right'
+          >
+            Gender
+          </label>
+          <div className='flex w-full items-center md:w-3/4'>
+            <select
+              id='gender'
+              name='gender'
+              defaultValue={profile?.gender}
+              disabled={!isEditing.gender}
+              onChange={handleInputChange}
+              ref={genderRef}
+              className={`w-full rounded-lg border p-3 ${!isEditing.gender ? 'bg-gray-300' : 'border-3 border-blue-300 bg-white'} transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+            >
+              <option value='Male'>Male (He/Him)</option>
+              <option value='Female'>Female (She/Her)</option>
+            </select>
+            <button
+              onClick={() => toggleEdit('gender')}
+              className='ml-4 transform rounded-lg bg-blue-500 px-4 py-2 text-white shadow-md transition-transform hover:scale-105 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400'
+            >
+              <FaPen className='h-6 w-6' />
+            </button>
+          </div>
+        </div>
+      </div>
+      <button
+        onClick={handleSave}
+        className='w-full rounded-lg bg-blue-400 p-3 text-white transition-colors duration-300 hover:bg-gray-800 hover:text-yellow-300'
+      >
+        Save
+      </button>
+    </div>
   )
 }
-
-const Container = styled.div`
-  max-width: 400px;
-  margin: auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  color: black;
-`
-
-const Header = styled.h1`
-  text-align: center;
-  font-size: 24px;
-  margin-bottom: 20px;
-  font-weight: bold;
-`
-
-const ProfilePictureContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-`
-
-const ProfilePicture = styled.img`
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-`
-
-const ChangePictureLabel = styled.label`
-  color: blue;
-  cursor: pointer;
-`
-
-const ProfileForm = styled.div`
-  margin-bottom: 20px;
-`
-
-const FormField = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-`
-
-const Label = styled.label`
-  flex: 1;
-`
-
-const Input = styled.input`
-  flex: 2;
-  padding: 5px;
-  border: 1px solid #eaeaea;
-  border-radius: 4px;
-  background-color: ${props => (props.readOnly ? '#f0f0f0' : '#fff')};
-`
-
-const Select = styled.select`
-  flex: 2;
-  padding: 5px;
-  border: 1px solid #eaeaea;
-  border-radius: 4px;
-  background-color: ${props => (props.disabled ? '#f0f0f0' : '#fff')};
-`
-
-const EditButton = styled.button`
-  background: none;
-  border: none;
-  color: blue;
-  cursor: pointer;
-`
-
-const SaveButton = styled.button`
-  width: 100%;
-  padding: 10px;
-  background: black;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-`
-
-const SpinnerContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-`
-
-const Spinner = styled.div`
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-top: 4px solid blue;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: ${keyframes`
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  `} 1s linear infinite;
-`
 
 export default withAuth(EditProfilePage)
