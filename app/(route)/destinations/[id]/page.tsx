@@ -79,10 +79,7 @@ const DestinationDetailPage: React.FC<{ params: { id: string } }> = ({
     <div className='mx-auto max-w-md p-5 md:max-w-4xl'>
       <div className='relative overflow-hidden rounded-lg bg-white shadow-md'>
         <img
-          src={
-            destination?.imageLink ||
-            'https://firebasestorage.googleapis.com/v0/b/melanc0ng.appspot.com/o/image%2F3.jpg?alt=media&token=4b1bc0e1-5261-4c7d-a8a3-22a509fa5e09'
-          }
+          src={destination?.imageLink}
           alt={destination?.name}
           className='h-64 w-full rounded-t-lg object-cover md:h-96'
         />
