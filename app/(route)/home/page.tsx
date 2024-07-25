@@ -25,9 +25,11 @@ const Home: NextPage<Props> = () => {
   const [locationFilter, setLocationFilter] = useState<string>('')
   const [destinationTypeFilter, setDestinationTypeFilter] = useState<string>('')
   const { destinations, fetchDestinations } = useDestinations()
+  const [filterSubmitted, setFilterSubmitted] = useState(false)
 
   const handleFilterSubmit = () => {
     fetchDestinations(searchQuery, locationFilter, destinationTypeFilter)
+    setFilterSubmitted(true)
   }
 
   const handleFilterReset = () => {
@@ -35,11 +37,13 @@ const Home: NextPage<Props> = () => {
     setLocationFilter('')
     setDestinationTypeFilter('')
     fetchDestinations()
+    setFilterSubmitted(false)
   }
 
   const handleSearch = (query: string) => {
     setSearchQuery(query)
     fetchDestinations(query, locationFilter, destinationTypeFilter)
+    setFilterSubmitted(true)
   }
 
   const [open, setOpen] = useState(false)
@@ -135,6 +139,7 @@ const Home: NextPage<Props> = () => {
           destinations={destinations}
           searchQuery={searchQuery}
           handleSearch={handleSearch}
+          filterSubmitted={filterSubmitted}
         />
       </div>
     </>

@@ -10,12 +10,14 @@ interface Props {
   destinations: Destination[]
   searchQuery: string
   handleSearch: (query: string) => void
+  filterSubmitted: boolean
 }
 
 const DashboardUser: NextPage<Props> = ({
   destinations,
   searchQuery,
-  handleSearch
+  handleSearch,
+  filterSubmitted
 }) => {
   const { savedDestinations, error, loading, handleToggleSave } =
     useDestinations()
@@ -84,6 +86,9 @@ const DashboardUser: NextPage<Props> = ({
                 />
               ))}
             </div>
+          )}
+          {filterSubmitted && destinations.length === 0 && (
+            <p className='text-center text-gray-500'>No destinations found</p>
           )}
         </div>
       </div>
