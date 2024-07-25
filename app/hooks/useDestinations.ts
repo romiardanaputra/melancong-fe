@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import api from '@/app/api/axios'
 
-interface Destination {
+export interface Destination {
   id: string
   name: string
   rating: string
@@ -31,6 +31,7 @@ const useDestinations = () => {
     destinationType: string = ''
   ) => {
     setLoading(true)
+    setError('')
     let apiUrl = '/destinations'
     const params = new URLSearchParams()
 
@@ -52,7 +53,6 @@ const useDestinations = () => {
       const response = await api.get(apiUrl)
       setDestinations(response.data.data)
       setLoading(false)
-      setError('')
     } catch (err) {
       const errorRes = err as ErrorResponse
       if (errorRes.response.status === 401) {

@@ -24,11 +24,9 @@ const Home: NextPage<Props> = () => {
   const [searchQuery, setSearchQuery] = useState<string>('')
   const [locationFilter, setLocationFilter] = useState<string>('')
   const [destinationTypeFilter, setDestinationTypeFilter] = useState<string>('')
-  const { fetchDestinations } = useDestinations()
+  const { destinations, fetchDestinations } = useDestinations()
 
   const handleFilterSubmit = () => {
-    // TODO: Delete after debugging
-    alert(`${locationFilter}, ${destinationTypeFilter}`)
     fetchDestinations(searchQuery, locationFilter, destinationTypeFilter)
   }
 
@@ -38,6 +36,12 @@ const Home: NextPage<Props> = () => {
     setDestinationTypeFilter('')
     fetchDestinations()
   }
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query)
+    fetchDestinations(query, locationFilter, destinationTypeFilter)
+  }
+
   const [open, setOpen] = useState(false)
 
   return (
@@ -126,7 +130,12 @@ const Home: NextPage<Props> = () => {
             </div>
           </SidebarBody>
         </Sidebar>
-        <DashboardUser />
+
+        <DashboardUser
+          destinations={destinations}
+          searchQuery={searchQuery}
+          handleSearch={handleSearch}
+        />
       </div>
     </>
   )
