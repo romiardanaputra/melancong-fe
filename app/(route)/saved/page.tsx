@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { FiSearch } from 'react-icons/fi'
 import api from '@/app/api/axios'
 import withAuth from '@/app/withAuth'
-import { FaStar } from 'react-icons/fa6'
+import CustomCard from '@/components/ui/card/CustomCard'
 
 interface Destination {
   id: string
@@ -114,38 +114,21 @@ const Saved: React.FC = () => {
       {destinations.length === 0 && (
         <p className='text-center text-gray-500'>No destinations found</p>
       )}
-      <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-8 xl:grid-cols-4'>
+      <div className='grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
         {destinations.map(destination => (
-          <div
+          <CustomCard
             key={destination.id}
-            onClick={() => handleCardClick(destination.id)}
-            onKeyPress={event => handleKeyPress(event, destination.id)}
-            role='button'
-            tabIndex={0}
-            className='relative cursor-pointer rounded-lg bg-white shadow-lg transition-transform duration-200 hover:scale-105 focus:scale-105 focus:outline-none'
-          >
-            <button
-              type='button'
-              onClick={e => {
-                e.stopPropagation()
-                handleDelete(destination.id)
-              }}
-              className='absolute right-2 top-2 z-10 cursor-pointer rounded-full border-none bg-white bg-opacity-80 p-2 text-xl'
-            >
-              <FaStar />
-            </button>
-            <img
-              src={destination.imageLink}
-              alt={destination.name}
-              className='w-full rounded-t-lg'
-            />
-            <div className='p-5 text-left text-black'>
-              <h2 className='text-xl font-bold'>{destination.name}</h2>
-              <p>&#9733;{destination.rating}</p>
-              <p>Bali, {destination.regency}</p>
-              <p>{destination.information.slice(0, 70)}...</p>
-            </div>
-          </div>
+            title={destination.name}
+            img={destination.imageLink}
+            rating={destination.rating}
+            location={destination.regency}
+            description={`${destination.information.slice(0, 70)}...`}
+            clickToDetail={() => handleCardClick(destination.id)}
+            onKeyPress={e => handleKeyPress(e, destination.id)}
+            isSaveAvailable={true}
+            handleDelete={() => handleDelete(destination.id)}
+            isSavedRemove={true}
+          />
         ))}
       </div>
     </div>
