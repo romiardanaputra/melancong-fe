@@ -8,7 +8,7 @@ import { FaStar } from 'react-icons/fa'
 interface ImageCardProps {
   title: string
   img: string
-  rating: string
+  rating: string | number
   description: string
   location: string
   clickToDetail?: () => void
