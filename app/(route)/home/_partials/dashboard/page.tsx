@@ -2,8 +2,7 @@
 import useDestinations, { Destination } from '@/app/hooks/useDestinations'
 import CustomCard from '@/components/ui/card/CustomCard'
 import { NextPage } from 'next'
-import React, { FormEvent } from 'react'
-import { FiSearch } from 'react-icons/fi'
+import React from 'react'
 import { useRouter } from 'next/navigation'
 import { PlaceholdersAndVanishInput } from '@/components/ui/input/placeholders-and-vanish-input'
 import { placeholders } from '@/data'
@@ -30,11 +29,6 @@ const DashboardUser: NextPage<Props> = ({
     router.push(`/destinations/${id}`)
   }
 
-  const onSearch = (event: FormEvent) => {
-    event.preventDefault()
-    handleSearch(searchQuery)
-  }
-
   const handleKeyPress = (
     event: React.KeyboardEvent<HTMLDivElement>,
     id: string
@@ -44,40 +38,27 @@ const DashboardUser: NextPage<Props> = ({
     }
   }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value)
     e.preventDefault()
-    handleSearch(searchQuery)
+    handleSearch(e.target.value)
   }
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log('submitted')
+    handleSearch(searchQuery)
   }
 
   return (
     <>
       <div className='flex flex-1'>
         <div className='flex h-full w-full flex-1 flex-col gap-2 rounded-tl-2xl border border-neutral-200 bg-white p-2 dark:border-neutral-700 dark:bg-neutral-900 md:p-10'>
-          <form
-            className='mb-5 flex items-center justify-between'
-            onSubmit={onSearch}
-          >
-            <div className='flex flex-1 items-center rounded-full bg-gray-100 p-2'>
-              <FiSearch className='mr-2' />
-              <input
-                type='text'
-                value={searchQuery}
-                onChange={e => handleSearch(e.target.value)}
-                placeholder='Search'
-                className='flex-1 bg-transparent outline-none'
-              />
-            </div>
-          </form>
-          <PlaceholdersAndVanishInput
-            placeholders={placeholders}
-            onChange={handleChange}
-            onSubmit={onSubmit}
-          />
-          <h1 className='text-lg font-bold'>Recommendation</h1>
+          <div className='py-4'>
+            <PlaceholdersAndVanishInput
+              placeholders={placeholders}
+              onChange={handleChange}
+              onSubmit={onSubmit}
+            />
+          </div>
+
+          <h1 className='mb-4 text-lg font-bold'>Recommendation</h1>
           {loading && (
             <div className='flex h-screen items-center justify-center'>
               <div className='h-10 w-10 animate-spin rounded-full border-4 border-t-4 border-gray-200 border-t-blue-500'></div>
