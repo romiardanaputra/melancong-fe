@@ -16,6 +16,8 @@ interface ImageCardProps {
   isSaveAvailable: boolean
   handleToggleSave?: () => void
   isSaved?: boolean
+  handleDelete?: () => void
+  isSavedRemove?: boolean
 }
 
 const CustomCard: NextPage<ImageCardProps> = ({
@@ -28,7 +30,9 @@ const CustomCard: NextPage<ImageCardProps> = ({
   onKeyPress,
   isSaveAvailable,
   handleToggleSave,
-  isSaved
+  isSaved,
+  handleDelete,
+  isSavedRemove
 }) => {
   return (
     <>
@@ -57,6 +61,11 @@ const CustomCard: NextPage<ImageCardProps> = ({
               type='button'
               onClick={e => {
                 e.stopPropagation()
+                if (isSavedRemove) {
+                  if (handleDelete) {
+                    handleDelete()
+                  }
+                }
                 if (handleToggleSave) {
                   handleToggleSave()
                 }
