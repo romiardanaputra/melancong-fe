@@ -212,10 +212,25 @@ export const links = [
     )
   },
   {
+    label: 'Filter',
+    href: '#',
+    icon: (
+      <IconArrowLeft className='h-5 w-5 flex-shrink-0 text-neutral-700 dark:text-neutral-200' />
+    )
+  },
+  {
     label: 'Logout',
     href: '#',
     icon: (
       <IconArrowLeft className='h-5 w-5 flex-shrink-0 text-neutral-700 dark:text-neutral-200' />
     )
   }
+]
+
+export const placeholders = [
+  'What is the first rule of Fight Club?',
+  'Who is Tyler Durden?',
+  'Where is Andrew Laeddis Hiding?',
+  'Write a Javascript method to reverse a string',
+  'How to assemble your own PC?'
 ]
