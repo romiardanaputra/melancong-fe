@@ -5,6 +5,8 @@ import { NextPage } from 'next'
 import React, { FormEvent } from 'react'
 import { FiSearch } from 'react-icons/fi'
 import { useRouter } from 'next/navigation'
+import { PlaceholdersAndVanishInput } from '@/components/ui/input/placeholders-and-vanish-input'
+import { placeholders } from '@/data'
 
 interface Props {
   destinations: Destination[]
@@ -41,6 +43,15 @@ const DashboardUser: NextPage<Props> = ({
       handleCardClick(id)
     }
   }
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value)
+    e.preventDefault()
+    handleSearch(searchQuery)
+  }
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    console.log('submitted')
+  }
 
   return (
     <>
@@ -61,6 +72,11 @@ const DashboardUser: NextPage<Props> = ({
               />
             </div>
           </form>
+          <PlaceholdersAndVanishInput
+            placeholders={placeholders}
+            onChange={handleChange}
+            onSubmit={onSubmit}
+          />
           <h1 className='text-lg font-bold'>Recommendation</h1>
           {loading && (
             <div className='flex h-screen items-center justify-center'>
@@ -69,7 +85,7 @@ const DashboardUser: NextPage<Props> = ({
           )}
           {error && <p className='text-red-500'>{error}</p>}
           {!loading && !error && destinations.length > 0 && (
-            <div className='grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+            <div className='grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
               {destinations.map(destination => (
                 <CustomCard
                   key={destination.id}

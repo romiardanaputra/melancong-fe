@@ -45,8 +45,12 @@ const CustomCard: NextPage<ImageCardProps> = ({
             alt={title}
             height='400'
             width='400'
-            className='object-cover object-center'
+            className='aspect-[4/3] object-cover object-center sm:aspect-[4/3] md:aspect-[16/9] lg:aspect-[4/3]'
             loading='lazy'
+            quality={10}
+            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+            placeholder='blur'
+            blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
           />
           {isSaveAvailable && (
             <button
