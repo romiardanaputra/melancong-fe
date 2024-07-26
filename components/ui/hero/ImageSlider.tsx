@@ -147,7 +147,7 @@ export const ImagesSlider = ({
             animate='visible'
             exit={direction === 'up' ? 'upExit' : 'downExit'}
             variants={slideVariants}
-            className='image absolute inset-0 h-full w-full object-cover object-center'
+            className='image absolute inset-0 aspect-auto h-full w-full object-cover object-center'
           />
         </AnimatePresence>
       )}
