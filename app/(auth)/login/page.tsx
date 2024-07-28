@@ -31,7 +31,7 @@ const LoginPage: NextPage<Props> = () => {
 
       if (response.status === 200) {
         localStorage.setItem('token', data.data.token)
-        router.push('/home')
+        router.push('/dashboard')
       } else {
         setError(data.message)
       }
