@@ -1,6 +1,7 @@
 import { NextPage } from 'next'
 import { FaArrowLeft } from 'react-icons/fa6'
 import { destinationLocations, destinationTypes } from '@/data'
+import Image from 'next/image'
 
 interface Props {
   isSidebarOpen: boolean
@@ -99,7 +100,7 @@ const SideBar: NextPage<Props> = ({
             </button>
           </div>
           <div className='mt-6 flex justify-center'>
-            <img src='/logo.png' alt='Melancong' className='w-32' />
+            <Image src='/logo.png' alt='Melancong' className='w-32' />
           </div>
         </div>
       </div>

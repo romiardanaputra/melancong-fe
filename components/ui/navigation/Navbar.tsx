@@ -1,4 +1,5 @@
 import { NextPage } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 
 interface Props {}
@@ -12,7 +13,7 @@ const Navbar: NextPage<Props> = () => {
             href='https://flowbite.com/'
             className='flex items-center space-x-3 rtl:space-x-reverse'
           >
-            <img
+            <Image
               src='https://flowbite.com/docs/images/logo.svg'
               className='h-8'
               alt='Flowbite Logo'
