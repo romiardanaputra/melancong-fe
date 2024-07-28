@@ -4,7 +4,7 @@ import CustomCard from '@/components/ui/card/CustomCard'
 import useDestinations from '@/app/hooks/useDestinations'
 interface Props {}
 
-const RecommendationSection: NextPage<Props> = () => {
+const Recommendation: NextPage<Props> = () => {
   const { destinations } = useDestinations()
   return (
     <>
@@ -14,8 +14,9 @@ const RecommendationSection: NextPage<Props> = () => {
         </h1>
         <div className='grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
           {destinations
-            .filter(item => parseFloat(item.rating) > 4.8)
-            .slice(0, 8)
+            .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))
+            .filter(item => parseFloat(item.rating) > 4.5)
+            .slice(0, 12)
             .map(item => (
               <CustomCard
                 key={item.id}
@@ -33,4 +34,4 @@ const RecommendationSection: NextPage<Props> = () => {
   )
 }
 
-export default RecommendationSection
+export default Recommendation
