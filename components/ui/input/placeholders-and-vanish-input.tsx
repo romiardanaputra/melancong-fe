@@ -6,6 +6,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
+import { IconSearch } from '@tabler/icons-react'
 
 export function PlaceholdersAndVanishInput({
   placeholders,
@@ -198,6 +199,7 @@ export function PlaceholdersAndVanishInput({
         )}
         ref={canvasRef}
       />
+      <IconSearch className='absolute left-2 top-1/2 size-5 -translate-y-1/2 text-black dark:text-white' />
       <input
         onChange={e => {
           if (!animating) {
