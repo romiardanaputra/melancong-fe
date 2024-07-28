@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  // baseURL: 'https://melacong-api-bij5xtwena-et.a.run.app' // For Production
+  // baseURL: 'https://asia-southeast2-melanc0ng.cloudfunctions.net/api' // For Production
   baseURL: 'https://melancong-be.vercel.app' // For Development
 })
 

@@ -1,11 +1,29 @@
 'use client'
 import { NextPage } from 'next'
 import CustomCard from '@/components/ui/card/CustomCard'
-import useDestinations from '@/app/hooks/useDestinations'
+import useRecommend from '@/app/hooks/useRecommend'
+import { useRouter } from 'next/navigation'
+import React from 'react'
+
 interface Props {}
 
 const Recommendation: NextPage<Props> = () => {
-  const { destinations } = useDestinations()
+  const router = useRouter()
+
+  const handleCardClick = (id: string) => {
+    router.push(`/destinations/${id}`)
+  }
+
+  const handleKeyPress = (
+    event: React.KeyboardEvent<HTMLDivElement>,
+    id: string
+  ) => {
+    if (event.key === 'Enter') {
+      handleCardClick(id)
+    }
+  }
+
+  const { destinations } = useRecommend()
   return (
     <>
       <div className='container pt-20'>
@@ -24,8 +42,10 @@ const Recommendation: NextPage<Props> = () => {
                 img={item.imageLink}
                 rating={parseFloat(item.rating)}
                 location={item.regency}
-                description={`${item.information.slice(0, 70)} ...`}
+                description={`${item.information.slice(0, 85)}...`}
                 isSaveAvailable={false}
+                clickToDetail={() => handleCardClick(item.id)}
+                onKeyPress={e => handleKeyPress(e, item.id)}
               />
             ))}
         </div>

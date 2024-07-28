@@ -54,12 +54,7 @@ const useDestinations = () => {
       setDestinations(response.data.data)
       setLoading(false)
     } catch (err) {
-      const errorRes = err as ErrorResponse
-      if (errorRes.response.status === 401) {
-        router.push('/login')
-      } else {
-        setError('An unexpected error occurred')
-      }
+      setError('An unexpected error occurred')
     }
   }
 
@@ -71,7 +66,7 @@ const useDestinations = () => {
       )
     } catch (err) {
       const errorRes = err as ErrorResponse
-      if (errorRes.response.status === 401) {
+      if (errorRes?.response?.status === 401) {
         router.push('/login')
       } else {
         setError('An unexpected error occurred')
