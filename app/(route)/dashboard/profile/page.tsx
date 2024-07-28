@@ -18,6 +18,7 @@ import {
   FaAngleRight
 } from 'react-icons/fa'
 import Link from 'next/link'
+import Image from 'next/image'
 
 interface UserProfile {
   name: string
@@ -72,7 +73,7 @@ const ProfilePage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className='mx-auto size-full min-h-dvh rounded-lg bg-white p-5 shadow-md'>
+      <div className='mx-auto size-full min-h-dvh rounded-lg bg-white p-5'>
         <div className='flex size-full min-h-dvh items-center justify-center'>
           <div className='h-10 w-10 animate-spin rounded-full border-4 border-gray-200 border-t-blue-500'></div>
         </div>
@@ -82,7 +83,7 @@ const ProfilePage: React.FC = () => {
 
   if (error) {
     return (
-      <div className='mx-auto size-full min-h-dvh rounded-lg bg-white p-5 shadow-md'>
+      <div className='mx-auto size-full min-h-dvh rounded-lg bg-white p-5'>
         {error}
       </div>
     )
@@ -92,10 +93,17 @@ const ProfilePage: React.FC = () => {
     <div className='mx-auto size-full min-h-dvh rounded-lg bg-white p-5 text-black 2xl:px-12'>
       <h1 className='mb-5 text-center text-2xl font-bold'>My Account</h1>
       <div className='relative mb-5 flex items-center rounded-lg bg-gray-100 p-4'>
-        <img
-          src={profile?.imageLink}
+        <Image
+          src={profile?.imageLink || 'default.png'}
           alt='' // Menghapus kata-kata yang tidak perlu dalam atribut alt
           className='mr-4 h-12 w-12 rounded-full'
+          loading='lazy'
+          width={48}
+          height={48}
+          quality={10}
+          sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+          placeholder='blur'
+          blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
         />
         <div className='flex-1'>
           <p className='font-bold'>{profile?.name}</p>

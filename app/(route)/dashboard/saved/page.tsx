@@ -87,7 +87,7 @@ const Saved: React.FC = () => {
   }
 
   return (
-    <div className='bg-gray-200 p-5 font-sans text-black md:p-10'>
+    <div className='w-full bg-white p-5 font-sans text-black md:p-10'>
       <form
         onSubmit={handleSearch}
         className='mb-5 flex items-center justify-between'

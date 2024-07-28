@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import api from '@/app/api/axios'
 import withAuth from '@/app/withAuth'
 import { FaLocationDot, FaStar, FaArrowLeft } from 'react-icons/fa6'
+import Image from 'next/image'
 
 interface DestinationDetail {
   id: string
@@ -78,10 +79,17 @@ const DestinationDetailPage: React.FC<{ params: { id: string } }> = ({
   return (
     <div className='mx-auto max-w-md p-5 md:max-w-4xl'>
       <div className='relative overflow-hidden rounded-lg bg-white shadow-md'>
-        <img
-          src={destination?.imageLink}
-          alt={destination?.name}
+        <Image
+          src={destination?.imageLink || ''}
+          alt={destination?.name || ''}
           className='h-64 w-full rounded-t-lg object-cover md:h-96'
+          layout='responsive'
+          loading='lazy'
+          placeholder='blur'
+          blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
+          width={500}
+          height={500}
+          sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
         />
         <button
           onClick={() => window.history.back()}

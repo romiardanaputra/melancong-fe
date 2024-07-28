@@ -49,7 +49,7 @@ const DashboardDestination: NextPage<Props> = ({
   return (
     <>
       <div className='size-full'>
-        <div className='flex h-full w-full flex-1 flex-col gap-2 rounded-tl-2xl border border-neutral-200 bg-white p-2 dark:border-neutral-700 dark:bg-neutral-900 md:p-10'>
+        <div className='flex h-full w-full flex-1 flex-col gap-2 bg-white p-2 dark:border-neutral-700 dark:bg-neutral-900 md:p-10'>
           <div className='py-4'>
             <PlaceholdersAndVanishInput
               placeholders={placeholders}
