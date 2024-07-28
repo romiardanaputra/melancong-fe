@@ -8,7 +8,7 @@ import { FaStar } from 'react-icons/fa'
 interface ImageCardProps {
   title: string
   img: string
-  rating: string | number
+  rating: number
   description: string
   location: string
   clickToDetail?: () => void
@@ -37,7 +37,7 @@ const CustomCard: NextPage<ImageCardProps> = ({
   return (
     <>
       <div
-        className='max-w-sm transform rounded-[22px] bg-white shadow-xl transition duration-400 hover:-translate-y-2 dark:bg-zinc-900'
+        className='max-w-sm transform rounded-lg bg-white shadow-md transition duration-400 ease-in-out will-change-transform hover:-translate-y-2 dark:bg-zinc-900'
         role='button'
         tabIndex={0}
         onClick={clickToDetail}
@@ -47,14 +47,11 @@ const CustomCard: NextPage<ImageCardProps> = ({
           <Image
             src={img}
             alt={title}
-            height='400'
-            width='400'
+            height={400}
+            width={400}
             className='aspect-[4/3] object-cover object-center sm:aspect-[4/3] md:aspect-[16/9] lg:aspect-[4/3]'
             loading='lazy'
-            quality={10}
             sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-            placeholder='blur'
-            blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
           />
           {isSaveAvailable && (
             <button
