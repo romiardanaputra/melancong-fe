@@ -205,8 +205,8 @@ export const links = [
     )
   },
   {
-    label: 'Settings',
-    href: '/dashboard/settings',
+    label: 'View Save Destination',
+    href: '/dashboard/saved',
     icon: (
       <IconSettings className='h-5 w-5 flex-shrink-0 text-neutral-700 dark:text-neutral-200' />
     )
@@ -228,9 +228,9 @@ export const links = [
 ]
 
 export const placeholders = [
-  'What is the first rule of Fight Club?',
-  'Who is Tyler Durden?',
-  'Where is Andrew Laeddis Hiding?',
-  'Write a Javascript method to reverse a string',
-  'How to assemble your own PC?'
+  'Searching for destinations?',
+  'Try to search for tanah lot..',
+  'Not sure where to go?',
+  'Try to search for the beach',
+  'Not solved your issue? then try to ask for our chatbot'
 ]
