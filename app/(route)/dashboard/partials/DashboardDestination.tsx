@@ -72,7 +72,7 @@ const DashboardDestination: NextPage<Props> = ({
                   key={destination.id}
                   title={destination.name}
                   img={destination.imageLink}
-                  rating={destination.rating}
+                  rating={parseFloat(destination.rating)}
                   location={destination.regency}
                   description={destination.information.slice(0, 70) + '...'}
                   clickToDetail={() => handleCardClick(destination.id)}
