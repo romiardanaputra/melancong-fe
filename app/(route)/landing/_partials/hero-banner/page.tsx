@@ -32,7 +32,7 @@ const HeroBanner: NextPage<Props> = () => {
             Let&apos;s <FlipWords words={words} /> <br /> Great Destination With
             Us
           </motion.div>
-          <button className='mt-4 transform rounded-lg border border-neutral-200 bg-transparent px-6 py-2 font-bold text-neutral-200 transition duration-400 hover:-translate-y-1 dark:border-white dark:text-white'>
+          <button className='mt-4 transform rounded-lg border border-neutral-200 bg-transparent px-6 py-2 font-bold text-neutral-200 transition duration-400 will-change-transform hover:-translate-y-1 dark:border-white dark:text-white'>
             <Link href='/landing#services'> What we offer?</Link>
           </button>
         </motion.div>
