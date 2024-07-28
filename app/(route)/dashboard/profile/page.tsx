@@ -17,6 +17,7 @@ import {
   FaPen,
   FaAngleRight
 } from 'react-icons/fa'
+import Link from 'next/link'
 
 interface UserProfile {
   name: string
@@ -59,20 +60,20 @@ const ProfilePage: React.FC = () => {
     fetchUserProfile()
   }, [router])
 
-  const handleLogout = async () => {
-    try {
-      await api.get('/auth/logout')
-      localStorage.removeItem('token')
-      router.push('/login')
-    } catch (err) {
-      setError('Failed to log out')
-    }
-  }
+  // const handleLogout = async () => {
+  //   try {
+  //     await api.get('/auth/logout')
+  //     localStorage.removeItem('token')
+  //     router.push('/login')
+  //   } catch (err) {
+  //     setError('Failed to log out')
+  //   }
+  // }
 
   if (loading) {
     return (
-      <div className='mx-auto max-w-lg rounded-lg bg-white p-5 shadow-md md:max-w-2xl lg:max-w-4xl'>
-        <div className='flex h-full items-center justify-center'>
+      <div className='mx-auto size-full min-h-dvh rounded-lg bg-white p-5 shadow-md'>
+        <div className='flex size-full min-h-dvh items-center justify-center'>
           <div className='h-10 w-10 animate-spin rounded-full border-4 border-gray-200 border-t-blue-500'></div>
         </div>
       </div>
@@ -81,14 +82,14 @@ const ProfilePage: React.FC = () => {
 
   if (error) {
     return (
-      <div className='mx-auto max-w-lg rounded-lg bg-white p-5 shadow-md md:max-w-2xl lg:max-w-4xl'>
+      <div className='mx-auto size-full min-h-dvh rounded-lg bg-white p-5 shadow-md'>
         {error}
       </div>
     )
   }
 
   return (
-    <div className='mx-auto max-w-lg rounded-lg bg-white p-5 text-black shadow-md md:max-w-2xl lg:max-w-4xl'>
+    <div className='mx-auto size-full min-h-dvh rounded-lg bg-white p-5 text-black 2xl:px-12'>
       <h1 className='mb-5 text-center text-2xl font-bold'>My Account</h1>
       <div className='relative mb-5 flex items-center rounded-lg bg-gray-100 p-4'>
         <img
@@ -101,16 +102,16 @@ const ProfilePage: React.FC = () => {
           <p className='text-gray-500'>{profile?.email}</p>
           <p className='text-gray-500'>{profile?.gender}</p>
         </div>
-        <button
-          onClick={() => router.push('/profile/edit')}
+        <Link
+          href='/dashboard/profile/edit'
           className='absolute right-4 top-1/2 -translate-y-1/2 transform text-gray-500'
         >
           <FaPen />
-        </button>
+        </Link>
       </div>
-      <div className='mb-5'>
-        <h2 className='mb-3 text-lg font-bold'>General</h2>
-        <ul className='list-none rounded-lg bg-white p-0 shadow-md'>
+      <div className='mb-5 space-y-4'>
+        <h2 className='mb-3 pt-3 text-lg font-bold'>General</h2>
+        <ul className='list-none space-y-4 rounded-lg bg-white text-sm'>
           {[
             { text: 'Personal Informations', icon: <FaUser /> },
             { text: 'Location', icon: <FaMapMarkerAlt /> },
@@ -132,9 +133,9 @@ const ProfilePage: React.FC = () => {
           ))}
         </ul>
       </div>
-      <div className='mb-5'>
-        <h2 className='mb-3 text-lg font-bold'>Support</h2>
-        <ul className='list-none rounded-lg bg-white p-0 shadow-md'>
+      <div className='mb-5 space-y-4'>
+        <h2 className='mb-3 pt-3 text-lg font-bold'>Support</h2>
+        <ul className='list-none space-y-4 rounded-lg bg-white p-0 text-sm'>
           {[
             { text: 'Terms and Conditions', icon: <FaFileAlt /> },
             { text: 'Privacy Policy', icon: <FaShieldAlt /> },
@@ -153,12 +154,12 @@ const ProfilePage: React.FC = () => {
           ))}
         </ul>
       </div>
-      <button
+      {/* <button
         onClick={handleLogout}
         className='w-full rounded-lg border border-red-800 bg-white p-3 text-red-800 transition-colors duration-300 hover:bg-red-800 hover:text-white'
       >
         Log Out
-      </button>
+      </button> */}
     </div>
   )
 }
