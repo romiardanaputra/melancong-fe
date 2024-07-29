@@ -1,6 +1,5 @@
 import { NextPage } from 'next'
 import React from 'react'
-import Sidebar from '@/app/(route)/dashboard/partials/DashboardSidebar'
 import { cn } from '@/lib/utils'
 
 interface Props {
@@ -16,7 +15,6 @@ const DashboardUserLayout: NextPage<Props> = ({ children }) => {
           'min-h-dvh'
         )}
       >
-        <Sidebar />
         {children}
       </div>
     </>

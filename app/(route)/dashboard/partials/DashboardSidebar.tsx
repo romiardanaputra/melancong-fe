@@ -1,7 +1,6 @@
 'use client'
 import { NextPage } from 'next'
 import React, { useState } from 'react'
-import useDestinations from '@/app/hooks/useDestinations'
 import {
   Sidebar,
   SidebarBody,
@@ -12,28 +11,23 @@ import LogoIcon from '@/app/(route)/dashboard/partials/LogoIcon'
 import Logo from '@/app/(route)/dashboard/partials/Logo'
 import { destinationLocations, destinationTypes, links } from '@/data'
 
-interface Props {}
+interface Props {
+  locationFilter: string
+  setLocationFilter: (location: string) => void
+  destinationTypeFilter: string
+  setDestinationTypeFilter: (type: string) => void
+  handleFilterSubmit: () => void
+  handleFilterReset: () => void
+}
 
-const DashboardSidebar: NextPage<Props> = () => {
-  const [searchQuery, setSearchQuery] = useState<string>('')
-  const [locationFilter, setLocationFilter] = useState<string>('')
-  const [destinationTypeFilter, setDestinationTypeFilter] = useState<string>('')
-  const { fetchDestinations } = useDestinations()
-  const [, setFilterSubmitted] = useState(false)
-
-  const handleFilterSubmit = () => {
-    fetchDestinations(searchQuery, locationFilter, destinationTypeFilter)
-    setFilterSubmitted(true)
-  }
-
-  const handleFilterReset = () => {
-    setSearchQuery('')
-    setLocationFilter('')
-    setDestinationTypeFilter('')
-    fetchDestinations()
-    setFilterSubmitted(false)
-  }
-
+const DashboardSidebar: NextPage<Props> = ({
+  locationFilter,
+  setLocationFilter,
+  destinationTypeFilter,
+  setDestinationTypeFilter,
+  handleFilterSubmit,
+  handleFilterReset
+}) => {
   const [open, setOpen] = useState(false)
   return (
     <>
