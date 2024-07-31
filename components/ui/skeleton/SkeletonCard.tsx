@@ -1,14 +1,3 @@
-import { LayoutGrid } from '@/components/ui/layout-grid'
-import { AboutCardGrids } from '@/data'
-
-export function ImageGrid() {
-  return (
-    <div className='w-full'>
-      <LayoutGrid cards={AboutCardGrids} />
-    </div>
-  )
-}
-
 export const SkeletonOne = () => {
   return (
     <div>

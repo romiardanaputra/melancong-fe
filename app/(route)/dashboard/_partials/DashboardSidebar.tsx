@@ -6,9 +6,9 @@ import {
   SidebarBody,
   SidebarLink
 } from '@/components/ui/navigation/SideBarAnimate'
-import LogoIcon from '@/app/(route)/dashboard/partials/LogoIcon'
-import Logo from '@/app/(route)/dashboard/partials/Logo'
-import { sidebarLinks } from '@/data'
+import LogoIcon from '@/app/(route)/dashboard/_partials/LogoIcon'
+import Logo from '@/app/(route)/dashboard/_partials/Logo'
+import { sidebarLinks } from '@/data/sidebar-link'
 
 interface Props {}
 

@@ -25,7 +25,7 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
   }
 
   return (
-    <div className='relative mx-auto grid h-full w-full max-w-7xl grid-cols-1 gap-4 sm:h-[500px] md:grid-cols-3 xl:h-[800px]'>
+    <div className='relative mx-auto grid h-full w-full max-w-7xl grid-cols-1 gap-4 md:h-[650px] md:grid-cols-3 lg:h-[950px] xl:h-[920px] 2xl:h-[820px]'>
       {cards.map((card, i) => (
         <div key={i} className={cn(card.className, '')}>
           <motion.div
@@ -66,7 +66,7 @@ const ImageComponent = ({ card }: { card: Card }) => {
       height='500'
       width='500'
       className={cn(
-        'absolute inset-0 h-full w-full object-cover object-top transition duration-200'
+        'absolute inset-0 h-full w-full object-cover object-center transition duration-200 will-change-transform'
       )}
       alt='thumbnail'
     />

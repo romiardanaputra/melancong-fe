@@ -1,8 +1,8 @@
 import { NextPage } from 'next'
 import { ImageGrid } from './_partials/ImageGrid'
 
-import AboutList from '@/app/(route)/about/_partials/AboutList'
-import { AboutLists } from '@/data'
+import AboutList from '@/app/(route)/landing/_partials/about/_partials/AboutList'
+import { AboutLists } from '@/data/about-list'
 
 interface Props {}
 
