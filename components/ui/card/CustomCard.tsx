@@ -1,9 +1,9 @@
 /* eslint-disable quotes */
+import { IconStar } from '@tabler/icons-react'
 import { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { FaStar } from 'react-icons/fa'
 
 interface ImageCardProps {
   title: string
@@ -69,7 +69,7 @@ const CustomCard: NextPage<ImageCardProps> = ({
               }}
               className={`absolute right-0 top-0 p-4 ${isSaved ? 'bg-cyan-500' : 'bg-white/80'}`}
             >
-              <FaStar className='text-neutral-900' />
+              <IconStar className='text-neutral-900' />
             </button>
           )}
         </div>
@@ -85,9 +85,9 @@ const CustomCard: NextPage<ImageCardProps> = ({
             <Link href='/login' className='text-sm font-medium'>
               Read More...
             </Link>
-            <button className='flex items-center space-x-1 rounded-full bg-black py-1 pl-4 pr-1 text-xs font-bold text-white dark:bg-zinc-800'>
+            <button className='flex items-center space-x-1 rounded-full bg-cyan-600 py-1 pl-4 pr-1 text-xs font-bold text-white dark:bg-zinc-800'>
               <p>Rating </p>
-              <p className='rounded-full bg-zinc-700 px-2 py-0 text-[0.6rem] text-white'>
+              <p className='rounded-full bg-neutral-200 px-2 py-0 text-[0.6rem] text-zinc-800'>
                 {rating}
               </p>
             </button>
