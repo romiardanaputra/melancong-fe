@@ -35,7 +35,7 @@ const About: NextPage<Props> = () => {
               ))}
             </div>
           </div>
-          <div className='col-span-1 hidden lg:col-span-2 lg:block xl:col-span-2'>
+          <div className='col-span-1 hidden px-8 lg:col-span-2 lg:block xl:col-span-2'>
             <ImageGrid />
           </div>
         </div>
