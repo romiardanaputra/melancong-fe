@@ -49,7 +49,7 @@ const LoginPage: NextPage<Props> = () => {
     <>
       <div className=''>
         <div className='space-y-2 py-12'>
-          <span className='text-sm font-medium text-gray-400'>-login page</span>
+          <span className='text-sm font-medium text-gray-600'>-login page</span>
           <h1 className='text-3xl font-bold'>Welcome Back User</h1>
           <p className='font-medium'>Login Into Your Account</p>
         </div>
