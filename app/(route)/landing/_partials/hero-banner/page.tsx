@@ -3,14 +3,14 @@ import { NextPage } from 'next'
 import { ImagesSlider } from '@/components/ui/hero/ImageSlider'
 import { motion } from 'framer-motion'
 import { FlipWords } from '@/components/ui/text/FlipWord'
-import { images, words } from '@/data/index'
+import { heroImageSliderImages, words } from '@/data/index'
 import Link from 'next/link'
 interface Props {}
 
 const HeroBanner: NextPage<Props> = () => {
   return (
     <>
-      <ImagesSlider className='h-[50rem]' images={images}>
+      <ImagesSlider className='h-[50rem]' images={heroImageSliderImages}>
         <motion.div
           initial={{
             opacity: 0,

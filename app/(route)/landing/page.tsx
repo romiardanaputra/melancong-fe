@@ -1,6 +1,6 @@
 import { FloatingNav } from '@/components/ui/navigation/FloatingNav'
 import { NextPage } from 'next'
-import { navigations } from '@/data/index'
+import { landingLinks } from '@/data/index'
 import About from '@/app/(route)/about/page'
 import HeroBanner from '@/app/(route)/landing/_partials/hero-banner/page'
 import Recommendation from '@/app/(route)/landing/_partials/recomendation/page'
@@ -14,7 +14,7 @@ const LandingPage: NextPage<Props> = () => {
     <>
       {/* navbar start */}
       <header>
-        <FloatingNav navItems={navigations} />
+        <FloatingNav navItems={landingLinks} />
       </header>
       {/* navbar end */}
 
