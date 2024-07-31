@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import styled, { keyframes } from 'styled-components'
 import api from '@/app/api/axios'
 import withAuth from '@/app/withAuth'
+import Image from 'next/image'
 
 interface ErrorResponse {
   response: {
@@ -59,177 +59,72 @@ const Chatbot: React.FC = () => {
   const isLoading = messages.some(message => message.type === 'loading')
 
   return (
-    <ChatbotContainer>
-      <Header>
-        <BotImage
+    <div className='mx-auto flex min-h-screen w-full flex-col justify-between rounded-lg bg-white p-5 shadow-lg md:w-9/12 lg:w-11/12 lg:p-10'>
+      <div className='mb-5 text-center'>
+        <Image
           src='https://firebasestorage.googleapis.com/v0/b/melanc0ng.appspot.com/o/image%2Fmaskot-melancong.png?alt=media&token=d1a78151-3b0a-473f-9b2f-c499a62c2e0a'
           alt='Chatbot'
+          className='mx-auto mb-3'
+          width={128}
+          height={128}
         />
-        <WelcomeMessage>
+        <p className='text-lg text-gray-700'>
           Hello! My name is MelBot. I&apos;m here to help you find
-          <br></br>
+          <br />
           tourist destinations and plan your trip. I&apos;m ready to help!
-        </WelcomeMessage>
-      </Header>
-      <Divider />
-      <ChatArea className={isLoading ? 'no-scroll' : ''}>
-        <Chat>
+        </p>
+      </div>
+      <hr className='mb-5 w-full border-t border-gray-300' />
+      <div
+        className={`mb-5 w-full flex-1 overflow-y-auto ${isLoading ? 'overflow-hidden' : ''}`}
+      >
+        <div className='flex flex-col'>
           {messages.map((message, index) =>
             message.type === 'user' ? (
-              <UserMessage key={index}>{message.text}</UserMessage>
+              <div
+                key={index}
+                className='my-1 max-w-[80%] self-end rounded-lg bg-indigo-600 p-3 text-white'
+              >
+                {message.text}
+              </div>
             ) : message.type === 'bot' ? (
-              <BotMessage key={index}>{message.text}</BotMessage>
+              <div
+                key={index}
+                className='my-1 max-w-[80%] self-start rounded-lg bg-gray-200 p-3 text-black'
+              >
+                {message.text}
+              </div>
             ) : (
-              <LoadingMessage key={index}>
-                <Dot>.</Dot>
-                <Dot>.</Dot>
-                <Dot>.</Dot>
-              </LoadingMessage>
+              <div
+                key={index}
+                className='my-1 flex max-w-[80%] self-start rounded-lg bg-gray-200 p-3 text-black'
+              >
+                <div className='mx-1 animate-pulse'>.</div>
+                <div className='mx-1 animate-pulse'>.</div>
+                <div className='mx-1 animate-pulse'>.</div>
+              </div>
             )
           )}
-        </Chat>
-      </ChatArea>
-      <Form onSubmit={handleSubmit}>
-        <Input
+        </div>
+      </div>
+      <form onSubmit={handleSubmit} className='flex w-full'>
+        <input
           type='text'
           value={prompt}
           onChange={e => setPrompt(e.target.value)}
           placeholder='Type message...'
           required
+          className='flex-1 rounded-l-lg border border-cyan-800 bg-gray-100 p-3 text-black'
         />
-        <Button type='submit'>Send</Button>
-      </Form>
-    </ChatbotContainer>
+        <button
+          type='submit'
+          className='rounded-r-lg bg-cyan-800 p-3 text-white'
+        >
+          Send
+        </button>
+      </form>
+    </div>
   )
 }
-
-const ChatbotContainer = styled.div`
-  max-width: 600px;
-  margin: auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
-const Header = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 20px;
-`
-
-const BotImage = styled.img`
-  width: 200px;
-  height: 200px;
-  margin-bottom: 10px;
-`
-
-const WelcomeMessage = styled.p`
-  font-size: 16px;
-  color: #333;
-`
-
-const Divider = styled.hr`
-  width: 100%;
-  border: none;
-  border-top: 1px solid #ccc;
-  margin-bottom: 20px;
-`
-
-const ChatArea = styled.div`
-  width: 100%;
-  flex: 1;
-  overflow-y: auto;
-  margin-bottom: 20px;
-
-  &.no-scroll {
-    overflow-y: hidden;
-  }
-`
-
-const Chat = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-const UserMessage = styled.div`
-  align-self: flex-end;
-  background: #4629f2;
-  color: white;
-  padding: 10px;
-  border-radius: 20px;
-  margin: 5px 0;
-  max-width: 80%;
-`
-
-const BotMessage = styled.div`
-  align-self: flex-start;
-  background: #e0e0e0;
-  color: black;
-  padding: 10px;
-  border-radius: 20px;
-  margin: 5px 0;
-  max-width: 80%;
-`
-
-const LoadingMessage = styled.div`
-  align-self: flex-start;
-  background: #e0e0e0;
-  color: black;
-  padding: 10px;
-  border-radius: 20px;
-  margin: 5px 0;
-  max-width: 80%;
-  display: flex;
-`
-
-const dotFlashing = keyframes`
-  0% {
-    background-color: #e0e0e0;
-  }
-  50%,
-  100% {
-    background-color: #333;
-  }
-`
-
-const Dot = styled.div`
-  width: 8px;
-  height: 8px;
-  background-color: #333;
-  border-radius: 50%;
-  margin: 0 4px;
-  animation: ${dotFlashing} 1s infinite linear;
-`
-
-const Form = styled.form`
-  display: flex;
-  width: 100%;
-`
-
-const Input = styled.input`
-  flex: 1;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 20px 0 0 20px;
-  background-color: #d7d7d7;
-  color: black;
-`
-
-const Button = styled.button`
-  padding: 10px;
-  font-size: 16px;
-  color: white;
-  background-color: #1e1e1e;
-  border: none;
-  border-radius: 0 20px 20px 0;
-  cursor: pointer;
-`
 
 export default withAuth(Chatbot)

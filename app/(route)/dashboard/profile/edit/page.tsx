@@ -91,7 +91,7 @@ const EditProfilePage: React.FC = () => {
         })
       }
 
-      router.push('/profile')
+      router.push('/dashboard/profile')
     } catch (err) {
       setError('Failed to update profile')
     }
