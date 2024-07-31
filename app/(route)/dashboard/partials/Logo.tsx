@@ -17,7 +17,7 @@ const Logo: NextPage<Props> = () => {
           animate={{ opacity: 1 }}
           className='whitespace-pre font-medium text-black dark:text-white'
         >
-          Acet Labs
+          Melancong
         </motion.span>
       </Link>
     </>

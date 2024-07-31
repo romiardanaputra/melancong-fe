@@ -4,8 +4,8 @@ import React, { useEffect, useState, ChangeEvent, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import api from '@/app/api/axios'
 import withAuth from '@/app/withAuth'
-import { FaPen } from 'react-icons/fa'
 import Image from 'next/image'
+import { IconPencil } from '@tabler/icons-react'
 
 interface UserProfile {
   name: string
@@ -134,7 +134,7 @@ const EditProfilePage: React.FC = () => {
   }
 
   return (
-    <div className='mx-auto min-h-dvh w-full rounded-lg bg-white p-5'>
+    <div className='mx-auto min-h-dvh w-full rounded-lg bg-white p-5 py-20'>
       <div className='mx-auto max-w-screen-xl'>
         <h1 className='mb-5 text-center text-2xl font-bold'>Edit Profile</h1>
         <div className='mb-5 flex flex-col items-center'>
@@ -208,7 +208,7 @@ const EditProfilePage: React.FC = () => {
                 onClick={() => toggleEdit('name')}
                 className='ml-2 flex transform items-center justify-center rounded-lg bg-blue-500 p-3 text-white transition-transform hover:scale-105 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400'
               >
-                <FaPen className='size-6' />
+                <IconPencil className='size-6' />
               </button>
             </div>
           </div>
@@ -234,7 +234,7 @@ const EditProfilePage: React.FC = () => {
                 onClick={() => toggleEdit('phone')}
                 className='ml-2 transform rounded-lg bg-blue-500 p-3 text-white shadow-md transition-transform hover:scale-105 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400'
               >
-                <FaPen className='size-6' />
+                <IconPencil className='size-6' />
               </button>
             </div>
           </div>
@@ -262,7 +262,7 @@ const EditProfilePage: React.FC = () => {
                 onClick={() => toggleEdit('gender')}
                 className='ml-2 transform rounded-lg bg-blue-500 p-3 text-white shadow-md transition-transform hover:scale-105 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400'
               >
-                <FaPen className='size-6' />
+                <IconPencil className='size-6' />
               </button>
             </div>
           </div>

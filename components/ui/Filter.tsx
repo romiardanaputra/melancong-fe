@@ -1,28 +1,30 @@
-import { NextPage } from 'next'
+'use client'
+
 import { destinationLocations, destinationTypes } from '@/data'
-import Image from 'next/image'
 import { IconArrowLeft } from '@tabler/icons-react'
+import { NextPage } from 'next'
+import Logo from '@/components/ui/logo/Logo'
 
 interface Props {
   isSidebarOpen: boolean
   setIsSidebarOpen: (open: boolean) => void
+  handleFilterSubmit: () => void
+  handleFilterReset: () => void
   locationFilter: string
   setLocationFilter: (location: string) => void
   destinationTypeFilter: string
   setDestinationTypeFilter: (type: string) => void
-  handleFilterSubmit: () => void
-  handleFilterReset: () => void
 }
 
-const SideBar: NextPage<Props> = ({
+const Filter: NextPage<Props> = ({
   isSidebarOpen,
   setIsSidebarOpen,
+  handleFilterSubmit,
+  handleFilterReset,
   locationFilter,
   setLocationFilter,
   destinationTypeFilter,
-  setDestinationTypeFilter,
-  handleFilterSubmit,
-  handleFilterReset
+  setDestinationTypeFilter
 }) => {
   return (
     <>
@@ -47,13 +49,15 @@ const SideBar: NextPage<Props> = ({
           </div>
 
           <div className='pt-5'>
-            <h3 className='mb-2 text-lg font-semibold'>Locations</h3>
-            <div className='flex flex-wrap gap-2'>
+            <h3 className='py-4 text-lg font-semibold text-neutral-800'>
+              Locations
+            </h3>
+            <div className='flex flex-wrap gap-2.5 text-sm'>
               {destinationLocations.map(location => (
                 <button
                   key={location}
                   onClick={() => setLocationFilter(location)}
-                  className={`rounded-full px-3 py-1 ${locationFilter === location ? 'bg-blue-200' : 'bg-gray-200'}`}
+                  className={`rounded-full px-3 py-1 tracking-wide will-change-transform ${locationFilter === location ? 'transform bg-cyan-500 text-white transition-all' : 'bg-gray-200 text-neutral-900'}`}
                 >
                   {location}
                 </button>
@@ -62,17 +66,17 @@ const SideBar: NextPage<Props> = ({
           </div>
           <br />
           <div className='w-full'>
-            <hr className='rounded-sm border-t-4 border-gray-500' />
+            <hr className='rounded-sm border border-zinc-300' />
           </div>
 
           <div className='mt-4'>
-            <h3 className='mb-2 text-lg font-semibold'>Destinations</h3>
-            <div className='flex flex-wrap gap-2'>
+            <h3 className='mb-2 py-4 text-lg font-semibold'>Destinations</h3>
+            <div className='flex flex-wrap gap-2.5 text-sm'>
               {destinationTypes.map(destination => (
                 <button
                   key={destination}
                   onClick={() => setDestinationTypeFilter(destination)}
-                  className={`rounded-full px-3 py-1 ${destinationTypeFilter === destination ? 'bg-blue-200' : 'bg-gray-200'}`}
+                  className={`rounded-full px-3 py-1 text-neutral-800 will-change-transform ${destinationTypeFilter === destination ? 'transform bg-cyan-500 text-white transition-all' : 'bg-gray-200 text-neutral-900'}`}
                 >
                   {destination}
                 </button>
@@ -82,25 +86,25 @@ const SideBar: NextPage<Props> = ({
 
           <br />
           <div className='w-full'>
-            <hr className='rounded-sm border-t-4 border-gray-500' />
+            <hr className='rounded-sm border border-zinc-300' />
           </div>
 
           <div className='mt-6 flex justify-between'>
             <button
-              className='rounded-full bg-black px-4 py-2 text-white'
+              className='rounded-full bg-cyan-600 px-8 py-2 text-white'
               onClick={handleFilterSubmit}
             >
               Submit
             </button>
             <button
-              className='rounded-full border border-black px-4 py-2'
+              className='rounded-full border border-black px-8 py-2'
               onClick={handleFilterReset}
             >
               Reset
             </button>
           </div>
-          <div className='mt-6 flex justify-center'>
-            <Image src='/logo.png' alt='Melancong' className='w-32' />
+          <div className='flex justify-center py-10'>
+            <Logo width={150} height={100} className='aspect-auto h-20 w-32' />
           </div>
         </div>
       </div>
@@ -116,4 +120,4 @@ const SideBar: NextPage<Props> = ({
   )
 }
 
-export default SideBar
+export default Filter

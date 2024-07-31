@@ -1,13 +1,26 @@
-import { FaHome, FaHeadset, FaUsers } from 'react-icons/fa'
-import { FaShieldHalved, FaMoneyCheckDollar, FaPlaneUp } from 'react-icons/fa6'
+import {
+  SkeletonFive,
+  SkeletonFour,
+  SkeletonOne,
+  SkeletonSix,
+  SkeletonThree,
+  SkeletonTwo
+} from '@/app/(route)/about/_partials/ImageGrid'
 import {
   IconArrowLeft,
   IconBrandTabler,
+  IconCoinFilled,
+  IconHeadset,
+  IconHome,
+  IconPlaneTilt,
   IconSettings,
-  IconUserBolt
+  IconShieldCheckFilled,
+  IconStars,
+  IconUserBolt,
+  IconUsersGroup
 } from '@tabler/icons-react'
 
-export const images = [
+export const heroImageSliderImages = [
   'https://ik.imagekit.io/rom/melancong/landscape/image-2-landscape.webp?updatedAt=1721609667633',
   'https://ik.imagekit.io/rom/melancong/landscape/image-8-landscape.webp?updatedAt=1721609671401',
   'https://ik.imagekit.io/rom/melancong/landscape/image-12-landscape.webp?updatedAt=1721609668098'
@@ -18,105 +31,31 @@ export const AboutLists = [
     id: '1',
     title: 'Safe Traveling',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, quidem!',
-    icon: <FaShieldHalved className='size-8 text-neutral-100' />
+      'Experience peace of mind on every journey. Our top priority is your safety and comfort, ensuring a worry-free travel experience. Rest assured with our comprehensive safety measures.',
+    icon: <IconShieldCheckFilled className='size-8 text-neutral-100' />
   },
   {
     id: '2',
     title: 'Avodrable Price',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, quidem!',
-    icon: <FaMoneyCheckDollar className='size-8 text-neutral-100' />
+      'Travel without breaking the bank. We offer competitive pricing and great deals so you can explore more while spending less. Enjoy quality trips at budget-friendly rates.',
+    icon: <IconCoinFilled className='size-8 text-neutral-100' />
   },
   {
     id: '3',
     title: 'Trusted Review',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, quidem!',
-    icon: <FaPlaneUp className='size-8 text-neutral-100' />
+      'Make informed decisions with our trusted reviews. Our community of travelers shares honest feedback and experiences to help you choose the best destinations and services. Rely on authentic reviews for your next adventure.',
+    icon: <IconPlaneTilt className='size-8 text-neutral-100' />
   }
 ]
 
-export const navigations = [
-  { name: 'Home', link: '/', icon: <FaHome /> },
-  { name: 'Recommendation', link: '#recommendation', icon: <FaHeadset /> },
-  { name: 'About', link: '#about', icon: <FaUsers /> },
-  { name: 'Services', link: '#services', icon: <FaHeadset /> }
-]
-
-export const imageCards = [
-  {
-    id: '1',
-    title: 'Tanah Lot',
-    img: 'https://ik.imagekit.io/rom/melancong/potrait/image-13-potrait.webp?updatedAt=1721609671477',
-    rating: '4,9',
-    description:
-      'Tanah lot is a place where Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet, non!',
-    location: 'Bali, Tabanan'
-  },
-  {
-    id: '2',
-    title: 'Lempuyang',
-    img: 'https://ik.imagekit.io/rom/melancong/landscape/image-12-landscape.webp?updatedAt=1721609668098',
-    rating: '4,9',
-    description:
-      'Lempuyang is a place where Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet, non!',
-    location: 'Bali, Tabanan'
-  },
-  {
-    id: '3',
-    title: 'Goa Lawah',
-    img: 'https://ik.imagekit.io/rom/melancong/landscape/image-10-landscape.webp?updatedAt=1721609668000',
-    rating: '4,1',
-    description:
-      'Goa Lawah is a place where Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet, non!',
-    location: 'Bali, Tabanan'
-  },
-  {
-    id: '4',
-    title: 'Pandawa Beach',
-    img: 'https://ik.imagekit.io/rom/melancong/landscape/image-3-landscape.webp?updatedAt=1721609667419',
-    rating: '4,9',
-    description:
-      'Pandawa Beach is a place where Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet, non!',
-    location: 'Bali, Tabanan'
-  },
-  {
-    id: '5',
-    title: 'Uluwatu Temple',
-    img: 'https://ik.imagekit.io/rom/melancong/landscape/image-6-landscape.webp?updatedAt=1721609670870',
-    rating: '4,2',
-    description:
-      'Pandawa Beach is a place where Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet, non!',
-    location: 'Bali, Tabanan'
-  },
-  {
-    id: '6',
-    title: 'Uluwatu Temple',
-    img: 'https://ik.imagekit.io/rom/melancong/landscape/image-6-landscape.webp?updatedAt=1721609670870',
-    rating: '4,2',
-    description:
-      'Pandawa Beach is a place where Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet, non!',
-    location: 'Bali, Tabanan'
-  },
-  {
-    id: '7',
-    title: 'Uluwatu Temple',
-    img: 'https://ik.imagekit.io/rom/melancong/landscape/image-6-landscape.webp?updatedAt=1721609670870',
-    rating: '4,2',
-    description:
-      'Pandawa Beach is a place where Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet, non!',
-    location: 'Bali, Tabanan'
-  },
-  {
-    id: '8',
-    title: 'Uluwatu Temple',
-    img: 'https://ik.imagekit.io/rom/melancong/landscape/image-6-landscape.webp?updatedAt=1721609670870',
-    rating: '4,2',
-    description:
-      'Pandawa Beach is a place where Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet, non!',
-    location: 'Bali, Tabanan'
-  }
+export const landingLinks = [
+  { name: 'Home', link: '/', icon: <IconHome /> },
+  { name: 'Recommendation', link: '#recommendation', icon: <IconStars /> },
+  { name: 'About', link: '#about', icon: <IconUsersGroup /> },
+  { name: 'Services', link: '#services', icon: <IconHeadset /> },
+  { name: 'dashboard', link: '/dashboard', icon: <IconUserBolt /> }
 ]
 
 export const words = ['discover', 'explore', 'find', 'Enjoy']
@@ -189,48 +128,86 @@ export const destinationTypes = [
   'Countryside'
 ]
 
-export const links = [
+export const sidebarLinks = [
   {
-    label: 'Dashboard',
+    label: 'My Dashboard',
     href: '/dashboard',
     icon: (
       <IconBrandTabler className='h-5 w-5 flex-shrink-0 text-neutral-700 dark:text-neutral-200' />
     )
   },
   {
-    label: 'Profile',
+    label: 'My Profile',
     href: '/dashboard/profile',
     icon: (
       <IconUserBolt className='h-5 w-5 flex-shrink-0 text-neutral-700 dark:text-neutral-200' />
     )
   },
   {
-    label: 'View Save Destination',
+    label: 'My Favorites',
     href: '/dashboard/saved',
     icon: (
       <IconSettings className='h-5 w-5 flex-shrink-0 text-neutral-700 dark:text-neutral-200' />
     )
   },
   {
-    label: 'Filter',
-    href: '#',
-    icon: (
-      <IconArrowLeft className='h-5 w-5 flex-shrink-0 text-neutral-700 dark:text-neutral-200' />
-    )
-  },
-  {
     label: 'Logout',
-    href: '/auth/logout',
+    href: '/landing',
     icon: (
       <IconArrowLeft className='h-5 w-5 flex-shrink-0 text-neutral-700 dark:text-neutral-200' />
     )
   }
 ]
 
-export const placeholders = [
+export const inputSearchPlaceholders = [
   'Searching for destinations?',
   'Try to search for tanah lot..',
   'Not sure where to go?',
   'Try to search for the beach',
   'Not solved your issue? then try to ask for our chatbot'
+]
+
+export const AboutCardGrids = [
+  {
+    id: 1,
+    content: <SkeletonOne />,
+    className: 'md:col-span-2',
+    thumbnail:
+      'https://images.unsplash.com/photo-1476231682828-37e571bc172f?q=80&w=3474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    id: 2,
+    content: <SkeletonTwo />,
+    className: 'col-span-1',
+    thumbnail:
+      'https://images.unsplash.com/photo-1464457312035-3d7d0e0c058e?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    id: 3,
+    content: <SkeletonThree />,
+    className: 'col-span-1',
+    thumbnail:
+      'https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    id: 4,
+    content: <SkeletonFour />,
+    className: 'md:col-span-2',
+    thumbnail:
+      'https://images.unsplash.com/photo-1475070929565-c985b496cb9f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    id: 5,
+    content: <SkeletonFive />,
+    className: 'md:col-span-2',
+    thumbnail:
+      'https://images.unsplash.com/photo-1475070929565-c985b496cb9f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    id: 6,
+    content: <SkeletonSix />,
+    className: 'md:col-span-1',
+    thumbnail:
+      'https://images.unsplash.com/photo-1475070929565-c985b496cb9f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  }
 ]

@@ -18,6 +18,8 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: #3d306c;
+    background: #000;
   }
+
+  scroll-behavior: smooth;
 }

@@ -10,18 +10,16 @@ interface Props {
 const AboutList: NextPage<Props> = ({ icon, title, description }) => {
   return (
     <>
-      <div className='flex items-center justify-center gap-4 pt-4 md:flex-col md:items-start lg:flex-row lg:items-center'>
-        {/* icon */}
-        <div className='relative ml-3 flex items-center justify-center pr-6 md:pb-4 lg:pb-0'>
-          <div className='absolute -z-10 size-12 rounded-full bg-neutral-900 p-3 md:-left-4 md:-top-4'></div>
-          {icon}
-        </div>
+      <div className='flex items-center justify-center gap-4 pt-4 md:mt-4 md:flex-col md:items-start md:justify-normal lg:mt-0 lg:flex-row lg:items-center'>
+        <div className='ml-4 flex flex-col md:ml-0 md:items-center lg:items-start'>
+          <div className='mb-4 flex items-center gap-4 md:flex-col lg:flex-row'>
+            <div className='rounded-full bg-neutral-800 p-4'>{icon}</div>
+            <h2 className='mb-2 text-xl font-bold text-neutral-800 md:text-2xl'>
+              {title}
+            </h2>
+          </div>
 
-        <div className='flex flex-col'>
-          <h2 className='text-xl font-bold text-neutral-800 md:text-2xl'>
-            {title}
-          </h2>
-          <p className='w-full text-sm text-neutral-600 md:w-[90%] lg:w-full'>
+          <p className='w-full text-pretty text-sm leading-relaxed text-neutral-600 md:w-[90%] lg:w-full'>
             {description}
           </p>
         </div>

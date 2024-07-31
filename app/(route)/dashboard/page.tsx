@@ -1,58 +1,125 @@
 'use client'
 import { NextPage } from 'next'
-import { useState } from 'react'
-import DashboardSidebar from '@/app/(route)/dashboard/partials/DashboardSidebar'
-import DashboardDestination from '@/app/(route)/dashboard/partials/DashboardDestination'
 import useDestinations from '@/app/hooks/useDestinations'
+import { PlaceholdersAndVanishInput } from '@/components/ui/input/placeholders-and-vanish-input'
+import { inputSearchPlaceholders } from '@/data'
+import CustomCard from '@/components/ui/card/CustomCard'
+import { useRouter } from 'next/navigation'
+import { IconFilter } from '@tabler/icons-react'
+import Filter from '@/components/ui/Filter'
+import useFilter from '@/app/hooks/useFilter'
+import React from 'react'
 
 interface Props {}
 
 const DashboardPage: NextPage<Props> = () => {
-  const [searchQuery, setSearchQuery] = useState<string>('')
-  const [locationFilter, setLocationFilter] = useState<string>('')
-  const [destinationTypeFilter, setDestinationTypeFilter] = useState<string>('')
-  const { destinations, fetchDestinations } = useDestinations()
-  const [filterSubmitted, setFilterSubmitted] = useState(false)
-
-  const handleFilterSubmit = () => {
-    fetchDestinations(searchQuery, locationFilter, destinationTypeFilter)
-    setFilterSubmitted(true)
+  const router = useRouter()
+  const { loading, error, savedDestinations, handleToggleSave } =
+    useDestinations()
+  const {
+    handleFilterReset,
+    handleFilterSubmit,
+    setIsSidebarOpen,
+    isSidebarOpen,
+    locationFilter,
+    setLocationFilter,
+    destinationTypeFilter: filterType,
+    setDestinationTypeFilter: setFilterType,
+    destinations,
+    handleSearch,
+    searchQuery,
+    isFilterSubmit: filterSubmitted
+  } = useFilter()
+  const handleFilterClick = () => {
+    setIsSidebarOpen(!isSidebarOpen)
   }
 
-  const handleFilterReset = () => {
-    setSearchQuery('')
-    setLocationFilter('')
-    setDestinationTypeFilter('')
-    fetchDestinations()
-    setFilterSubmitted(false)
+  const handleCardClick = (id: string) => {
+    router.push(`/destinations/${id}`)
   }
-
-  const handleSearch = (query: string) => {
-    setSearchQuery(query)
-    fetchDestinations(query)
-    setFilterSubmitted(true)
-    setSearchQuery('')
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
+    handleSearch(e.target.value)
+  }
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    handleSearch(searchQuery)
+  }
+  const handleKeyPress = (
+    event: React.KeyboardEvent<HTMLDivElement>,
+    id: string
+  ) => {
+    if (event.key === 'Enter') {
+      handleCardClick(id)
+    }
   }
 
   return (
     <>
       <div className='w-full'>
         <div className='flex'>
-          <DashboardSidebar
-            locationFilter={locationFilter}
-            setLocationFilter={setLocationFilter}
-            destinationTypeFilter={destinationTypeFilter}
-            setDestinationTypeFilter={setDestinationTypeFilter}
-            handleFilterSubmit={handleFilterSubmit}
-            handleFilterReset={handleFilterReset}
-          />
-          <DashboardDestination
-            destinations={destinations}
-            searchQuery={searchQuery}
-            handleSearch={handleSearch}
-            filterSubmitted={filterSubmitted}
-          />
+          <div className='size-full bg-neutral-100'>
+            <div className='flex h-full min-h-dvh w-full flex-1 flex-col gap-2 bg-white p-5 dark:border-neutral-700 dark:bg-neutral-900 md:p-10 md:pl-32 md:pr-16'>
+              <div className='flex items-center gap-4 py-4'>
+                <PlaceholdersAndVanishInput
+                  placeholders={inputSearchPlaceholders}
+                  onChange={handleChange}
+                  onSubmit={onSubmit}
+                />
+                <button
+                  type='button'
+                  className='flex items-center gap-2 rounded-full bg-cyan-500 px-4 py-3 text-sm font-medium text-white'
+                  onClick={handleFilterClick}
+                >
+                  <IconFilter />
+                  filter
+                </button>
+              </div>
+
+              <h1 className='mb-4 text-lg font-bold'>Recommendation</h1>
+              {loading && (
+                <div className='flex h-screen items-center justify-center'>
+                  <div className='h-10 w-10 animate-spin rounded-full border-4 border-t-4 border-gray-200 border-t-blue-500'></div>
+                </div>
+              )}
+              {error && <p className='text-red-500'>{error}</p>}
+              {!loading && !error && destinations.length > 0 && (
+                <div className='grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5'>
+                  {destinations.map(destination => (
+                    <CustomCard
+                      key={destination.id}
+                      title={destination.name}
+                      img={destination.imageLink}
+                      rating={parseFloat(destination.rating)}
+                      location={destination.regency}
+                      description={`${destination.information.slice(0, 70)}...`}
+                      clickToDetail={() => handleCardClick(destination.id)}
+                      onKeyPress={e => handleKeyPress(e, destination.id)}
+                      isSaveAvailable={true}
+                      handleToggleSave={() => handleToggleSave(destination.id)}
+                      isSaved={savedDestinations.includes(destination.id)}
+                    />
+                  ))}
+                </div>
+              )}
+              {filterSubmitted && destinations.length === 0 && (
+                <p className='text-center text-gray-500'>
+                  No destinations found
+                </p>
+              )}
+            </div>
+          </div>
         </div>
+        <Filter
+          isSidebarOpen={isSidebarOpen}
+          setIsSidebarOpen={setIsSidebarOpen}
+          handleFilterSubmit={handleFilterSubmit}
+          handleFilterReset={handleFilterReset}
+          locationFilter={locationFilter}
+          setLocationFilter={setLocationFilter}
+          destinationTypeFilter={filterType}
+          setDestinationTypeFilter={setFilterType}
+        />
       </div>
     </>
   )

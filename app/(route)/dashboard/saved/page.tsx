@@ -3,10 +3,10 @@
 
 import React, { useEffect, useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
-import { FiSearch } from 'react-icons/fi'
 import api from '@/app/api/axios'
 import withAuth from '@/app/withAuth'
 import CustomCard from '@/components/ui/card/CustomCard'
+import { IconSearch } from '@tabler/icons-react'
 
 interface Destination {
   id: string
@@ -87,13 +87,13 @@ const Saved: React.FC = () => {
   }
 
   return (
-    <div className='w-full bg-white p-5 font-sans text-black md:p-10'>
+    <div className='w-full bg-white p-5 font-sans text-black md:p-10 md:pl-36 md:pr-16'>
       <form
         onSubmit={handleSearch}
         className='mb-5 flex items-center justify-between'
       >
         <div className='flex flex-1 items-center rounded-full bg-gray-100 p-2 text-black'>
-          <FiSearch className='mr-2' />
+          <IconSearch className='mr-2' />
           <input
             type='text'
             value={searchQuery}
@@ -104,7 +104,7 @@ const Saved: React.FC = () => {
         </div>
         <div className='ml-2 cursor-pointer rounded-full bg-gray-200 p-2'></div>
       </form>
-      <h1 className='text-xl font-bold'>Saved Places</h1>
+      <h1 className='py-6 text-xl font-bold'>Saved Places</h1>
       {loading && (
         <div className='flex h-screen items-center justify-center'>
           <div className='h-10 w-10 animate-spin rounded-full border-4 border-t-4 border-gray-200 border-t-blue-500'></div>
@@ -114,7 +114,7 @@ const Saved: React.FC = () => {
       {destinations.length === 0 && (
         <p className='text-center text-gray-500'>No destinations found</p>
       )}
-      <div className='grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
+      <div className='grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5'>
         {destinations.map(destination => (
           <CustomCard
             key={destination.id}
