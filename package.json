@@ -32,6 +32,7 @@
     "react-hook-form": "^7.52.1",
     "sharp": "^0.33.4",
     "styled-components": "^6.1.11",
+    "sweetalert2": "^11.12.3",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7"
   },

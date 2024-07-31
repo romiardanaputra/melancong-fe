@@ -4,6 +4,7 @@ import { NextPage } from 'next'
 import { useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Swal from 'sweetalert2'
 import FieldComponent from '@/components/ui/form/Field'
 import SubmitButton from '@/components/ui/button/SubmitButton'
 import api from '@/app/api/axios'
@@ -16,15 +17,17 @@ const SignUpPage: NextPage<Props> = () => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>('')
-  const [error, setError] = useState<string>('')
   const router = useRouter()
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
-    setError('')
 
     if (password !== passwordConfirmation) {
-      setError('Passwords do not match')
+      Swal.fire({
+        icon: 'error',
+        html: 'Passwords do not match',
+        confirmButtonColor: '#00838F'
+      })
       return
     }
 
@@ -38,16 +41,37 @@ const SignUpPage: NextPage<Props> = () => {
       const data = response.data
 
       if (response.status === 201) {
-        router.push('/login')
+        Swal.fire({
+          icon: 'success',
+          html: 'Registration Successfully, please check your email for a link to verify your account',
+          confirmButtonColor: '#00838F',
+          iconColor: '#00838F'
+        }).then(result => {
+          if (result.isConfirmed) {
+            router.push('/login')
+          }
+        })
       } else {
-        setError(data.message)
+        Swal.fire({
+          icon: 'error',
+          html: `${data.message}`,
+          confirmButtonColor: '#00838F'
+        })
       }
     } catch (err) {
       const errorResponse = err as ErrorResponse
       if (errorResponse.response?.data?.message) {
-        setError(errorResponse.response.data.message)
+        Swal.fire({
+          icon: 'error',
+          html: `${errorResponse.response.data.message}`,
+          confirmButtonColor: '#00838F'
+        })
       } else {
-        setError('An unexpected error occurred')
+        Swal.fire({
+          icon: 'error',
+          html: 'An unexpected error occurred',
+          confirmButtonColor: '#00838F'
+        })
       }
     }
   }
@@ -116,7 +140,6 @@ const SignUpPage: NextPage<Props> = () => {
               onChange={e => setPasswordConfirmation(e.target.value)}
             />
 
-            {error && <p className='text-red-500'>{error}</p>}
             <SubmitButton btnText='Register Now' />
           </form>
           <div className='flex justify-center py-4'>

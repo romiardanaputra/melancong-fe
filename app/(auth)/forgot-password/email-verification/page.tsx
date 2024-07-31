@@ -4,6 +4,7 @@ import { useState, FormEvent } from 'react'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import SubmitButton from '@/components/ui/button/SubmitButton'
+import Swal from 'sweetalert2'
 import FieldComponent from '@/components/ui/form/Field'
 import api from '@/app/api/axios'
 import ErrorResponse from '@/app/api/error'
@@ -12,28 +13,41 @@ interface Props {}
 
 const EmailConfirmation: NextPage<Props> = () => {
   const [email, setEmail] = useState<string>('')
-  const [error, setError] = useState<string>('')
-  const [success, setSuccess] = useState<string>('')
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
-    setError('')
-    setSuccess('')
 
     try {
       const response = await api.post('/auth/forgot-password', { email })
 
       if (response.status === 200) {
-        setSuccess('A password reset link has been sent to your email address.')
+        Swal.fire({
+          icon: 'info',
+          html: 'A password reset link has been sent to<br> your email address.',
+          confirmButtonColor: '#00838F',
+          iconColor: '#00838F'
+        })
       } else {
-        setError('Failed to send verification email.')
+        Swal.fire({
+          icon: 'error',
+          html: 'Failed to send verification email.',
+          confirmButtonColor: '#00838F'
+        })
       }
     } catch (err) {
       const errorResponse = err as ErrorResponse
       if (errorResponse.response?.data?.message) {
-        setError(errorResponse.response.data.message)
+        Swal.fire({
+          icon: 'error',
+          html: `${errorResponse.response.data.message}`,
+          confirmButtonColor: '#00838F'
+        })
       } else {
-        setError('An unexpected error occurred')
+        Swal.fire({
+          icon: 'error',
+          html: 'An unexpected error occurred',
+          confirmButtonColor: '#00838F'
+        })
       }
     }
   }
@@ -62,8 +76,6 @@ const EmailConfirmation: NextPage<Props> = () => {
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
-            {error && <p className='text-red-500'>{error}</p>}
-            {success && <p className='text-green-500'>{success}</p>}
             <SubmitButton btnText='Submit' />
           </form>
 
