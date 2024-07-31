@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
-import { FaArrowLeft } from 'react-icons/fa6'
 import { destinationLocations, destinationTypes } from '@/data'
 import Image from 'next/image'
+import { IconArrowLeft } from '@tabler/icons-react'
 
 interface Props {
   isSidebarOpen: boolean
@@ -41,7 +41,7 @@ const SideBar: NextPage<Props> = ({
               onClick={() => setIsSidebarOpen(false)}
               aria-label='Close Sidebar'
             >
-              <FaArrowLeft className='text-xl' />
+              <IconArrowLeft className='text-xl' />
             </button>
             <h2 className='text-xl font-bold'>Filter</h2>
           </div>
