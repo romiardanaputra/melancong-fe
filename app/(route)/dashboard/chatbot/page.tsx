@@ -58,59 +58,65 @@ const Chatbot: React.FC = () => {
   const isLoading = messages.some(message => message.type === 'loading')
 
   return (
-    <div className="min-h-screen flex flex-col justify-between mx-auto bg-white p-5 rounded-lg shadow-lg w-full lg:w-11/12 md:w-9/12 lg:p-10">
-      <div className="text-center mb-5">
+    <div className='mx-auto flex min-h-screen w-full flex-col justify-between rounded-lg bg-white p-5 shadow-lg md:w-9/12 lg:w-11/12 lg:p-10'>
+      <div className='mb-5 text-center'>
         <img
           src='https://firebasestorage.googleapis.com/v0/b/melanc0ng.appspot.com/o/image%2Fmaskot-melancong.png?alt=media&token=d1a78151-3b0a-473f-9b2f-c499a62c2e0a'
           alt='Chatbot'
-          className="w-32 h-32 mx-auto mb-3"
+          className='mx-auto mb-3 h-32 w-32'
         />
-        <p className="text-lg text-gray-700">
-          Hello! My name is MelBot. I&apos;m here to help you find<br />
+        <p className='text-lg text-gray-700'>
+          Hello! My name is MelBot. I&apos;m here to help you find
+          <br />
           tourist destinations and plan your trip. I&apos;m ready to help!
         </p>
       </div>
-      <hr className="w-full border-t border-gray-300 mb-5" />
-      <div className={`w-full flex-1 overflow-y-auto mb-5 ${isLoading ? 'overflow-hidden' : ''}`}>
-        <div className="flex flex-col">
+      <hr className='mb-5 w-full border-t border-gray-300' />
+      <div
+        className={`mb-5 w-full flex-1 overflow-y-auto ${isLoading ? 'overflow-hidden' : ''}`}
+      >
+        <div className='flex flex-col'>
           {messages.map((message, index) =>
             message.type === 'user' ? (
               <div
                 key={index}
-                className="self-end bg-indigo-600 text-white p-3 rounded-lg my-1 max-w-[80%]"
+                className='my-1 max-w-[80%] self-end rounded-lg bg-indigo-600 p-3 text-white'
               >
                 {message.text}
               </div>
             ) : message.type === 'bot' ? (
               <div
                 key={index}
-                className="self-start bg-gray-200 text-black p-3 rounded-lg my-1 max-w-[80%]"
+                className='my-1 max-w-[80%] self-start rounded-lg bg-gray-200 p-3 text-black'
               >
                 {message.text}
               </div>
             ) : (
               <div
                 key={index}
-                className="self-start bg-gray-200 text-black p-3 rounded-lg my-1 max-w-[80%] flex"
+                className='my-1 flex max-w-[80%] self-start rounded-lg bg-gray-200 p-3 text-black'
               >
-                <div className="animate-pulse mx-1">.</div>
-                <div className="animate-pulse mx-1">.</div>
-                <div className="animate-pulse mx-1">.</div>
+                <div className='mx-1 animate-pulse'>.</div>
+                <div className='mx-1 animate-pulse'>.</div>
+                <div className='mx-1 animate-pulse'>.</div>
               </div>
             )
           )}
         </div>
       </div>
-      <form onSubmit={handleSubmit} className="w-full flex">
+      <form onSubmit={handleSubmit} className='flex w-full'>
         <input
           type='text'
           value={prompt}
           onChange={e => setPrompt(e.target.value)}
           placeholder='Type message...'
           required
-          className="flex-1 p-3 text-black border border-cyan-800 rounded-l-lg bg-gray-100"
+          className='flex-1 rounded-l-lg border border-cyan-800 bg-gray-100 p-3 text-black'
         />
-        <button type='submit' className="p-3 bg-cyan-800 text-white rounded-r-lg">
+        <button
+          type='submit'
+          className='rounded-r-lg bg-cyan-800 p-3 text-white'
+        >
           Send
         </button>
       </form>
