@@ -85,7 +85,7 @@ const CustomCard: NextPage<ImageCardProps> = ({
             <Link href='/login' className='text-sm font-medium'>
               Read More...
             </Link>
-            <button className='flex items-center space-x-1 rounded-full bg-cyan-600 py-1 pl-4 pr-1 text-xs font-bold text-white dark:bg-zinc-800'>
+            <button className='flex items-center space-x-1 rounded-full bg-cyan-700 py-1 pl-4 pr-1 text-xs font-bold text-white dark:bg-zinc-800'>
               <p>Rating </p>
               <p className='rounded-full bg-neutral-200 px-2 py-0 text-[0.6rem] text-zinc-800'>
                 {rating}
