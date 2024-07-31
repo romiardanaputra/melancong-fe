@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import api from '@/app/api/axios'
 import withAuth from '@/app/withAuth'
+import Image from 'next/image'
 
 interface ErrorResponse {
   response: {
@@ -60,10 +61,12 @@ const Chatbot: React.FC = () => {
   return (
     <div className='mx-auto flex min-h-screen w-full flex-col justify-between rounded-lg bg-white p-5 shadow-lg md:w-9/12 lg:w-11/12 lg:p-10'>
       <div className='mb-5 text-center'>
-        <img
+        <Image
           src='https://firebasestorage.googleapis.com/v0/b/melanc0ng.appspot.com/o/image%2Fmaskot-melancong.png?alt=media&token=d1a78151-3b0a-473f-9b2f-c499a62c2e0a'
           alt='Chatbot'
-          className='mx-auto mb-3 h-32 w-32'
+          className='mx-auto mb-3'
+          width={128}
+          height={128}
         />
         <p className='text-lg text-gray-700'>
           Hello! My name is MelBot. I&apos;m here to help you find
