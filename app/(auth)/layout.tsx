@@ -21,7 +21,7 @@ const AuthLayout: NextPage<Props> = ({ children }) => {
               priority={true}
               quality={50}
             />
-            <div className='absolute inset-0 bg-black opacity-50'></div>
+            <div className='absolute inset-0 bg-black opacity-20'></div>
           </div>
           {/* auth page */}
           <div className='container max-w-screen-sm py-8 lg:max-w-screen-sm'>
