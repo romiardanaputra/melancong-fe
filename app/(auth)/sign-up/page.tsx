@@ -80,7 +80,7 @@ const SignUpPage: NextPage<Props> = () => {
     <>
       <div className=''>
         <div className='space-y-2 py-12'>
-          <span className='text-sm font-medium text-gray-400'>
+          <span className='text-sm font-medium text-gray-600'>
             -registration page
           </span>
           <h1 className='text-3xl font-bold'>Welcome New User</h1>

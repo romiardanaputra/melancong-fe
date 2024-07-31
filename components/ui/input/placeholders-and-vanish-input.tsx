@@ -191,6 +191,7 @@ export function PlaceholdersAndVanishInput({
         value && 'bg-gray-50'
       )}
       onSubmit={handleSubmit}
+      id='searhFormInput'
     >
       <canvas
         className={cn(
@@ -200,6 +201,9 @@ export function PlaceholdersAndVanishInput({
         ref={canvasRef}
       />
       <IconSearch className='absolute left-2 top-1/2 size-5 -translate-y-1/2 text-black dark:text-white' />
+      <label htmlFor='search' aria-label='search label' className='hidden'>
+        search bar
+      </label>
       <input
         onChange={e => {
           if (!animating) {
@@ -211,6 +215,8 @@ export function PlaceholdersAndVanishInput({
         ref={inputRef}
         value={value}
         type='text'
+        id='search'
+        aria-label='search'
         className={cn(
           'relative z-50 h-full w-full rounded-full border-none bg-transparent pl-4 pr-20 text-sm text-black focus:outline-none focus:ring-0 dark:text-white sm:pl-10 sm:text-base',
           animating && 'text-transparent dark:text-transparent'
@@ -220,6 +226,7 @@ export function PlaceholdersAndVanishInput({
       <button
         disabled={!value}
         type='submit'
+        aria-label='right-angle-search'
         className='absolute right-2 top-1/2 z-50 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-black transition duration-200 disabled:bg-gray-100 dark:bg-zinc-900 dark:disabled:bg-zinc-800'
       >
         <motion.svg

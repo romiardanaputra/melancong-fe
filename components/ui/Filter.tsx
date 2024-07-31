@@ -35,6 +35,7 @@ const Filter: NextPage<Props> = ({
         role='dialog'
         aria-labelledby='sidebar-title'
         aria-modal='true'
+        aria-label='sidebar'
       >
         <div className='p-5'>
           <div className='flex items-center space-x-2'>
@@ -57,7 +58,7 @@ const Filter: NextPage<Props> = ({
                 <button
                   key={location}
                   onClick={() => setLocationFilter(location)}
-                  className={`rounded-full px-3 py-1 tracking-wide will-change-transform ${locationFilter === location ? 'transform bg-cyan-500 text-white transition-all' : 'bg-gray-200 text-neutral-900'}`}
+                  className={`rounded-full px-3 py-1 tracking-wide will-change-transform ${locationFilter === location ? 'transform bg-cyan-800 text-white transition-all' : 'bg-gray-200 text-neutral-900'}`}
                 >
                   {location}
                 </button>
@@ -76,7 +77,7 @@ const Filter: NextPage<Props> = ({
                 <button
                   key={destination}
                   onClick={() => setDestinationTypeFilter(destination)}
-                  className={`rounded-full px-3 py-1 text-neutral-800 will-change-transform ${destinationTypeFilter === destination ? 'transform bg-cyan-500 text-white transition-all' : 'bg-gray-200 text-neutral-900'}`}
+                  className={`rounded-full px-3 py-1 text-neutral-800 will-change-transform ${destinationTypeFilter === destination ? 'transform bg-cyan-800 text-white transition-all' : 'bg-gray-200 text-neutral-900'}`}
                 >
                   {destination}
                 </button>
@@ -91,7 +92,7 @@ const Filter: NextPage<Props> = ({
 
           <div className='mt-6 flex justify-between'>
             <button
-              className='rounded-full bg-cyan-600 px-8 py-2 text-white'
+              className='rounded-full bg-cyan-800 px-8 py-2 text-white'
               onClick={handleFilterSubmit}
             >
               Submit
@@ -104,7 +105,11 @@ const Filter: NextPage<Props> = ({
             </button>
           </div>
           <div className='flex justify-center py-10'>
-            <Logo width={150} height={100} className='aspect-auto h-20 w-32' />
+            <Logo
+              width={150}
+              height={100}
+              className='aspect-square h-20 w-32'
+            />
           </div>
         </div>
       </div>

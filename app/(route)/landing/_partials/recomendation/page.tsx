@@ -30,7 +30,7 @@ const Recommendation: NextPage<Props> = () => {
         <h1 className='py-12 text-center text-4xl font-medium'>
           What We Reccomends <br /> For You
         </h1>
-        <div className='grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+        <div className='grid grid-cols-1 justify-items-center gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
           {destinations
             .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))
             .filter(item => parseFloat(item.rating) > 4.5)

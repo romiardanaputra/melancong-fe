@@ -59,7 +59,7 @@ const DashboardPage: NextPage<Props> = () => {
       <div className='w-full'>
         <div className='flex'>
           <div className='size-full bg-neutral-100'>
-            <div className='flex h-full min-h-dvh w-full flex-1 flex-col gap-2 bg-white p-5 dark:border-neutral-700 dark:bg-neutral-900 md:p-10 md:pl-32 md:pr-16'>
+            <div className='flex h-full min-h-dvh w-full flex-1 flex-col gap-2 bg-white p-5 dark:border-neutral-700 dark:bg-neutral-900 md:p-10 md:pl-28 md:pr-16'>
               <div className='flex items-center gap-4 py-4'>
                 <PlaceholdersAndVanishInput
                   placeholders={inputSearchPlaceholders}
@@ -68,7 +68,8 @@ const DashboardPage: NextPage<Props> = () => {
                 />
                 <button
                   type='button'
-                  className='flex items-center gap-2 rounded-full bg-cyan-500 px-4 py-3 text-sm font-medium text-white'
+                  aria-label='filter button'
+                  className='flex items-center gap-2 rounded-full bg-cyan-800 px-4 py-3 text-sm font-medium text-white'
                   onClick={handleFilterClick}
                 >
                   <IconFilter />
@@ -84,7 +85,7 @@ const DashboardPage: NextPage<Props> = () => {
               )}
               {error && <p className='text-red-500'>{error}</p>}
               {!loading && !error && destinations.length > 0 && (
-                <div className='grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5'>
+                <div className='grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 min-[1440px]:grid-cols-4 min-[1700px]:grid-cols-5'>
                   {destinations.map(destination => (
                     <CustomCard
                       key={destination.id}

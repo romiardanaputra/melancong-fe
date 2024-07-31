@@ -114,7 +114,7 @@ const Saved: React.FC = () => {
       {destinations.length === 0 && (
         <p className='text-center text-gray-500'>No destinations found</p>
       )}
-      <div className='grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5'>
+      <div className='grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 min-[1440px]:grid-cols-4 min-[1700px]:grid-cols-5'>
         {destinations.map(destination => (
           <CustomCard
             key={destination.id}
@@ -128,6 +128,7 @@ const Saved: React.FC = () => {
             isSaveAvailable={true}
             handleDelete={() => handleDelete(destination.id)}
             isSavedRemove={true}
+            isSaved={true}
           />
         ))}
       </div>
