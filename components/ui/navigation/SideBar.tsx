@@ -32,6 +32,7 @@ const SideBar: NextPage<Props> = ({
         }`}
         role='dialog'
         aria-labelledby='sidebar-title'
+        aria-label='sidebar'
         aria-modal='true'
       >
         <div className='p-5'>
