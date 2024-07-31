@@ -39,6 +39,7 @@ const CustomCard: NextPage<ImageCardProps> = ({
       <div
         className='max-w-sm transform rounded-lg bg-white shadow-md transition duration-400 ease-in-out will-change-transform hover:-translate-y-2 dark:bg-zinc-900'
         role='button'
+        aria-label='destination card'
         tabIndex={0}
         onClick={clickToDetail}
         onKeyPress={onKeyPress}
@@ -52,10 +53,13 @@ const CustomCard: NextPage<ImageCardProps> = ({
             className='aspect-[4/3] object-cover object-center sm:aspect-[4/3] md:aspect-[16/9] lg:aspect-[4/3]'
             loading='lazy'
             sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+            placeholder='blur'
+            blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
           />
           {isSaveAvailable && (
             <button
               type='button'
+              aria-label='toggle save button'
               onClick={e => {
                 e.stopPropagation()
                 if (isSavedRemove) {
@@ -67,9 +71,9 @@ const CustomCard: NextPage<ImageCardProps> = ({
                   handleToggleSave()
                 }
               }}
-              className={`absolute right-0 top-0 p-4 ${isSaved ? 'bg-cyan-500' : 'bg-white/80'}`}
+              className={`absolute right-0 top-0 p-4 ${isSaved ? 'bg-cyan-800' : 'bg-white/80'}`}
             >
-              <IconStar className='text-neutral-900' />
+              <IconStar className={isSaved ? 'text-white' : 'text-cyan-800'} />
             </button>
           )}
         </div>
@@ -82,10 +86,14 @@ const CustomCard: NextPage<ImageCardProps> = ({
             {description}
           </p>
           <div className='mt-4 flex items-center justify-between gap-4'>
-            <Link href='/login' className='text-sm font-medium'>
+            <Link href='/login' className='p-2 text-sm font-medium'>
               Read More...
             </Link>
-            <button className='flex items-center space-x-1 rounded-full bg-cyan-700 py-1 pl-4 pr-1 text-xs font-bold text-white dark:bg-zinc-800'>
+            <button
+              type='button'
+              aria-label='rating button'
+              className='flex items-center space-x-1 rounded-full bg-cyan-700 py-1 pl-4 pr-1 text-xs font-bold text-white dark:bg-zinc-800'
+            >
               <p>Rating </p>
               <p className='rounded-full bg-neutral-200 px-2 py-0 text-[0.6rem] text-zinc-800'>
                 {rating}
