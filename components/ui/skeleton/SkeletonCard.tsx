@@ -81,9 +81,10 @@ export const SkeletonSix = () => {
       <p className='my-4 max-w-lg text-base font-normal text-neutral-200'>
         Tanah Lot is a rock formation off the coast of Bali, home to an ancient
         Hindu temple, Pura Tanah Lot. Located in Beraban, Kediri, Tabanan, the
-        temple is a famous cultural and tourist icon. The name &quot;Tanah Lot&quot; comes
-        from the words &quot;Tanah&quot; meaning island, and &quot;Lot&quot; meaning sea, reflecting
-        its unique location on a rock in the middle of the sea.
+        temple is a famous cultural and tourist icon. The name &quot;Tanah
+        Lot&quot; comes from the words &quot;Tanah&quot; meaning island, and
+        &quot;Lot&quot; meaning sea, reflecting its unique location on a rock in
+        the middle of the sea.
       </p>
     </div>
   )
