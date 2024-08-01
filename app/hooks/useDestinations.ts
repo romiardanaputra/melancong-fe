@@ -3,12 +3,13 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import api from '@/app/api/axios'
 
-interface Destination {
+export interface Destination {
   id: string
   name: string
   rating: string
   regency: string
   imageLink: string
+  information: string
 }
 
 interface ErrorResponse {
@@ -30,6 +31,7 @@ const useDestinations = () => {
     destinationType: string = ''
   ) => {
     setLoading(true)
+    setError('')
     let apiUrl = '/destinations'
     const params = new URLSearchParams()
 
@@ -50,16 +52,9 @@ const useDestinations = () => {
     try {
       const response = await api.get(apiUrl)
       setDestinations(response.data.data)
-      setError('')
-    } catch (err) {
-      const errorRes = err as ErrorResponse
-      if (errorRes.response.status === 401) {
-        router.push('/login')
-      } else {
-        setError('An unexpected error occurred')
-      }
-    } finally {
       setLoading(false)
+    } catch (err) {
+      setError('An unexpected error occurred')
     }
   }
 
@@ -71,7 +66,7 @@ const useDestinations = () => {
       )
     } catch (err) {
       const errorRes = err as ErrorResponse
-      if (errorRes.response.status === 401) {
+      if (errorRes?.response?.status === 401) {
         router.push('/login')
       } else {
         setError('An unexpected error occurred')

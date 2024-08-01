@@ -7,21 +7,18 @@ const config = {
   darkMode: ['class'],
   content: [
     './pages/**/*.{ts,tsx}',
+    './data/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
     './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
-    './pages/**/*.{ts,tsx}',
     './public/**/*.html'
   ],
   prefix: '',
   theme: {
     container: {
       center: true,
-      padding: '2rem',
-      screens: {
-        '2xl': '1400px'
-      }
+      padding: '2rem'
     },
     extend: {
       colors: {

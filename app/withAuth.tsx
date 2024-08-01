@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Swal from 'sweetalert2'
 
 const withAuth = <P extends object>(
   WrappedComponent: React.ComponentType<P>
@@ -10,7 +11,16 @@ const withAuth = <P extends object>(
     useEffect(() => {
       const token = localStorage.getItem('token')
       if (!token) {
-        router.push('/login')
+        Swal.fire({
+          title: 'Login Required',
+          text: 'You must login to continue.',
+          icon: 'info',
+          confirmButtonColor: '#00838F'
+        }).then(result => {
+          if (result.isConfirmed) {
+            router.push('/login')
+          }
+        })
       }
     }, [router])
 

@@ -5,7 +5,8 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import api from '@/app/api/axios'
 import withAuth from '@/app/withAuth'
-import { FaLocationDot, FaStar, FaArrowLeft } from 'react-icons/fa6'
+import Image from 'next/image'
+import { IconArrowLeft, IconLocation, IconStar } from '@tabler/icons-react'
 
 interface DestinationDetail {
   id: string
@@ -78,26 +79,33 @@ const DestinationDetailPage: React.FC<{ params: { id: string } }> = ({
   return (
     <div className='mx-auto max-w-md p-5 md:max-w-4xl'>
       <div className='relative overflow-hidden rounded-lg bg-white shadow-md'>
-        <img
-          src={destination?.imageLink}
-          alt={destination?.name}
+        <Image
+          src={destination?.imageLink || ''}
+          alt={destination?.name || ''}
           className='h-64 w-full rounded-t-lg object-cover md:h-96'
+          layout='responsive'
+          loading='lazy'
+          placeholder='blur'
+          blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
+          width={500}
+          height={500}
+          sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
         />
         <button
           onClick={() => window.history.back()}
           className='absolute left-2 top-2 rounded-full bg-white bg-opacity-70 p-2'
         >
-          <FaArrowLeft />
+          <IconArrowLeft />
         </button>
         <div className='p-5'>
           <div className='mb-4 flex items-center justify-between'>
             <h1 className='text-2xl font-bold'>{destination?.name}</h1>
             <span className='flex items-center rounded-full bg-green-100 px-2 py-1 text-sm text-green-800'>
-              <FaStar className='mr-1' /> {destination?.rating}
+              <IconStar className='mr-1' /> {destination?.rating}
             </span>
           </div>
           <div className='mb-4 flex items-center text-gray-600'>
-            <FaLocationDot /> {destination?.regency}, Bali
+            <IconLocation /> {destination?.regency}, Bali
           </div>
           <div className='mb-4 flex items-center'>
             <span className='mr-2 rounded-full bg-blue-100 px-2 py-1 text-blue-800'>

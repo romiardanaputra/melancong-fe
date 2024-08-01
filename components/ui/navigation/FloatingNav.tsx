@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   motion,
   AnimatePresence,
@@ -24,6 +24,11 @@ export const FloatingNav = ({
   const { scrollYProgress } = useScroll()
 
   const [visible, setVisible] = useState(false)
+  const [token, setToken] = useState<string | null>(null)
+
+  useEffect(() => {
+    setToken(localStorage.getItem('token'))
+  }, [])
 
   useMotionValueEvent(scrollYProgress, 'change', current => {
     // Check if current is not undefined and is a number
@@ -73,12 +78,21 @@ export const FloatingNav = ({
             <span className='hidden text-sm sm:block'>{navItem.name}</span>
           </Link>
         ))}
-        <Link href='/login'>
-          <button className='relative rounded-full border border-neutral-200 px-4 py-2 text-sm font-medium text-black dark:border-white/[0.2] dark:text-white'>
-            <span>Login</span>
-            <span className='absolute inset-x-0 -bottom-px mx-auto h-px w-1/2 bg-gradient-to-r from-transparent via-blue-500 to-transparent' />
-          </button>
-        </Link>
+        {token ? (
+          <Link href='/dashboard'>
+            <button className='relative rounded-full border border-neutral-200 px-4 py-2 text-sm font-medium text-black dark:border-white/[0.2] dark:text-white'>
+              <span>Dashboard</span>
+              <span className='absolute inset-x-0 -bottom-px mx-auto h-px w-1/2 bg-gradient-to-r from-transparent via-blue-500 to-transparent' />
+            </button>
+          </Link>
+        ) : (
+          <Link href='/login'>
+            <button className='relative rounded-full border border-neutral-200 px-4 py-2 text-sm font-medium text-black dark:border-white/[0.2] dark:text-white'>
+              <span>Login</span>
+              <span className='absolute inset-x-0 -bottom-px mx-auto h-px w-1/2 bg-gradient-to-r from-transparent via-blue-500 to-transparent' />
+            </button>
+          </Link>
+        )}
       </motion.div>
     </AnimatePresence>
   )

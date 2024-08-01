@@ -1,6 +1,7 @@
 import { NextPage } from 'next'
-import { FaArrowLeft } from 'react-icons/fa6'
 import { destinationLocations, destinationTypes } from '@/data'
+import Image from 'next/image'
+import { IconArrowLeft } from '@tabler/icons-react'
 
 interface Props {
   isSidebarOpen: boolean
@@ -31,6 +32,7 @@ const SideBar: NextPage<Props> = ({
         }`}
         role='dialog'
         aria-labelledby='sidebar-title'
+        aria-label='sidebar'
         aria-modal='true'
       >
         <div className='p-5'>
@@ -40,7 +42,7 @@ const SideBar: NextPage<Props> = ({
               onClick={() => setIsSidebarOpen(false)}
               aria-label='Close Sidebar'
             >
-              <FaArrowLeft className='text-xl' />
+              <IconArrowLeft className='text-xl' />
             </button>
             <h2 className='text-xl font-bold'>Filter</h2>
           </div>
@@ -99,7 +101,7 @@ const SideBar: NextPage<Props> = ({
             </button>
           </div>
           <div className='mt-6 flex justify-center'>
-            <img src='/logo.png' alt='Melancong' className='w-32' />
+            <Image src='/logo.png' alt='Melancong' className='w-32' />
           </div>
         </div>
       </div>

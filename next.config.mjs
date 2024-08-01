@@ -19,6 +19,12 @@ const nextConfig = {
         hostname: 'assets.aceternity.com',
         port: '',
         pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'melanc0ng.web.app',
+        port: '',
+        pathname: '/**'
       }
     ]
   }
