@@ -1,5 +1,3 @@
-'use client'
-
 import LoginForm from '@/components/pages/auth/LoginForm'
 import { Metadata, NextPage } from 'next'
 
