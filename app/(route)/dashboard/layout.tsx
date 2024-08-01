@@ -1,10 +1,17 @@
-import { NextPage } from 'next'
+import { Metadata, NextPage } from 'next'
 import React from 'react'
 import { cn } from '@/lib/utils'
 import DashboardSidebar from './_partials/DashboardSidebar'
 
 interface Props {
   children: React.ReactNode
+}
+
+export const metadata: Metadata = {
+  title: {
+    template: '%s | Melancong - Tourism Recommendation in Bali',
+    default: 'Dashboard | Melancong - Tourism Recommendation in Bali'
+  }
 }
 
 const DashboardUserLayout: NextPage<Props> = ({ children }) => {
