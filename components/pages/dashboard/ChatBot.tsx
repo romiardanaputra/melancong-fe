@@ -45,7 +45,7 @@ const ChatBot: NextPage<ErrorResponse> = () => {
       setMessages(prevMessages => [...prevMessages.slice(0, -1), botMessage])
     } catch (error) {
       const errorRes = error as ErrorResponse
-      if (errorRes.response.status === 401) {
+      if (errorRes?.response?.status === 401) {
         router.push('/login')
       } else {
         const botMessage = {

@@ -9,7 +9,7 @@ const Chatbot: NextPage = () => {
     <>
       <ChatBot
         response={{
-          status: 200
+          status: 401
         }}
       />
     </>
