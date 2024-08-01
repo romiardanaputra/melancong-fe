@@ -19,19 +19,31 @@ const LoginPage: NextPage<Props> = () => {
   const router = useRouter()
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
-    if (token) {
-      Swal.fire({
-        title: 'Already Login',
-        text: 'You are already logged in.',
-        icon: 'info',
-        confirmButtonColor: '#00838F'
-      }).then(result => {
-        if (result.isConfirmed) {
-          router.push('/dashboard')
+    const validateToken = async () => {
+      const token = localStorage.getItem('token')
+      if (token) {
+        try {
+          const response = await api.get('/auth/token-validation')
+          if (response.data.valid) {
+            Swal.fire({
+              title: 'Already Logged In',
+              text: 'You are already logged in.',
+              icon: 'info',
+              confirmButtonColor: '#00838F'
+            }).then(result => {
+              if (result.isConfirmed) {
+                router.push('/dashboard')
+              }
+            })
+          } else {
+            localStorage.removeItem('token')
+          }
+        } catch (err) {
+          localStorage.removeItem('token')
         }
-      })
+      }
     }
+    validateToken()
   }, [router])
 
   const handleSubmit = async (event: FormEvent) => {
