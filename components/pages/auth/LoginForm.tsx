@@ -10,7 +10,7 @@ import FieldComponent from '@/components/ui/form/Field'
 import SubmitButton from '@/components/ui/button/SubmitButton'
 import Link from 'next/link'
 import Swal from 'sweetalert2'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 interface Props {}
 
