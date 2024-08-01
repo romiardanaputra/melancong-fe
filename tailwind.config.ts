@@ -12,7 +12,6 @@ const config = {
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
     './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
-    './pages/**/*.{ts,tsx}',
     './public/**/*.html'
   ],
   prefix: '',
