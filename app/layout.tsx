@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     default: 'Melancong - Tourism Recommendation in Bali',
     template: '%s | Melancong - Tourism Recommendation in Bali'
   },
+  keywords: 'melancong, travel, recommendation, bali',
   description:
     'Melancong is a website that showcases tourist destinations in Bali, provides travel recommendations around Bali with various features, and offers the best recommendations to aid in decision making',
   openGraph: {
@@ -52,9 +53,7 @@ export default function RootLayout({
       <body className={cn('min-h-dvh font-sans antialiased', poppins.variable)}>
         <NextUIProvider>
           <ThemeProvider attribute='class' defaultTheme='light'>
-            {/* <header></header> */}
             <main>{children}</main>
-            {/* <footer></footer> */}
           </ThemeProvider>
         </NextUIProvider>
       </body>
