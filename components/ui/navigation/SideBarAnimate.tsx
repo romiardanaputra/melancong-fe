@@ -9,6 +9,7 @@ interface Links {
   label: string
   href: string
   icon: React.JSX.Element | React.ReactNode
+  onClick?: () => void
 }
 
 interface SidebarContextProps {
@@ -170,6 +171,14 @@ export const SidebarLink = ({
   props?: LinkProps
 }) => {
   const { open, animate } = useSidebar()
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (link.onClick) {
+      e.preventDefault()
+      link.onClick()
+    }
+  }
+
   return (
     <Link
       href={link.href}
@@ -178,6 +187,7 @@ export const SidebarLink = ({
         className
       )}
       aria-label={link.label}
+      onClick={handleClick}
       {...props}
     >
       {link.icon}

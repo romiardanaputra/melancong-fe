@@ -9,6 +9,7 @@ import { IconFilter } from '@tabler/icons-react'
 import Filter from '@/components/ui/Filter'
 import useFilter from '@/app/hooks/useFilter'
 import React from 'react'
+import withAuth from '@/app/withAuth'
 
 interface Props {}
 
@@ -126,4 +127,4 @@ const DashboardPage: NextPage<Props> = () => {
   )
 }
 
-export default DashboardPage
+export default withAuth(DashboardPage)

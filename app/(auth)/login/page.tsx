@@ -1,9 +1,10 @@
 'use client'
 
 import { NextPage } from 'next'
-import { useState, FormEvent } from 'react'
+import { useState, useEffect, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Swal from 'sweetalert2'
 import SubmitButton from '@/components/ui/button/SubmitButton'
 import FieldComponent from '@/components/ui/form/Field'
 import api from '@/app/api/axios'
@@ -16,6 +17,22 @@ const LoginPage: NextPage<Props> = () => {
   const [password, setPassword] = useState<string>('')
   const [error, setError] = useState<string>('')
   const router = useRouter()
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      Swal.fire({
+        title: 'Already Login',
+        text: 'You are already logged in.',
+        icon: 'info',
+        confirmButtonColor: '#00838F'
+      }).then(result => {
+        if (result.isConfirmed) {
+          router.push('/dashboard')
+        }
+      })
+    }
+  }, [router])
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()

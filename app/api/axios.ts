@@ -1,8 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  // baseURL: 'https://asia-southeast2-melanc0ng.cloudfunctions.net/api' // For Production
-  baseURL: 'https://melancong-be.vercel.app' // For Development
+  baseURL: 'https://melancong-be.vercel.app'
 })
 
 api.interceptors.request.use(

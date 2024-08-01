@@ -61,16 +61,6 @@ const ProfilePage: React.FC = () => {
     fetchUserProfile()
   }, [router])
 
-  // const handleLogout = async () => {
-  //   try {
-  //     await api.get('/auth/logout')
-  //     localStorage.removeItem('token')
-  //     router.push('/login')
-  //   } catch (err) {
-  //     setError('Failed to log out')
-  //   }
-  // }
-
   if (loading) {
     return (
       <div className='mx-auto size-full min-h-dvh rounded-lg bg-white p-5'>
@@ -163,12 +153,6 @@ const ProfilePage: React.FC = () => {
             ))}
           </ul>
         </div>
-        {/* <button
-        onClick={handleLogout}
-        className='w-full rounded-lg border border-red-800 bg-white p-3 text-red-800 transition-colors duration-300 hover:bg-red-800 hover:text-white'
-      >
-        Log Out
-      </button> */}
       </div>
     </div>
   )
