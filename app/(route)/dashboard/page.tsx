@@ -86,7 +86,7 @@ const DashboardPage: NextPage<Props> = () => {
               )}
               {error && <p className='text-red-500'>{error}</p>}
               {!loading && !error && destinations.length > 0 && (
-                <div className='grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 min-[1440px]:grid-cols-4 min-[1700px]:grid-cols-5'>
+                <div className='grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 min-[1300px]:grid-cols-4 min-[1700px]:grid-cols-5'>
                   {destinations.map(destination => (
                     <CustomCard
                       key={destination.id}
