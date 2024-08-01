@@ -1,5 +1,5 @@
 import { FloatingNav } from '@/components/ui/navigation/FloatingNav'
-import { NextPage } from 'next'
+import { Metadata, NextPage } from 'next'
 import { landingLinks } from '@/data/landing-link'
 import About from '@/app/(route)/landing/_partials/about/page'
 import HeroBanner from '@/app/(route)/landing/_partials/hero-banner/page'
@@ -8,6 +8,10 @@ import OurService from '@/app/(route)/landing/_partials/our-services/page'
 import Footer from '@/components/ui/footer/Footer'
 
 interface Props {}
+
+export const metadata: Metadata = {
+  title: 'Landing'
+}
 
 const LandingPage: NextPage<Props> = () => {
   return (
