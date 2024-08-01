@@ -14,9 +14,32 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'Melancong',
+  title: {
+    default: 'Melancong - Tourism Recommendation in Bali',
+    template: '%s | Melancong - Tourism Recommendation in Bali'
+  },
   description:
-    'Melancong adalah suatu website yang dimana menampilkan destinasi wisata yang berada di bali, memberikan rekomendasi melancong sekitaran bali dengan berbagai fitur dan memberikan rekomendasi terbaik untuk menentukan decision making'
+    'Melancong is a website that showcases tourist destinations in Bali, provides travel recommendations around Bali with various features, and offers the best recommendations to aid in decision making',
+  openGraph: {
+    title: 'Melancong - Tourism Recommendation in Bali',
+    description:
+      'Melancong is a website that showcases tourist destinations in Bali, provides travel recommendations around Bali with various features, and offers the best recommendations to aid in decision making',
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://melancong-fe.vercel.app/',
+    siteName: 'Melancong'
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true
+    }
+  },
+  icons: {
+    icon: '/favicon.ico'
+  }
 }
 
 export default function RootLayout({
