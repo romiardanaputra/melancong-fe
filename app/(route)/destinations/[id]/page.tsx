@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import api from '@/app/api/axios'
+import api from '@/utils/api/axios'
 import withAuth from '@/app/withAuth'
 import Image from 'next/image'
 import { IconArrowLeft, IconLocation, IconStar } from '@tabler/icons-react'
