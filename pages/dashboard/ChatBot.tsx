@@ -1,84 +1,14 @@
 'use client'
 
-import api from '@/utils/api/axios'
 import withAuth from '@/app/withAuth'
 import { NextPage } from 'next'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React from 'react'
 
-interface ErrorResponse {
-  response: {
-    status: number
-  }
-}
+import { useChatbot } from '@/hooks/chatbot/useChatbot'
 
-const ChatBot: NextPage<ErrorResponse> = () => {
-  const [prompt, setPrompt] = useState<string>('')
-  const [messages, setMessages] = useState<
-    {
-      type: 'user' | 'bot' | 'loading'
-      text: string
-    }[]
-  >([])
-  const [typingText, setTypingText] = useState<string>('')
-  const router = useRouter()
-
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault()
-
-    const userMessage = { type: 'user' as const, text: prompt }
-    setMessages([
-      ...messages,
-      userMessage,
-      { type: 'loading' as const, text: '...' }
-    ])
-    setPrompt('')
-
-    try {
-      const res = await api.post('/chatbot', { prompt })
-
-      if (res.status !== 200) {
-        throw new Error('Error in fetching response')
-      }
-
-      const botMessage = { type: 'bot' as const, text: res.data.message }
-      setMessages(prevMessages => [
-        ...prevMessages.slice(0, -1),
-        { type: 'bot', text: '' }
-      ])
-      typeEffect(botMessage.text)
-    } catch (error) {
-      const errorRes = error as ErrorResponse
-      if (errorRes?.response?.status === 401) {
-        router.push('/login')
-      } else {
-        const botMessage = {
-          type: 'bot' as const,
-          text: 'Something went wrong. Please try refreshing your web browser and try again.'
-        }
-        setMessages(prevMessages => [...prevMessages.slice(0, -1), botMessage])
-      }
-    }
-  }
-
-  const typeEffect = (text: string) => {
-    let index = 0
-    const interval = setInterval(() => {
-      if (index < text.length) {
-        setTypingText(text.slice(0, index + 1))
-        index++
-      } else {
-        clearInterval(interval)
-        setMessages(prevMessages => {
-          const updatedMessages = [...prevMessages]
-          updatedMessages[updatedMessages.length - 1] = { type: 'bot', text }
-          return updatedMessages
-        })
-        setTypingText('')
-      }
-    }, 20)
-  }
+const ChatBot: NextPage = () => {
+  const { prompt, setPrompt, messages, typingText, handleSubmit } = useChatbot()
 
   const isLoading = messages.some(message => message.type === 'loading')
   return (
