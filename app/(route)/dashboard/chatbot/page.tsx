@@ -7,11 +7,7 @@ export const metadata: Metadata = {
 const Chatbot: NextPage = () => {
   return (
     <>
-      <ChatBot
-        response={{
-          status: 401
-        }}
-      />
+      <ChatBot />
     </>
   )
 }
