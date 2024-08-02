@@ -1,4 +1,4 @@
-import Profile from '@/components/pages/dashboard/Profile'
+import Profile from '@/pages/dashboard/Profile'
 import { Metadata, NextPage } from 'next'
 
 export const metadata: Metadata = {
