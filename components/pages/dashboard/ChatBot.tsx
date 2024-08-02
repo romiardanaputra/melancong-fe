@@ -21,6 +21,7 @@ const ChatBot: NextPage<ErrorResponse> = () => {
       text: string
     }[]
   >([])
+  const [typingText, setTypingText] = useState<string>('')
   const router = useRouter()
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -42,7 +43,11 @@ const ChatBot: NextPage<ErrorResponse> = () => {
       }
 
       const botMessage = { type: 'bot' as const, text: res.data.message }
-      setMessages(prevMessages => [...prevMessages.slice(0, -1), botMessage])
+      setMessages(prevMessages => [
+        ...prevMessages.slice(0, -1),
+        { type: 'bot', text: '' }
+      ])
+      typeEffect(botMessage.text)
     } catch (error) {
       const errorRes = error as ErrorResponse
       if (errorRes?.response?.status === 401) {
@@ -55,6 +60,24 @@ const ChatBot: NextPage<ErrorResponse> = () => {
         setMessages(prevMessages => [...prevMessages.slice(0, -1), botMessage])
       }
     }
+  }
+
+  const typeEffect = (text: string) => {
+    let index = 0
+    const interval = setInterval(() => {
+      if (index < text.length) {
+        setTypingText(text.slice(0, index + 1))
+        index++
+      } else {
+        clearInterval(interval)
+        setMessages(prevMessages => {
+          const updatedMessages = [...prevMessages]
+          updatedMessages[updatedMessages.length - 1] = { type: 'bot', text }
+          return updatedMessages
+        })
+        setTypingText('')
+      }
+    }, 20)
   }
 
   const isLoading = messages.some(message => message.type === 'loading')
@@ -96,7 +119,9 @@ const ChatBot: NextPage<ErrorResponse> = () => {
                     key={index}
                     className='my-1 max-w-[80%] self-start rounded-lg bg-gray-200 p-3 text-black'
                   >
-                    {message.text}
+                    {typingText && index === messages.length - 1
+                      ? typingText
+                      : message.text}
                   </div>
                 ) : (
                   <div
