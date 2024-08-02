@@ -1,4 +1,4 @@
-import ChatBot from '@/components/pages/dashboard/ChatBot'
+import ChatBot from '@/pages/dashboard/ChatBot'
 import { Metadata, NextPage } from 'next'
 
 export const metadata: Metadata = {

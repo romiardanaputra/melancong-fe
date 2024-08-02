@@ -1,4 +1,4 @@
-import LoginForm from '@/components/pages/auth/LoginForm'
+import LoginForm from '@/pages/auth/LoginForm'
 import { Metadata, NextPage } from 'next'
 
 interface Props {}

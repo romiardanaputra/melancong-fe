@@ -1,4 +1,4 @@
-import ProfileEdit from '@/components/pages/dashboard/ProfileEdit'
+import ProfileEdit from '@/pages/dashboard/ProfileEdit'
 import { NextPage } from 'next'
 
 export const metadata = {
