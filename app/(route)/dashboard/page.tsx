@@ -1,31 +1,32 @@
 'use client'
 import { NextPage } from 'next'
-import useDestinations from '@/app/hooks/useDestinations'
 import { PlaceholdersAndVanishInput } from '@/components/ui/input/placeholders-and-vanish-input'
 import { inputSearchPlaceholders } from '@/data'
 import CustomCard from '@/components/ui/card/CustomCard'
 import { useRouter } from 'next/navigation'
 import { IconFilter } from '@tabler/icons-react'
 import Filter from '@/components/ui/Filter'
-import useFilter from '@/app/hooks/useFilter'
+import useFilter from '@/hooks/useFilter'
 import React from 'react'
 import withAuth from '@/app/withAuth'
+import useFetchDestination from '@/hooks/destinations/useFetchDestination'
+import useHandleToggleSave from '@/hooks/destinations/useHandleToggleSave'
 
 interface Props {}
 
 const DashboardPage: NextPage<Props> = () => {
   const router = useRouter()
-  const { loading, error, savedDestinations, handleToggleSave } =
-    useDestinations()
+  const { loading, error } = useFetchDestination()
+  const { handleToggleSave, savedDestinations } = useHandleToggleSave()
   const {
     handleFilterReset,
     handleFilterSubmit,
-    setIsSidebarOpen,
-    isSidebarOpen,
-    locationFilter,
-    setLocationFilter,
-    destinationTypeFilter: filterType,
-    setDestinationTypeFilter: setFilterType,
+    setIsOpen: setIsSidebarOpen,
+    isOpen: isSidebarOpen,
+    location: locationFilter,
+    setLocation: setLocationFilter,
+    filterType: destinationTypeFilter,
+    setFilterType: setDestinationTypeFilter,
     destinations,
     handleSearch,
     searchQuery,
@@ -119,8 +120,8 @@ const DashboardPage: NextPage<Props> = () => {
           handleFilterReset={handleFilterReset}
           locationFilter={locationFilter}
           setLocationFilter={setLocationFilter}
-          destinationTypeFilter={filterType}
-          setDestinationTypeFilter={setFilterType}
+          destinationTypeFilter={destinationTypeFilter}
+          setDestinationTypeFilter={setDestinationTypeFilter}
         />
       </div>
     </>
