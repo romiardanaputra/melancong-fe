@@ -9,7 +9,7 @@ import {
 import LogoIcon from '@/app/(route)/dashboard/_partials/LogoIcon'
 import Logo from '@/app/(route)/dashboard/_partials/Logo'
 import { sidebarLinks } from '@/data/sidebar-link'
-import useLogout from '@/app/hooks/useLogout'
+import useLogout from '@/hooks/useLogout'
 
 interface Props {}
 
