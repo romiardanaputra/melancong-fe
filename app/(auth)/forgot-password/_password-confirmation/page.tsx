@@ -1,4 +1,4 @@
-import PasswordConfirmForm from '@/components/pages/auth/forgot-password/PasswordConfirmForm'
+import PasswordConfirmForm from '@/pages/auth/forgot-password/PasswordConfirmForm'
 import { Metadata, NextPage } from 'next'
 
 interface Props {}
