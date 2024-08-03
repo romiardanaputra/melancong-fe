@@ -1,12 +1,12 @@
 'use client'
 
-import api from '@/utils/api/axios'
+import api from '@/app/api/axios'
 import withAuth from '@/app/withAuth'
 import CustomCard from '@/components/ui/card/CustomCard'
 import { IconSearch } from '@tabler/icons-react'
 import { NextPage } from 'next'
 import { useRouter } from 'next/navigation'
-import React, { FormEvent, useCallback, useEffect, useState } from 'react'
+import React, { FormEvent, useEffect, useState } from 'react'
 
 interface ErrorResponse {
   response: {
@@ -29,35 +29,32 @@ const Favorite: NextPage = () => {
   const [loading, setLoading] = useState<boolean>(false)
   const router = useRouter()
 
-  const fetchDestinations = useCallback(
-    async (query: string = '') => {
-      setLoading(true)
-      let apiUrl = '/destinations/saved'
-      if (query) {
-        apiUrl += `?d=${query}`
-      }
+  const fetchDestinations = async (query: string = '') => {
+    setLoading(true)
+    let apiUrl = '/destinations/saved'
+    if (query) {
+      apiUrl += `?d=${query}`
+    }
 
-      try {
-        const response = await api.get(apiUrl)
-        setDestinations(response.data.data)
-        setLoading(false)
-        setError('')
-      } catch (err) {
-        const errorRes = err as ErrorResponse
-        if (errorRes.response.status === 401) {
-          // Unauthorized access, redirect to login
-          router.push('/login')
-        } else {
-          setError('An unexpected error occurred')
-        }
+    try {
+      const response = await api.get(apiUrl)
+      setDestinations(response.data.data)
+      setLoading(false)
+      setError('')
+    } catch (err) {
+      const errorRes = err as ErrorResponse
+      if (errorRes.response.status === 401) {
+        // Unauthorized access, redirect to login
+        router.push('/login')
+      } else {
+        setError('An unexpected error occurred')
       }
-    },
-    [setLoading, setDestinations, setError, router]
-  )
+    }
+  }
 
   useEffect(() => {
     fetchDestinations()
-  }, [fetchDestinations])
+  }, [])
 
   const handleSearch = (event: FormEvent) => {
     event.preventDefault()
