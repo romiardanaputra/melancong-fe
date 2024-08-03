@@ -67,9 +67,14 @@ const Favorite: NextPage = () => {
   const handleDelete = async (id: string) => {
     try {
       await api.delete('/destinations/delete', { data: { id } })
-      setDestinations(prevDestinations =>
-        prevDestinations.filter(dest => dest.id !== id)
-      )
+      setDestinations(prevDestinations => {
+        const updated = prevDestinations.filter(dest => dest.id !== id)
+        localStorage.setItem(
+          'saved-destinations',
+          JSON.stringify(updated.map(dest => dest.id))
+        )
+        return updated
+      })
     } catch (err) {
       setError('An unexpected error occurred')
     }
