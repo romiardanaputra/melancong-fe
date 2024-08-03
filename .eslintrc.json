@@ -76,7 +76,6 @@
     "camelcase": ["error", { "properties": "never" }],
     "comma-spacing": ["error", { "before": false, "after": true }],
     "comma-style": ["error", "last"],
-    // "eol-last": ["error", "off"],
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
     "no-mixed-spaces-and-tabs": "error",
@@ -87,6 +86,7 @@
     "space-in-parens": ["error", "never"],
     "space-infix-ops": "error",
     "spaced-comment": ["error", "always", { "exceptions": ["-", "+"] }],
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
 
     // ECMAScript 6
     "arrow-spacing": ["error", { "before": true, "after": true }],

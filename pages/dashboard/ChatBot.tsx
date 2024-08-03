@@ -8,7 +8,8 @@ import React from 'react'
 import { useChatbot } from '@/hooks/chatbot/useChatbot'
 
 const ChatBot: NextPage = () => {
-  const { prompt, setPrompt, messages, typingText, handleSubmit } = useChatbot()
+  const { prompt, setPrompt, messages, typingText, isTyping, handleSubmit } =
+    useChatbot()
 
   const isLoading = messages.some(message => message.type === 'loading')
   return (
@@ -73,11 +74,13 @@ const ChatBot: NextPage = () => {
               onChange={e => setPrompt(e.target.value)}
               placeholder='Type message...'
               required
-              className='flex-1 rounded-l-lg border border-cyan-800 bg-gray-100 p-3 text-black'
+              disabled={isLoading || isTyping}
+              className={`flex-1 rounded-l-lg border border-cyan-800 bg-gray-100 p-3 text-black ${isLoading || isTyping ? 'cursor-not-allowed bg-gray-300' : ''}`}
             />
             <button
               type='submit'
-              className='rounded-r-lg bg-cyan-800 p-3 text-white'
+              disabled={isLoading || isTyping}
+              className={`rounded-r-lg bg-cyan-800 p-3 text-white ${isLoading || isTyping ? 'cursor-not-allowed bg-gray-500' : ''}`}
             >
               Send
             </button>

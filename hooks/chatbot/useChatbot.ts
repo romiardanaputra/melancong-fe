@@ -1,4 +1,3 @@
-// src/hooks/useChatbot.ts
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { ErrorResponse } from '@/dto/errorResponseDto'
@@ -9,6 +8,7 @@ export const useChatbot = () => {
   const [prompt, setPrompt] = useState<string>('')
   const [messages, setMessages] = useState<chatbotMessageDto[]>([])
   const [typingText, setTypingText] = useState<string>('')
+  const [isTyping, setIsTyping] = useState<boolean>(false)
   const router = useRouter()
 
   const addMessage = (message: chatbotMessageDto) => {
@@ -23,6 +23,8 @@ export const useChatbot = () => {
     if (!text) {
       return
     }
+
+    setIsTyping(true)
     let index = 0
     const interval = setInterval(() => {
       if (index < text.length) {
@@ -32,8 +34,9 @@ export const useChatbot = () => {
         clearInterval(interval)
         replaceLastMessage({ type: 'bot', text })
         setTypingText('')
+        setIsTyping(false)
       }
-    }, 20)
+    }, 15)
   }
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -57,6 +60,8 @@ export const useChatbot = () => {
           type: 'bot',
           text: 'Error: Something went wrong. Please try refreshing your web browser and try again.'
         })
+
+        setIsTyping(false)
       }
     }
   }
@@ -66,6 +71,7 @@ export const useChatbot = () => {
     setPrompt,
     messages,
     typingText,
+    isTyping,
     handleSubmit
   }
 }
