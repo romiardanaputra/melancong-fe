@@ -11,7 +11,8 @@ export default function Logo({
   width,
   height
 }: LogoProps): React.ReactNode {
-  const imgLogo = `${process.env.NEXT_PUBLIC_IMAGEKIT_URL}/melancong-logo-default.webp`
+  const imgLogo =
+    'https://firebasestorage.googleapis.com/v0/b/melanc0ng.appspot.com/o/image%2Fopengraph-image.png?alt=media&token=24acb563-01ba-4a64-9a3e-4de41c1d4eb4'
   return (
     <div className='flex items-center'>
       <Image
@@ -20,7 +21,7 @@ export default function Logo({
         width={width}
         height={height}
         className={className ?? 'aspect-square'}
-        priority
+        priority={true}
       />
     </div>
   )
