@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/'
     },
-    sitemap: 'https://melancong-fe.vercel.app/sitemap.xml'
+    sitemap: `${process.env.BASE_URL}/sitemap.xml`
   }
 }
