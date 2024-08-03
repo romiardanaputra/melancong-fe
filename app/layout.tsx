@@ -5,7 +5,6 @@ import './globals.css'
 import React from 'react'
 import { cn } from '@/lib/utils'
 import { ThemeProvider } from '@/components/theme-provider'
-import { NextUIProvider } from '@nextui-org/system'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -27,7 +26,7 @@ export const metadata: Metadata = {
       'Melancong is a website that showcases tourist destinations in Bali, provides travel recommendations around Bali with various features, and offers the best recommendations to aid in decision making',
     type: 'website',
     locale: 'en_US',
-    url: 'https://melancong-fe.vercel.app/',
+    url: `${process.env.BASE_URL}/`,
     siteName: 'Melancong'
   },
   robots: {
@@ -40,7 +39,8 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: '/favicon.ico'
-  }
+  },
+  metadataBase: new URL(process.env.BASE_URL || 'http://localhost:3000')
 }
 
 export default function RootLayout({
@@ -51,11 +51,9 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={cn('min-h-dvh font-sans antialiased', poppins.variable)}>
-        <NextUIProvider>
-          <ThemeProvider attribute='class' defaultTheme='light'>
-            <main>{children}</main>
-          </ThemeProvider>
-        </NextUIProvider>
+        <ThemeProvider attribute='class' defaultTheme='light'>
+          <main>{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   )

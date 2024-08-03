@@ -3,43 +3,43 @@ import { MetadataRoute } from 'next'
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://melancong-fe.vercel.app/',
+      url: `${process.env.BASE_URL}/`,
       lastModified: new Date().toISOString()
     },
     {
-      url: 'https://melancong-fe.vercel.app/login',
+      url: `${process.env.BASE_URL}/login`,
       lastModified: new Date().toISOString()
     },
     {
-      url: 'https://melancong-fe.vercel.app/register',
+      url: `${process.env.BASE_URL}/sign-up`,
       lastModified: new Date().toISOString()
     },
     {
-      url: 'https://melancong-fe.vercel.app/dashboard',
+      url: `${process.env.BASE_URL}/dashboard`,
       lastModified: new Date().toISOString()
     },
     {
-      url: 'https://melancong-fe.vercel.app/dashboard/saved',
+      url: `${process.env.BASE_URL}/dashboard/saved`,
       lastModified: new Date().toISOString()
     },
     {
-      url: 'https://melancong-fe.vercel.app/dashboard/profile',
+      url: `${process.env.BASE_URL}/dashboard/profile`,
       lastModified: new Date().toISOString()
     },
     {
-      url: 'https://melancong-fe.vercel.app/dashboard/profile/edit',
+      url: `${process.env.BASE_URL}/dashboard/profile/edit`,
       lastModified: new Date().toISOString()
     },
     {
-      url: 'https://melancong-fe.vercel.app/dashboard/chatbot',
+      url: `${process.env.BASE_URL}/dashboard/chatbot`,
       lastModified: new Date().toISOString()
     },
     {
-      url: 'https://melancong-fe.vercel.app/dashboard/landing',
+      url: `${process.env.BASE_URL}/landing`,
       lastModified: new Date().toISOString()
     },
     {
-      url: 'https://melancong-fe.vercel.app/dashboard/destination',
+      url: `${process.env.BASE_URL}/dashboard/destinations`,
       lastModified: new Date().toISOString()
     }
   ]

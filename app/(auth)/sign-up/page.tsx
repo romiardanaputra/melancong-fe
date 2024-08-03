@@ -1,5 +1,5 @@
 import { Metadata, NextPage } from 'next'
-import SignUpForm from '@/components/pages/auth/SignUpForm'
+import SignUpForm from '@/pages/auth/SignUpForm'
 
 interface Props {}
 export const metadata: Metadata = {

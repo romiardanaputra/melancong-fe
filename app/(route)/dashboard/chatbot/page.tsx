@@ -1,4 +1,4 @@
-import ChatBot from '@/components/pages/dashboard/ChatBot'
+import ChatBot from '@/pages/dashboard/ChatBot'
 import { Metadata, NextPage } from 'next'
 
 export const metadata: Metadata = {
@@ -7,11 +7,7 @@ export const metadata: Metadata = {
 const Chatbot: NextPage = () => {
   return (
     <>
-      <ChatBot
-        response={{
-          status: 401
-        }}
-      />
+      <ChatBot />
     </>
   )
 }

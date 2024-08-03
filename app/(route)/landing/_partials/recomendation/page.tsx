@@ -1,7 +1,7 @@
 'use client'
 import { NextPage } from 'next'
 import CustomCard from '@/components/ui/card/CustomCard'
-import useRecommend from '@/app/hooks/useRecommend'
+import useRecommend from '@/hooks/useRecommend'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 

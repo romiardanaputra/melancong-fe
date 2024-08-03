@@ -1,5 +1,5 @@
 import { Metadata, NextPage } from 'next'
-import EmailVerificationForm from '@/components/pages/auth/forgot-password/EmailVerificationForm'
+import EmailVerificationForm from '@/pages/auth/forgot-password/EmailVerificationForm'
 
 interface Props {}
 
