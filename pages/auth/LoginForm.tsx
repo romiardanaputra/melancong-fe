@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 'use client'
 
 import { NextPage } from 'next'
@@ -11,6 +12,7 @@ import SubmitButton from '@/components/ui/button/SubmitButton'
 import Link from 'next/link'
 import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation'
+import { IconEyeOff, IconEye } from '@tabler/icons-react'
 
 interface Props {}
 
@@ -18,6 +20,7 @@ const LoginForm: NextPage<Props> = () => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [error, setError] = useState<string>('')
+  const [showPassword, setShowPassword] = useState<boolean>(false)
   const router = useRouter()
 
   useEffect(() => {
@@ -98,19 +101,33 @@ const LoginForm: NextPage<Props> = () => {
               onChange={e => setEmail(e.target.value)}
             />
 
-            <FieldComponent
-              fieldType='password'
-              fieldName='password'
-              fieldId='password'
-              fieldRequired={true}
-              labelFor='password'
-              fieldMessage='we recommend you to use 1 capital letter, 1 number and 1 special character'
-              fieldPlaceholder=' '
-              labelText='Password'
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-            />
-            {error && <p className='text-red-500'>{error}</p>}
+            <div className='relative'>
+              <FieldComponent
+                fieldType={showPassword ? 'text' : 'password'}
+                fieldName='password'
+                fieldId='password'
+                fieldRequired={true}
+                labelFor='password'
+                fieldMessage='we recommend you to use 1 capital letter, 1 number and 1 special character'
+                fieldPlaceholder=' '
+                labelText='Password'
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+              />
+              {error && <p className='text-red-500'>{error}</p>}
+              <button
+                type='button'
+                onClick={() => setShowPassword(!showPassword)}
+                className='absolute right-3 top-1/3 -translate-y-1/2 transform text-gray-600'
+              >
+                {showPassword ? (
+                  <IconEyeOff stroke={2} />
+                ) : (
+                  <IconEye stroke={2} />
+                )}
+              </button>
+            </div>
+
             <div>
               <div className='flex justify-end py-4 text-sm font-medium text-cyan-500'>
                 <Link href='/forgot-password/email-verification'>
