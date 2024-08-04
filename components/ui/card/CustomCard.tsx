@@ -1,9 +1,8 @@
 /* eslint-disable quotes */
-import { IconStar } from '@tabler/icons-react'
-import { NextPage } from 'next'
+import React, { FunctionComponent } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import { IconStar, IconStarFilled } from '@tabler/icons-react'
 
 interface ImageCardProps {
   title: string
@@ -20,7 +19,7 @@ interface ImageCardProps {
   isSavedRemove?: boolean
 }
 
-const CustomCard: NextPage<ImageCardProps> = ({
+const CustomCard: FunctionComponent<ImageCardProps> = ({
   title,
   img,
   rating,
@@ -44,7 +43,7 @@ const CustomCard: NextPage<ImageCardProps> = ({
         onClick={clickToDetail}
         onKeyPress={onKeyPress}
       >
-        <div className='relative h-[200px] overflow-hidden rounded-lg p-0'>
+        <div className='relative h-[200px] overflow-hidden rounded-t-lg p-0'>
           <Image
             src={img}
             alt={title}
@@ -71,9 +70,13 @@ const CustomCard: NextPage<ImageCardProps> = ({
                   handleToggleSave()
                 }
               }}
-              className={`absolute right-0 top-0 p-4 ${isSaved ? 'bg-cyan-800' : 'bg-white/80'}`}
+              className={`absolute right-0 top-0 bg-white/80 p-4`}
             >
-              <IconStar className={isSaved ? 'text-white' : 'text-cyan-800'} />
+              {!isSaved ? (
+                <IconStar className='text-cyan-800' />
+              ) : (
+                <IconStarFilled className='text-cyan-800' />
+              )}
             </button>
           )}
         </div>
