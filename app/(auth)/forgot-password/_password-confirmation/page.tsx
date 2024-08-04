@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import PasswordConfirmForm from '@/pages/auth/forgot-password/PasswordConfirmForm'
+import PasswordConfirmForm from '@/app/(auth)/forgot-password/_password-confirmation/components/PasswordConfirmForm'
 
 export const metadata: Metadata = {
   title: 'Password Confirmation',

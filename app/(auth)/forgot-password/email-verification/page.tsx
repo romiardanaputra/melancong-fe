@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import EmailVerificationForm from '@/pages/auth/forgot-password/EmailVerificationForm'
+import EmailVerificationForm from '@/app/(auth)/forgot-password/email-verification/components/EmailVerificationForm'
 
 export const metadata: Metadata = {
   title: 'Email Confirmation',
