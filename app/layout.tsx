@@ -26,8 +26,13 @@ export const metadata: Metadata = {
       'Melancong is a website that showcases tourist destinations in Bali, provides travel recommendations around Bali with various features, and offers the best recommendations to aid in decision making',
     type: 'website',
     locale: 'en_US',
-    url: `${process.env.BASE_URL}/`,
-    siteName: 'Melancong'
+    url: `${process.env.BASE_APP_URL}/`,
+    siteName: 'Melancong',
+    images: [
+      {
+        url: `${process.env.BASE_APP_URL}/opengraph-image.png`
+      }
+    ]
   },
   robots: {
     index: true,
@@ -40,7 +45,7 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon.ico'
   },
-  metadataBase: new URL(process.env.BASE_URL || 'http://localhost:3000')
+  metadataBase: new URL(process.env.BASE_APP_URL || 'http://localhost:3000')
 }
 
 export default function RootLayout({
