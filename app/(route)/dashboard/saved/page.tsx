@@ -1,11 +1,12 @@
-import { Metadata, NextPage } from 'next'
-import Favorite from '@/pages/dashboard/Favorite'
+import { Metadata } from 'next'
+
+import Favorite from '@/app/(route)/dashboard/saved/components/Favorite'
 
 export const metadata: Metadata = {
   title: 'Favorite'
 }
 
-const Saved: NextPage = () => {
+const SavedPage = () => {
   return (
     <>
       <Favorite />
@@ -13,4 +14,4 @@ const Saved: NextPage = () => {
   )
 }
 
-export default Saved
+export default SavedPage
