@@ -1,14 +1,13 @@
-import { Metadata, NextPage } from 'next'
-import EmailVerificationForm from '@/pages/auth/forgot-password/EmailVerificationForm'
+import { Metadata } from 'next'
 
-interface Props {}
+import EmailVerificationForm from '@/pages/auth/forgot-password/EmailVerificationForm'
 
 export const metadata: Metadata = {
   title: 'Email Confirmation',
   description: 'Melancong - Email Confirmation'
 }
 
-const EmailConfirmation: NextPage<Props> = () => {
+const EmailConfirmation = () => {
   return (
     <>
       <EmailVerificationForm />

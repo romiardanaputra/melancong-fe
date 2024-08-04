@@ -1,14 +1,13 @@
-import PasswordConfirmForm from '@/pages/auth/forgot-password/PasswordConfirmForm'
-import { Metadata, NextPage } from 'next'
+import { Metadata } from 'next'
 
-interface Props {}
+import PasswordConfirmForm from '@/pages/auth/forgot-password/PasswordConfirmForm'
 
 export const metadata: Metadata = {
   title: 'Password Confirmation',
   description: 'Melancong - Password Confirmation'
 }
 
-const PasswordConfirmation: NextPage<Props> = () => {
+const PasswordConfirmation = () => {
   return (
     <>
       <PasswordConfirmForm />
