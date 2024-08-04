@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation'
 import { FormEvent, useState } from 'react'
 import Swal from 'sweetalert2'
 import ErrorResponse from '@/utils/api/error'
+import { IconEyeOff, IconEye } from '@tabler/icons-react'
 
 interface Props {}
 
@@ -17,6 +18,7 @@ const SignUpForm: NextPage<Props> = () => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>('')
+  const [showPassword, setShowPassword] = useState<boolean>(false)
   const router = useRouter()
 
   const handleSubmit = async (event: FormEvent) => {
@@ -113,31 +115,58 @@ const SignUpForm: NextPage<Props> = () => {
               onChange={e => setEmail(e.target.value)}
             />
 
-            <FieldComponent
-              fieldType='password'
-              fieldName='password'
-              fieldId='password'
-              fieldRequired={true}
-              labelFor='password'
-              fieldMessage='we recommend you to use 1 capital letter, 1 number and 1 special character'
-              fieldPlaceholder=' '
-              labelText='Password'
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-            />
+            <div className='relative'>
+              <FieldComponent
+                fieldType={showPassword ? 'text' : 'password'}
+                fieldName='password'
+                fieldId='password'
+                fieldRequired={true}
+                labelFor='password'
+                fieldMessage='we recommend you to use 1 capital letter, 1 number and 1 special character'
+                fieldPlaceholder=' '
+                labelText='Password'
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+              />
 
-            <FieldComponent
-              fieldType='password'
-              fieldName='password_confirmation'
-              fieldId='password_confirmation'
-              fieldRequired={true}
-              labelFor='password_confirmation'
-              fieldMessage='we recommend you to use 1 capital letter, 1 number and 1 special character'
-              fieldPlaceholder=' '
-              labelText='Password Confirmation'
-              value={passwordConfirmation}
-              onChange={e => setPasswordConfirmation(e.target.value)}
-            />
+              <button
+                type='button'
+                onClick={() => setShowPassword(!showPassword)}
+                className='absolute right-3 top-1/4 -translate-y-1/2 transform text-gray-600 md:top-1/3'
+              >
+                {showPassword ? (
+                  <IconEyeOff stroke={2} />
+                ) : (
+                  <IconEye stroke={2} />
+                )}
+              </button>
+            </div>
+
+            <div className='relative'>
+              <FieldComponent
+                fieldType={showPassword ? 'text' : 'password'}
+                fieldName='password_confirmation'
+                fieldId='password_confirmation'
+                fieldRequired={true}
+                labelFor='password_confirmation'
+                fieldMessage='we recommend you to use 1 capital letter, 1 number and 1 special character'
+                fieldPlaceholder=' '
+                labelText='Password Confirmation'
+                value={passwordConfirmation}
+                onChange={e => setPasswordConfirmation(e.target.value)}
+              />
+              <button
+                type='button'
+                onClick={() => setShowPassword(!showPassword)}
+                className='absolute right-3 top-1/4 -translate-y-1/2 transform text-gray-600 md:top-1/3'
+              >
+                {showPassword ? (
+                  <IconEyeOff stroke={2} />
+                ) : (
+                  <IconEye stroke={2} />
+                )}
+              </button>
+            </div>
 
             <SubmitButton btnText='Register Now' />
           </form>

@@ -184,7 +184,7 @@ const Profile: NextPage<Props> = () => {
       <div className='w-full bg-white py-12 md:pl-32 md:pr-16'>
         <div className='mx-auto min-h-dvh w-full rounded-lg bg-white p-5 text-black 2xl:px-12'>
           <h1 className='mb-5 text-center text-2xl font-bold'>My Account</h1>
-          <div className='relative mb-5 flex items-center rounded-lg bg-gray-100 p-4'>
+          <div className='relative mb-5 flex items-center p-4'>
             <div className='mx-auto w-full rounded-lg bg-white p-5 py-20'>
               <div className='mb-5 flex flex-col items-center'>
                 <div className='relative mb-3 flex h-24 w-24 items-center justify-center rounded-full bg-gray-200'>
@@ -258,7 +258,7 @@ const Profile: NextPage<Props> = () => {
                     />
                     <button
                       onClick={() => toggleEdit('name')}
-                      className='ml-2 flex transform items-center justify-center rounded-lg bg-blue-500 p-3 text-white transition-transform hover:scale-105 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400'
+                      className='ml-2 flex transform items-center justify-center rounded-lg bg-cyan-800 p-3 text-white transition-transform hover:scale-105 hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-blue-400'
                     >
                       <IconPencil className='size-6' />
                     </button>
@@ -284,7 +284,7 @@ const Profile: NextPage<Props> = () => {
                     />
                     <button
                       onClick={() => toggleEdit('phone')}
-                      className='ml-2 transform rounded-lg bg-blue-500 p-3 text-white shadow-md transition-transform hover:scale-105 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400'
+                      className='ml-2 transform rounded-lg bg-cyan-800 p-3 text-white shadow-md transition-transform hover:scale-105 hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-blue-400'
                     >
                       <IconPencil className='size-6' />
                     </button>
@@ -312,7 +312,7 @@ const Profile: NextPage<Props> = () => {
                     </select>
                     <button
                       onClick={() => toggleEdit('gender')}
-                      className='ml-2 transform rounded-lg bg-blue-500 p-3 text-white shadow-md transition-transform hover:scale-105 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400'
+                      className='ml-2 transform rounded-lg bg-cyan-800 p-3 text-white shadow-md transition-transform hover:scale-105 hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-blue-400'
                     >
                       <IconPencil className='size-6' />
                     </button>
@@ -321,7 +321,7 @@ const Profile: NextPage<Props> = () => {
               </div>
               <button
                 onClick={handleSave}
-                className='w-full rounded-lg bg-blue-400 p-3 text-white transition-colors duration-300 hover:bg-gray-800 hover:text-yellow-300'
+                className='w-full rounded-lg bg-cyan-800 p-3 text-white transition-colors duration-300 hover:bg-cyan-600 hover:text-yellow-300'
               >
                 Save
               </button>
