@@ -1,11 +1,12 @@
-import Profile from '@/pages/dashboard/Profile'
-import { Metadata, NextPage } from 'next'
+import { Metadata } from 'next'
+
+import Profile from '@/app/(route)/dashboard/profile/components/ProfileContent'
 
 export const metadata: Metadata = {
   title: 'Profile'
 }
 
-const ProfilePage: NextPage = () => {
+const ProfilePage = () => {
   return (
     <>
       <Profile />
