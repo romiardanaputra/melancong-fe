@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
+import Swal from 'sweetalert2'
+import api from '@/utils/api/axios'
 import { ErrorResponse } from '@/dto/errorResponseDto'
 import { chatbotMessageDto } from '@/dto/chatbotMessageDto'
 import { fetchChatbotService } from '@/services/chatbot/fetchChatbotService'
@@ -10,6 +12,34 @@ export const useChatbot = () => {
   const [typingText, setTypingText] = useState<string>('')
   const [isTyping, setIsTyping] = useState<boolean>(false)
   const router = useRouter()
+
+  const validateToken = useCallback(async () => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      try {
+        const response = await api.get('/auth/token-validation')
+        if (!response.data.valid) {
+          localStorage.removeItem('token')
+          Swal.fire({
+            title: 'Login Required',
+            text: 'You must login to continue.',
+            icon: 'info',
+            confirmButtonColor: '#00838F'
+          }).then(result => {
+            if (result.isConfirmed) {
+              router.push('/login')
+            }
+          })
+        }
+      } catch (err) {
+        localStorage.removeItem('token')
+      }
+    }
+  }, [router])
+
+  useEffect(() => {
+    validateToken()
+  }, [validateToken])
 
   const addMessage = (message: chatbotMessageDto) => {
     setMessages(prevMessages => [...prevMessages, message])

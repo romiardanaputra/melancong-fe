@@ -5,16 +5,11 @@ import React, { useEffect, useState, ChangeEvent, useRef } from 'react'
 import Image from 'next/image'
 import Swal from 'sweetalert2'
 
-import {
-  IconBrandHipchat,
-  IconChevronRight,
-  IconLockSquare,
-  IconPencil,
-  IconSettings
-} from '@tabler/icons-react'
+import { IconPencil } from '@tabler/icons-react'
 import { useRouter } from 'next/navigation'
 import api from '@/utils/api/axios'
 import withAuth from '@/app/withAuth'
+import Support from './Support'
 
 interface Props {}
 interface UserProfile {
@@ -206,7 +201,7 @@ const Profile: NextPage<Props> = () => {
                     </span>
                   )}
                 </div>
-                <p className='mb-5 text-gray-500'>Max size: 5 MB</p>
+                <p className='mb-5 text-gray-500'>Max size: 4 MB</p>
                 <label
                   htmlFor='profileImage'
                   className='cursor-pointer text-blue-500'
@@ -327,27 +322,7 @@ const Profile: NextPage<Props> = () => {
               </button>
             </div>
           </div>
-          <div className='mb-5 space-y-4'>
-            <h2 className='mb-3 pt-3 text-lg font-bold'>Support</h2>
-            <ul className='list-none space-y-4 rounded-lg bg-white p-0 text-sm'>
-              {[
-                { text: 'Terms and Conditions', icon: <IconSettings /> },
-                { text: 'Privacy Policy', icon: <IconLockSquare /> },
-                { text: 'Need Help? Let`s chat', icon: <IconBrandHipchat /> } // Menggunakan single quotes
-              ].map(item => (
-                <li
-                  key={item.text}
-                  className='flex cursor-pointer items-center border-b border-gray-300 p-3'
-                >
-                  <div className='flex items-center'>
-                    <span className='mr-3'>{item.icon}</span>
-                    {item.text}
-                  </div>
-                  <IconChevronRight className='ml-auto text-gray-400' />
-                </li>
-              ))}
-            </ul>
-          </div>
+          <Support />
         </div>
       </div>
     </>
