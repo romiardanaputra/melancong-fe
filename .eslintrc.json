@@ -48,6 +48,8 @@
     "no-irregular-whitespace": "error",
     "no-unsafe-negation": "error",
     "valid-typeof": ["error", { "requireStringLiterals": true }],
+    "linebreak-style": ["error", "windows"],
+    "semi":"off",
 
     // Best Practices
     "curly": "error",
@@ -115,5 +117,7 @@
 
     // typescript
     "@typescript-eslint/no-explicit-any": "off"
+  
+    
   }
 }

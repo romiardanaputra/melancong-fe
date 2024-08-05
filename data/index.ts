@@ -11,37 +11,37 @@ export const services = [
     title: 'Destination Highlights',
     description:
       'Discover the most popular tourist destinations in Bali, featuring top attractions and must-see spots.',
-    link: 'https://stripe.com'
+    link: '#'
   },
   {
     title: 'Travel Guides',
     description:
       'Comprehensive travel guides to help you navigate Bali’s rich culture, beautiful landscapes, and hidden gems.',
-    link: 'https://netflix.com'
+    link: '#'
   },
   {
     title: 'Activity Recommendations',
     description:
       'Get personalized activity recommendations, from adventure sports to cultural experiences, tailored to your interests.',
-    link: 'https://google.com'
+    link: '#'
   },
   {
     title: 'Dining Suggestions',
     description:
       'Explore the culinary delights of Bali with our curated list of the best restaurants, cafes, and local eateries.',
-    link: 'https://meta.com'
+    link: '#'
   },
   {
     title: 'Travel Planning Tools',
     description:
       'Utilize our suite of planning tools, including itineraries, maps, and budget calculators, to make your Bali trip seamless and enjoyable.',
-    link: 'https://amazon.com'
+    link: '#'
   },
   {
     title: 'Accommodation Tips',
     description:
       'Find the best places to stay, from luxury resorts to budget-friendly accommodations, all with detailed reviews and ratings.',
-    link: 'https://microsoft.com'
+    link: '#'
   }
 ]
 
