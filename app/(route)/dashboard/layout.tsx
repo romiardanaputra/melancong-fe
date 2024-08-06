@@ -1,7 +1,7 @@
 import { Metadata, NextPage } from 'next'
 import React from 'react'
 import { cn } from '@/lib/utils'
-import DashboardSidebar from './_partials/DashboardSidebar'
+import DashboardSidebar from './components/DashboardSidebar'
 
 interface Props {
   children: React.ReactNode

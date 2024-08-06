@@ -1,19 +1,18 @@
 'use client'
-import { NextPage } from 'next'
+
 import React, { useState } from 'react'
+
 import {
   Sidebar,
   SidebarBody,
   SidebarLink
 } from '@/components/ui/navigation/SideBarAnimate'
-import LogoIcon from '@/app/(route)/dashboard/_partials/LogoIcon'
-import Logo from '@/app/(route)/dashboard/_partials/Logo'
+import LogoIcon from '@/app/(route)/dashboard/components/LogoIcon'
+import Logo from '@/app/(route)/dashboard/components/Logo'
 import { sidebarLinks } from '@/data/sidebar-link'
 import useLogout from '@/hooks/useLogout'
 
-interface Props {}
-
-const DashboardSidebar: NextPage<Props> = () => {
+const DashboardSidebar = () => {
   const [open, setOpen] = useState(false)
   const { handleLogout } = useLogout()
 

@@ -1,13 +1,12 @@
 'use client'
 
-import withAuth from '@/app/withAuth'
-import { NextPage } from 'next'
-import Image from 'next/image'
 import React from 'react'
+import Image from 'next/image'
 
+import withAuth from '@/app/withAuth'
 import { useChatbot } from '@/hooks/chatbot/useChatbot'
 
-const ChatBot: NextPage = () => {
+const ChatBotContent = () => {
   const { prompt, setPrompt, messages, typingText, isTyping, handleSubmit } =
     useChatbot()
 
@@ -91,4 +90,4 @@ const ChatBot: NextPage = () => {
   )
 }
 
-export default withAuth(ChatBot)
+export default withAuth(ChatBotContent)

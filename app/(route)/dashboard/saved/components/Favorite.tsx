@@ -7,23 +7,10 @@ import { IconSearch } from '@tabler/icons-react'
 import { NextPage } from 'next'
 import { useRouter } from 'next/navigation'
 import React, { FormEvent, useCallback, useEffect, useState } from 'react'
-
-interface ErrorResponse {
-  response: {
-    status: number
-  }
-}
-interface Destination {
-  id: string
-  name: string
-  rating: string
-  regency: string
-  imageLink: string
-  information: string
-}
+import { DestinationSavedTypes, ErrorResponseSavedTypes } from '../index.props'
 
 const Favorite: NextPage = () => {
-  const [destinations, setDestinations] = useState<Destination[]>([])
+  const [destinations, setDestinations] = useState<DestinationSavedTypes[]>([])
   const [error, setError] = useState<string>('')
   const [searchQuery, setSearchQuery] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
@@ -43,7 +30,7 @@ const Favorite: NextPage = () => {
         setLoading(false)
         setError('')
       } catch (err) {
-        const errorRes = err as ErrorResponse
+        const errorRes = err as ErrorResponseSavedTypes
         if (errorRes.response.status === 401) {
           // Unauthorized access, redirect to login
           router.push('/login')

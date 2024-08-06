@@ -1,10 +1,11 @@
-import ChatBot from '@/pages/dashboard/ChatBot'
-import { Metadata, NextPage } from 'next'
+import { Metadata } from 'next'
+
+import ChatBot from '@/app/(route)/dashboard/chatbot/components/ChatBot'
 
 export const metadata: Metadata = {
   title: 'Chatbot'
 }
-const Chatbot: NextPage = () => {
+const ChatbotPage = () => {
   return (
     <>
       <ChatBot />
@@ -12,4 +13,4 @@ const Chatbot: NextPage = () => {
   )
 }
 
-export default Chatbot
+export default ChatbotPage

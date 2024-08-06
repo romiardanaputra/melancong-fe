@@ -1,14 +1,13 @@
-import LoginForm from '@/pages/auth/LoginForm'
-import { Metadata, NextPage } from 'next'
+import { Metadata } from 'next'
 
-interface Props {}
+import LoginForm from '@/app/(auth)/login/components/LoginForm'
 
 export const metadata: Metadata = {
   title: 'Login',
   description: 'Melancong - Login'
 }
 
-const LoginPage: NextPage<Props> = () => {
+const LoginPage = () => {
   return (
     <>
       <LoginForm />
