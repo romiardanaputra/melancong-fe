@@ -14,7 +14,7 @@ const SelectField: React.FC<FieldProps> = ({
   labelName
 }) => (
   <div className='flex flex-col items-center'>
-    <label htmlFor={idField} className='mb-2 w-full font-medium text-gray-700'>
+    <label htmlFor={idField} className='mb-2 w-full text-sm text-neutral-800'>
       {labelName}
     </label>
     <div className='flex w-full items-center'>
@@ -24,7 +24,7 @@ const SelectField: React.FC<FieldProps> = ({
         defaultValue={defaultValueField}
         onChange={onChange}
         ref={ref as React.RefObject<HTMLSelectElement>}
-        className={`w-full rounded-lg border p-3 ${readOnly ? 'bg-gray-300' : 'bg-white'} transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+        className={`w-full rounded-md border p-3 px-4 ${readOnly ? 'bg-neutral-200' : 'bg-white'} transition focus:border-cyan-800 focus:outline-none focus:ring-cyan-800`}
         disabled={readOnly}
       >
         <option value='Male'>Male (He/Him)</option>
@@ -33,7 +33,7 @@ const SelectField: React.FC<FieldProps> = ({
       {isEditAble && (
         <button
           onClick={onClick}
-          className='ml-2 flex transform items-center justify-center rounded-lg bg-blue-500 p-3 text-white transition-transform hover:scale-105 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400'
+          className='ml-2 flex items-center justify-center rounded-lg bg-cyan-800 p-3 text-white hover:bg-cyan-900 focus:outline-none focus:ring-2 focus:ring-cyan-800'
         >
           <IconPencil className='size-6' />
         </button>

@@ -2,8 +2,6 @@
 
 import Image from 'next/image'
 import CustomFieldProfile from './CustomFieldProfile'
-import { ProfileLinkItems } from '../../index.data'
-import { IconChevronRight } from '@tabler/icons-react'
 import React, { useEffect, useRef, useState } from 'react'
 import { ErrorResponseTypes, UserProfileTypes } from '../../index.props'
 import { useRouter } from 'next/navigation'
@@ -17,6 +15,7 @@ import Swal from 'sweetalert2'
 import ProfileLoading from '../../loading'
 import ProfileError from '../../error'
 import withAuth from '@/app/withAuth'
+import ProfileLink from '../ProfileLink'
 
 const ProfileForm = () => {
   const [profile, setProfile] = useState<UserProfileTypes | null>(null)
@@ -95,7 +94,7 @@ const ProfileForm = () => {
         gender: false
       })
       setEditField({})
-    } catch (err) {
+    } catch {
       Swal.close()
       handleErrorAlert()
     }
@@ -128,121 +127,99 @@ const ProfileForm = () => {
   }
   return (
     <>
-      <div className='w-full bg-white py-12 md:pl-32 md:pr-16'>
-        <div className='mx-auto min-h-dvh w-full rounded-lg bg-white p-5 text-black 2xl:px-12'>
-          <h1 className='mb-5 text-center text-2xl font-bold'>My Account</h1>
-          <div className='relative mb-5 flex items-center rounded-lg bg-gray-100 p-4'>
-            <div className='mx-auto w-full rounded-lg bg-white p-5 py-20'>
-              <div className='mb-5 flex flex-col items-center'>
-                <div className='relative mb-3 flex h-24 w-24 items-center justify-center rounded-full bg-gray-200'>
-                  {imagePreview || profile?.imageLink ? (
-                    <Image
-                      src={imagePreview || profile?.imageLink || 'default.png'}
-                      alt='foto profile'
-                      placeholder='blur'
-                      priority={true}
-                      width={96}
-                      height={96}
-                      className='aspect-square size-full rounded-full object-cover object-center'
-                      sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-                      blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
-                    />
-                  ) : (
-                    <span className='text-center text-gray-500'>
-                      Profile Picture
-                    </span>
-                  )}
-                </div>
-                <p className='mb-5 text-gray-500'>Max size: 5 MB</p>
-
-                <label
-                  htmlFor='profileImage'
-                  className='cursor-pointer text-blue-500'
-                >
-                  Change Picture
-                </label>
-                <input
-                  id='profileImage'
-                  type='file'
-                  accept='image/*'
-                  className='hidden'
-                  onChange={handleImageChange}
-                />
-              </div>
-              <div className='mb-8 mt-12 space-y-6'>
-                <CustomFieldProfile
-                  idField='email'
-                  typeField='email'
-                  nameField='email'
-                  defaultValueField={profile?.email ?? 'profile email'}
-                  labelName='Email Address'
-                  isEditAble={false}
-                  variant='INPUT'
-                />
-
-                <CustomFieldProfile
-                  idField='name'
-                  typeField='text'
-                  nameField='name'
-                  defaultValueField={profile?.name ?? 'profile name'}
-                  labelName='Full Name'
-                  readOnly={!isEditing.name}
-                  onChange={handleInputChange}
-                  ref={nameRef}
-                  onClick={() => toggleEdit('name')}
-                  variant='INPUT'
-                />
-
-                <CustomFieldProfile
-                  idField='phone'
-                  typeField='text'
-                  nameField='phone'
-                  defaultValueField={profile?.phone ?? 'profile phone'}
-                  labelName='Phone Number'
-                  readOnly={!isEditing.phone}
-                  onChange={handleInputChange}
-                  ref={phoneRef}
-                  onClick={() => toggleEdit('phone')}
-                  variant='INPUT'
-                />
-                <CustomFieldProfile
-                  idField='gender'
-                  typeField=''
-                  nameField='gender'
-                  defaultValueField={profile?.gender ?? 'profile gender'}
-                  labelName='Gender'
-                  readOnly={!isEditing.gender}
-                  onChange={handleInputChange}
-                  ref={genderRef}
-                  onClick={() => toggleEdit('gender')}
-                  variant='SELECT'
-                />
-              </div>
-              <button
-                onClick={handleSave}
-                className='w-full rounded-lg bg-blue-400 p-3 text-white transition-colors duration-300 hover:bg-gray-800 hover:text-yellow-300'
+      <div className='min-h-dvh w-full bg-white'>
+        <div className='2xl:max-w-scren-xl container mt-12 w-full md:mt-[90px] md:max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-lg'>
+          <h1 className='my-4 text-center text-2xl font-medium'>
+            My Account Profile
+          </h1>
+          <div className='flex flex-col items-center space-y-4'>
+            {imagePreview || profile?.imageLink ? (
+              <Image
+                src={imagePreview || profile?.imageLink || 'default.png'}
+                alt='foto profile'
+                placeholder='blur'
+                priority={true}
+                width={20}
+                height={20}
+                className='aspect-square size-20 rounded-full object-cover object-center'
+                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
+              />
+            ) : (
+              <span className='text-center text-gray-500'>Profile Picture</span>
+            )}
+            <div>
+              <label
+                htmlFor='profileImage'
+                className='cursor-pointer font-bold text-cyan-800'
               >
-                Save
-              </button>
+                Change Picture <br /> (max size 4 MB)
+              </label>
+              <input
+                id='profileImage'
+                type='file'
+                accept='image/*'
+                className='hidden'
+                onChange={handleImageChange}
+              />
             </div>
           </div>
-          <div className='mb-5 space-y-4'>
-            <h2 className='mb-3 pt-3 text-lg font-bold'>Support</h2>
-            <ul className='list-none space-y-4 rounded-lg bg-white p-0 text-sm'>
-              {ProfileLinkItems.map(item => (
-                <li
-                  key={item.text}
-                  className='flex cursor-pointer items-center border-b border-gray-300 p-3'
-                >
-                  <div className='flex items-center'>
-                    <span className='mr-3'>{item.icon}</span>
-                    {item.text}
-                  </div>
-                  <IconChevronRight className='ml-auto text-gray-400' />
-                </li>
-              ))}
-            </ul>
+          <div className='space-y-4 py-12 md:space-y-6'>
+            <CustomFieldProfile
+              idField='email'
+              typeField='email'
+              nameField='email'
+              defaultValueField={profile?.email ?? 'profile email'}
+              labelName='Email Address'
+              isEditAble={false}
+              variant='INPUT'
+            />
+
+            <CustomFieldProfile
+              idField='name'
+              typeField='text'
+              nameField='name'
+              defaultValueField={profile?.name ?? 'profile name'}
+              labelName='Full Name'
+              readOnly={!isEditing.name}
+              onChange={handleInputChange}
+              ref={nameRef}
+              onClick={() => toggleEdit('name')}
+              variant='INPUT'
+            />
+
+            <CustomFieldProfile
+              idField='phone'
+              typeField='text'
+              nameField='phone'
+              defaultValueField={profile?.phone ?? 'profile phone'}
+              labelName='Phone Number'
+              readOnly={!isEditing.phone}
+              onChange={handleInputChange}
+              ref={phoneRef}
+              onClick={() => toggleEdit('phone')}
+              variant='INPUT'
+            />
+            <CustomFieldProfile
+              idField='gender'
+              typeField=''
+              nameField='gender'
+              defaultValueField={profile?.gender ?? 'profile gender'}
+              labelName='Gender'
+              readOnly={!isEditing.gender}
+              onChange={handleInputChange}
+              ref={genderRef}
+              onClick={() => toggleEdit('gender')}
+              variant='SELECT'
+            />
           </div>
+          <button
+            onClick={handleSave}
+            className='flex w-full items-center justify-center rounded-lg bg-cyan-800 p-3 text-white hover:bg-cyan-900 focus:outline-none focus:ring-2 focus:ring-cyan-800'
+          >
+            Save Profile
+          </button>
+          <ProfileLink />
         </div>
       </div>
     </>

@@ -21,7 +21,7 @@ const InputFieldProfile: NextPage<FieldProps> = ({
       <div className='flex flex-auto flex-col items-center'>
         <label
           htmlFor={idField}
-          className='mb-2 w-full font-medium text-gray-700 md:mb-0 md:pr-4'
+          className='mb-2 w-full text-sm text-neutral-800'
         >
           {labelName}
         </label>
@@ -37,13 +37,13 @@ const InputFieldProfile: NextPage<FieldProps> = ({
             }
             ref={ref as RefObject<HTMLInputElement>}
             accept={accept}
-            className={`w-full rounded-lg border p-3 ${readOnly ? 'bg-gray-300' : 'bg-white'} transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+            className={`w-full rounded-md border p-3 px-4 ${readOnly ? 'bg-neutral-200' : 'bg-white'} transition focus:border-cyan-800 focus:outline-none focus:ring-blue-500`}
           />
 
           {isEditAble && (
             <button
               onClick={onClick}
-              className='ml-2 flex transform items-center justify-center rounded-lg bg-blue-500 p-3 text-white transition-transform hover:scale-105 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400'
+              className='ml-2 flex items-center justify-center rounded-lg bg-cyan-800 p-3 text-white hover:bg-cyan-900 focus:outline-none focus:ring-2 focus:ring-cyan-800'
             >
               <IconPencil className='size-6' />
             </button>
