@@ -46,6 +46,15 @@ const Favorite: NextPage = () => {
     fetchDestinations()
   }, [fetchDestinations])
 
+  // save to localStorage
+  useEffect(() => {
+    const savedDestinations = destinations.map(dest => dest.id)
+    localStorage.setItem(
+      'saved-destinations',
+      JSON.stringify(savedDestinations)
+    )
+  }, [destinations])
+
   const handleSearch = (event: FormEvent) => {
     event.preventDefault()
     fetchDestinations(searchQuery)
