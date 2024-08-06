@@ -1,14 +1,11 @@
-/* eslint-disable no-undef */
 import { NextPage } from 'next'
 import Image from 'next/image'
+
 import BalineseDance from '@/public/assets/images/balinese-dance.webp'
 import Logo from '@/components/ui/logo/Logo'
+import { AuthProps } from './index.props'
 
-interface Props {
-  children: React.ReactNode
-}
-
-const AuthLayout: NextPage<Props> = ({ children }) => {
+const AuthLayout: NextPage<AuthProps> = ({ children }) => {
   return (
     <>
       <div className='min-h-screen overflow-hidden'>
