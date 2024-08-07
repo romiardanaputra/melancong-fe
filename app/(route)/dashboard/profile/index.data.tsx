@@ -5,8 +5,16 @@ import {
 } from '@tabler/icons-react'
 
 export const supportItems = [
-  { text: 'Terms and Conditions', icon: <IconSettings />, link: '#' },
-  { text: 'Privacy Policy', icon: <IconLockSquare />, link: '#' },
+  {
+    text: 'Terms and Conditions',
+    icon: <IconSettings />,
+    link: 'https://melanc0ng.web.app/term-and-use/'
+  },
+  {
+    text: 'Privacy Policy',
+    icon: <IconLockSquare />,
+    link: 'https://melanc0ng.web.app/privacy-policy/'
+  },
   {
     text: 'Need Help? Let`s chat',
     icon: <IconBrandHipchat />,
