@@ -3,10 +3,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with
 
 # Melancong Website
 
-Welcome to the Melancong Website! This project is a comprehensive web application built with Next.js, designed to showcase the beautiful destinations, activities, and culture of Bali, Indonesia. The website provides tourists with valuable information and resources to plan their perfect trip to this tropical paradise.
+Welcome to the Melancong Website! This project is a comprehensive web
+application built with Next.js, designed to showcase the beautiful destinations,
+activities, and culture of Bali, Indonesia. The website provides tourists with
+valuable information and resources to plan their perfect trip to this tropical
+paradise.
 
 ## About The Project
-
 
 ## Table of Contents
 
@@ -21,7 +24,9 @@ Welcome to the Melancong Website! This project is a comprehensive web applicatio
 
 ## Demo
 
-Check out the live demo of the website: <a href="https://melancong-fe.vercel.app/" class="text-blue-500 hover:text-blue-700">Melancong Website</a>
+Check out the live demo of the website:
+<a href="https://melancong-fe.vercel.app/" class="text-blue-500 hover:text-blue-700">Melancong
+Website</a>
 
 ## Features
 
@@ -66,6 +71,7 @@ This project uses
 automatically optimize and load Inter, a custom Google Font.
 
 ## Usage
+
 <ul>
 <li>Home Page: Overview of Bali with featured destinations and activities.</li>
 <li>Dashboard Page: Browse and explore different tourist spots in Bali.</li>
