@@ -1,5 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with
-[`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!-- This is a [Next.js](https://nextjs.org/) project bootstrapped with
+[`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). -->
+
+# Melancong Website
+
+Welcome to the Melancong Website! This project is a comprehensive web
+application built with Next.js, designed to showcase the beautiful destinations,
+activities, and culture of Bali, Indonesia. The website provides tourists with
+valuable information and resources to plan their perfect trip to this tropical
+paradise.
+
+## Table of Contents
+
+- [Demo](#demo)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
+## Demo
+
+Check out the live demo of the website:
+<a href="https://melancong-fe.vercel.app/" class="text-blue-500 hover:text-blue-700">Melancong
+Website</a>
+
+## Features
+
+<ul class="list-disc pl-5 space-y-2">
+  <li><strong>Destination Details</strong>: Detailed information about various places, including history, best time to visit, and activities.</li>
+  <li><strong>Destination Saved</strong>: Save desired destination</li>
+  <li><strong>Chatbot Guide</strong>: Tips and guidelines for chatbot to ensure a safe and enjoyable trip.</li>
+</ul>
+
+## Technologies Used
+
+<div class="space-y-2">
+  <p><strong>Frontend:</strong> Next.js, React, Tailwind CSS</p>
+  <p><strong>Backend:</strong> Node.js, Express</p>
+  <p><strong>Database:</strong> MongoDB</p>
+  <p><strong>API:</strong> RESTful APIs for data fetching</p>
+  <p><strong>Hosting:</strong> Vercel (or your hosting provider)</p>
+</div>
 
 ## Getting Started
 
@@ -24,6 +67,16 @@ auto-updates as you edit the file.
 This project uses
 [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to
 automatically optimize and load Inter, a custom Google Font.
+
+## Usage
+
+<ul>
+<li>Home Page: Overview of Bali with featured destinations and activities.</li>
+<li>Dashboard Page: Browse and explore different tourist spots in Bali.</li>
+<li>Chatbot Page: Essential travel tips and safety information.</li>
+<li>Profile Page: Check profile.</li>
+<li>Favorite Destination Page: Save destinations and activities.</li>
+</ul>
 
 ## Learn More
 
