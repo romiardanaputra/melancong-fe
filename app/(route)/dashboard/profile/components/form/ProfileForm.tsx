@@ -1,20 +1,22 @@
 'use client'
 
-import Image from 'next/image'
-import CustomFieldProfile from './CustomFieldProfile'
 import React, { useEffect, useRef, useState } from 'react'
-import { ErrorResponseTypes, UserProfileTypes } from '../../index.props'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+
+import Swal from 'sweetalert2'
+import withAuth from '@/app/withAuth'
+
+import CustomFieldProfile from './CustomFieldProfile'
+import { ErrorResponseTypes, UserProfileTypes } from '../../index.props'
 import {
   fetchUserProfile,
   updateUserProfile,
   uploadProfileImage
 } from '@/services/profile/profileService'
 import { handleErrorAlert, handleSaveAlert } from '@/utils/alert/SwalAlerts'
-import Swal from 'sweetalert2'
 import ProfileLoading from '../../loading'
 import ProfileError from '../../error'
-import withAuth from '@/app/withAuth'
 import ProfileLink from '../ProfileLink'
 
 const ProfileForm = () => {
