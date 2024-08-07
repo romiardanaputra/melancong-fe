@@ -1,5 +1,5 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with
-[`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!-- This is a [Next.js](https://nextjs.org/) project bootstrapped with
+[`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). -->
 
 # Melancong Website
 
@@ -8,8 +8,6 @@ application built with Next.js, designed to showcase the beautiful destinations,
 activities, and culture of Bali, Indonesia. The website provides tourists with
 valuable information and resources to plan their perfect trip to this tropical
 paradise.
-
-## About The Project
 
 ## Table of Contents
 
@@ -76,7 +74,7 @@ automatically optimize and load Inter, a custom Google Font.
 <li>Home Page: Overview of Bali with featured destinations and activities.</li>
 <li>Dashboard Page: Browse and explore different tourist spots in Bali.</li>
 <li>Chatbot Page: Essential travel tips and safety information.</li>
-<li>Profile Page: Check profile</li>
+<li>Profile Page: Check profile.</li>
 <li>Favorite Destination Page: Save destinations and activities.</li>
 </ul>
 
