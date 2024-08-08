@@ -9,6 +9,7 @@ const useFilter = () => {
     searchQuery,
     handleSearch,
     isFilterSubmit,
+    setIsFilterSubmit,
     destinations,
     fetchDestinations
   } = useSearchDestinations()
@@ -18,11 +19,13 @@ const useFilter = () => {
     setFilterType('')
     fetchDestinations(searchQuery)
     setIsOpen(false)
+    setIsFilterSubmit(false)
   }
 
   const handleFilterSubmit = () => {
     fetchDestinations(searchQuery, location, filterType)
     setIsOpen(false)
+    setIsFilterSubmit(true)
   }
 
   return {

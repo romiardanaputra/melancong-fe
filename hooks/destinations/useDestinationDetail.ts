@@ -22,7 +22,7 @@ export const useDestinationDetail = (id: string) => {
         setError('')
       } catch (err) {
         const errRes = err as ErrorResponseDetail
-        if (errRes.response.status === 401) {
+        if (errRes.response?.status === 401) {
           router.push('/login')
         } else {
           setError('An unexpected error occurred')
