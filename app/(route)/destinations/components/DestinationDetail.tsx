@@ -45,7 +45,9 @@ const DestinationDetail: NextPage<DetailProps> = ({ id }) => {
               {destination?.location && (
                 <div className='flex w-fit items-center gap-2 rounded-full bg-cyan-700 px-4 py-2 text-neutral-200'>
                   <IconMapPin className='size-5' />
-                  <Link href={destination?.location}>Google Maps</Link>
+                  <Link target='_blank' href={destination?.location}>
+                    Google Maps
+                  </Link>
                 </div>
               )}
             </div>
