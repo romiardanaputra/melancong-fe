@@ -80,7 +80,7 @@ const LoginForm: NextPage<Props> = () => {
 
   const handleGoogleLogin = () => {
     router.push('https://melancong-be.vercel.app/auth/google')
-  };
+  }
 
   return (
     <>
@@ -145,7 +145,7 @@ const LoginForm: NextPage<Props> = () => {
           <div className='mt-4'>
             <button
               onClick={handleGoogleLogin}
-              className='w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition duration-300'
+              className='w-full rounded-md bg-red-600 px-4 py-2 text-white transition duration-300 hover:bg-red-700'
             >
               Login with Google
             </button>
