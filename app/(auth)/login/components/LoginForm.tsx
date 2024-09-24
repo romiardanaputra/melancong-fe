@@ -145,7 +145,7 @@ const LoginForm: NextPage<Props> = () => {
           <div className='mt-4'>
             <button
               onClick={handleGoogleLogin}
-              className='w-full rounded-md bg-red-600 px-4 py-2 text-white transition duration-300 hover:bg-red-700'
+              className='w-full rounded-full bg-red-500 py-4 text-sm font-medium text-neutral-50 transition duration-300'
             >
               Login with Google
             </button>
