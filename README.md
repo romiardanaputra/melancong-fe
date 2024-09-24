@@ -39,7 +39,7 @@ Website</a>
 <div class="space-y-2">
   <p><strong>Frontend:</strong> Next.js, React, Tailwind CSS</p>
   <p><strong>Backend:</strong> Node.js, Express</p>
-  <p><strong>Database:</strong> MongoDB</p>
+  <p><strong>Database:</strong> Firebase - Firestore Database</p>
   <p><strong>API:</strong> RESTful APIs for data fetching</p>
   <p><strong>Hosting:</strong> Vercel (or your hosting provider)</p>
 </div>
