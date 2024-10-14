@@ -12,6 +12,8 @@ import Link from 'next/link'
 import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation'
 import { IconEyeOff, IconEye } from '@tabler/icons-react'
+import GoogleLogo from '@/public/assets/icons/google-logo.svg'
+import Image from 'next/image'
 
 interface Props {}
 
@@ -79,7 +81,8 @@ const LoginForm: NextPage<Props> = () => {
   }
 
   const handleGoogleLogin = () => {
-    router.push('https://melancong-be.vercel.app/auth/google')
+    // router.push('https://melancong-be.vercel.app/auth/google')
+    router.push('http://localhost:7777/auth/google')
   }
 
   return (
@@ -116,9 +119,9 @@ const LoginForm: NextPage<Props> = () => {
                 fieldPlaceholder=' '
                 labelText='Password'
                 value={password}
+                errorMsg={error}
                 onChange={e => setPassword(e.target.value)}
               />
-              {error && <p className='text-red-500'>{error}</p>}
               <button
                 type='button'
                 onClick={() => setShowPassword(!showPassword)}
@@ -145,8 +148,15 @@ const LoginForm: NextPage<Props> = () => {
           <div className='mt-4'>
             <button
               onClick={handleGoogleLogin}
-              className='w-full rounded-full bg-red-500 py-4 text-sm font-medium text-neutral-50 transition duration-300'
+              className='flex w-full items-center justify-center gap-2 rounded-full border border-neutral-500 bg-neutral-50 py-1.5 text-sm font-medium text-neutral-800 transition duration-300 hover:bg-neutral-200'
             >
+              <Image
+                width={35}
+                height={35}
+                src={GoogleLogo}
+                alt='Google Logo'
+                className='rounded-full'
+              />
               Login with Google
             </button>
           </div>

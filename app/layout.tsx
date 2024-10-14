@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     default: 'Melancong - Tourism Recommendation in Bali',
     template: '%s | Melancong - Tourism Recommendation in Bali'
   },
+  verification: {
+    google: '6HEAzcG2kIFk9z8FgN2ElCkjv59TMhG7D2cMc9So9nM'
+  },
   keywords: 'melancong, travel, recommendation, bali',
   description:
     'Melancong is a website that showcases tourist destinations in Bali, provides travel recommendations around Bali with various features, and offers the best recommendations to aid in decision making',
