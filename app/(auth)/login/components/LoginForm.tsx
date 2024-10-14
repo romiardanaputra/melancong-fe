@@ -122,6 +122,7 @@ const LoginForm: NextPage<Props> = () => {
                 errorMsg={error}
                 onChange={e => setPassword(e.target.value)}
               />
+
               <button
                 type='button'
                 onClick={() => setShowPassword(!showPassword)}
@@ -157,6 +158,7 @@ const LoginForm: NextPage<Props> = () => {
                 alt='Google Logo'
                 className='rounded-full'
               />
+
               Login with Google
             </button>
           </div>
