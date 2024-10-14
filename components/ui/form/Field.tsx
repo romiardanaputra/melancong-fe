@@ -13,6 +13,7 @@ interface Props {
   labelText: string
   value?: string
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  errorMsg?: string
 }
 
 const FieldComponent: NextPage<Props> = ({
@@ -25,6 +26,7 @@ const FieldComponent: NextPage<Props> = ({
   fieldMessage,
   labelText,
   value,
+  errorMsg,
   onChange
 }) => {
   return (
@@ -49,7 +51,11 @@ const FieldComponent: NextPage<Props> = ({
           </label>
         </div>
         {/* if there's any error the message will be changed */}
-        <p className='ml-1 text-sm font-medium'>{fieldMessage}</p>
+        {errorMsg ? (
+          <p className='ml text-sm font-medium text-red-500'>{errorMsg}</p>
+        ) : (
+          <p className='ml-1 text-sm font-medium'>{fieldMessage}</p>
+        )}
       </div>
     </>
   )
