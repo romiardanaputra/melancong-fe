@@ -158,7 +158,6 @@ const LoginForm: NextPage<Props> = () => {
                 alt='Google Logo'
                 className='rounded-full'
               />
-
               Login with Google
             </button>
           </div>
