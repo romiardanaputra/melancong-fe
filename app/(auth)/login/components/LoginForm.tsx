@@ -81,8 +81,7 @@ const LoginForm: NextPage<Props> = () => {
   }
 
   const handleGoogleLogin = () => {
-    // router.push('https://melancong-be.vercel.app/auth/google')
-    router.push('http://localhost:7777/auth/google')
+    router.push('https://melancong-be.vercel.app/auth/google')
   }
 
   return (
